@@ -1,0 +1,33 @@
+{
+  "name": "micromodal",
+  "version": "0.1.0",
+  "description": "",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c && minify dist/micromodal.js"
+  },
+  "keywords": [
+    "a11y",
+    "modal",
+    "accesible"
+  ],
+  "author": "Indrashish Ghosh",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-latest": "^6.24.1",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "minifier": "^0.8.1",
+    "rollup": "^0.47.6",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-eslint": "^4.0.0",
+    "rollup-watch": "^4.3.1"
+  }
+}
