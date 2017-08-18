@@ -196,6 +196,15 @@ var MicroModal = function () {
     return Modal;
   }();
 
+  var validateArgs = function validateArgs(triggers) {
+    if (triggers.length <= 0) {
+      console.log('\u2757Please specify at least one %c\'micromodal-trigger\'', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'data attribute.');
+      console.log('%cExample:', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', '<a href="#" data-micromodal-trigger="modal1"></a>');
+      return false;
+    }
+    return true;
+  };
+
   var generateTriggerMap = function generateTriggerMap(triggers) {
     var triggerMap = [];
 
@@ -211,13 +220,15 @@ var MicroModal = function () {
   var init = function init(config) {
     var options = config || {};
     var triggers = document.querySelectorAll('[data-micromodal-trigger]');
-    var triggerMap = generateTriggerMap(triggers);
 
-    for (var key in triggerMap) {
-      var value = triggerMap[key];
-      options.targetModal = key;
-      options.triggers = [].concat(toConsumableArray(value));
-      new Modal(options); // eslint-disable-line no-new
+    if (validateArgs(triggers)) {
+      var triggerMap = generateTriggerMap(triggers);
+      for (var key in triggerMap) {
+        var value = triggerMap[key];
+        options.targetModal = key;
+        options.triggers = [].concat(toConsumableArray(value));
+        new Modal(options); // eslint-disable-line no-new
+      }
     }
   };
 

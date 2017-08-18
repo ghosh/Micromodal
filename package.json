@@ -6,7 +6,8 @@
   "module": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup -c && minify dist/micromodal.js"
+    "build": "rollup -c && minify dist/micromodal.js",
+    "dev": "rollup -c -w"
   },
   "keywords": [
     "a11y",
