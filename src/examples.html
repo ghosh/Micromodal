@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>a11y Modal</title>
+
+
+  <style>
+
+    /**************************\
+  Page Styles
+\**************************/
+
+    body {
+      background-color: #f8f9fa;
+      font-family: sans-serif;
+      margin-top: 50px;
+      color: #50596c;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 0;
+    }
+
+    p {
+      line-height: 1.5;
+    }
+
+    a {
+      color: #5764c6;
+    }
+
+    .wrapper {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /**************************\
+      Basic Styles
+    \**************************/
+
+    .modal__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal__container {
+      background-color: #fff;
+      padding: 30px 50px;
+    }
+
+    .modal__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+    a:before {
+      content: "\2715";
+    }
+    }
+
+    [aria-hidden="true"] {
+      display: none !important;
+    }
+
+  </style>
+
+
+</head>
+
+<body>
+<div class="wrapper">
+  <h1>a11y modal</h1>
+
+  <p>
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. <a href="#">Open Modal 1</a> Temporibus laudantium in nihil dignissimos saepe. Quas, quidem modi? Quis nam commodi veritatis cum placeat ut, fuga tempore natus
+    cupiditate, quod blanditiis. <a href="#">Open Modal 1</a>
+  </p>
+
+  <p>
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. <a href="#" >Open Modal 2</a> Temporibus laudantium in nihil dignissimos saepe. Quas, quidem modi? Quis nam commodi veritatis cum placeat ut, fuga tempore natus
+    cupiditate, quod blanditiis.
+    <button>Open Modal 2</button>
+  </p>
+</div>
+
+
+<div class="modal" id="modal1" aria-hidden="true">
+
+  <div class="modal__overlay" tabindex="-1" data-a11ymodal-overlay>
+
+    <div class="modal__container" role="dialog" aria-labelledby="modal__title" aria-describedby="modal__content">
+      <div role="document">
+
+        <div class="modal__header">
+          <h3 id="modal__title">
+            Modal One
+          </h3>
+          <a href="#" aria-label="Close modal" data-a11ymodal-close></a>
+        </div>
+
+        <div class="modal__content" id="modal__content">
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+          </p>
+        </div>
+
+        <div class="modal__footer">
+          <button>Continue</button>
+          <button data-a11ymodal-close aria-label="Close this dialog window">Close</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="modal" id="modal2" aria-hidden="true">
+
+  <div class="modal__overlay" tabindex="-1" data-a11ymodal-overlay>
+
+    <div class="modal__container" role="dialog" aria-labelledby="modal__title" aria-describedby="modal__content">
+      <div role="document">
+
+        <div class="modal__header">
+          <h3 id="modal__title">
+            Modal Two
+          </h3>
+          <a href="#" aria-label="Close modal" data-a11ymodal-close></a>
+        </div>
+
+        <div class="modal__content" id="modal__content">
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+          </p>
+        </div>
+
+        <div class="modal__footer">
+          <button>Continue</button>
+          <button data-a11ymodal-close aria-label="Close this dialog window">Close</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+  /**
+   [x] Toggle Visibilty
+   [x] Toggle aira-hidden
+   [x] Handle click on overlay
+   [x] Handle `esc` button press
+   [x] Focus on first focusable element
+   [x] Restrict document focus within modal
+   [x] Maintain initial focus after closing modal
+   [ ] Throw exceptions where required
+   [ ] Make data-a11y attrs configurable
+   [x] Make provisions for passing callbacks
+   **/
+
+  const a11yModal = (() => {
+      "use strict";
+  const FOCUSABLE_ELEMENTS = [
+    "a[href]",
+    "area[href]",
+    "input:not([disabled])",
+    "select:not([disabled])",
+    "textarea:not([disabled])",
+    "button:not([disabled])",
+    "iframe",
+    "object",
+    "embed",
+    "[contenteditable]",
+    '[tabindex]:not([tabindex^="-"])'
+  ];
+
+  class Modal {
+    constructor(targetModal, cbs, ...triggers) {
+    this.modal = document.getElementById(targetModal);
+    this.registerTriggers(...triggers);
+    this.onShow = cbs.onShow;
+    this.onClose = cbs.onClose;
+    this.onClick = this.onClick.bind(this);
+    this.onKeydown = this.onKeydown.bind(this);
+  }
+
+  registerTriggers(...triggers) {
+    triggers.forEach(element => {
+      element.addEventListener("click", () => this.showModal());
+  });
+  }
+
+  showModal() {
+    this.activeElement = document.activeElement;
+    this.modal.setAttribute("aria-hidden", "false");
+    this.setFocusToFirstNode();
+    this.addEventListeners();
+    this.onShow(this.modal);
+  }
+
+  closeModal() {
+    this.modal.setAttribute("aria-hidden", "true");
+    this.removeEventListeners();
+    this.activeElement.focus();
+    this.onClose(this.modal);
+  }
+
+  addEventListeners() {
+    this.modal.addEventListener("touchstart", this.onClick);
+    this.modal.addEventListener("click", this.onClick);
+    document.addEventListener("keydown", this.onKeydown);
+  }
+
+  removeEventListeners() {
+    this.modal.removeEventListener("touchstart", this.onClick);
+    this.modal.removeEventListener("click", this.onClick);
+    document.removeEventListener("keydown", this.onKeydown);
+  }
+
+  onClick(event) {
+    if (event.target.hasAttribute("data-a11ymodal-overlay"))
+      this.closeModal();
+    if (event.target.hasAttribute("data-a11ymodal-close")) this.closeModal();
+    event.preventDefault();
+  }
+
+  onKeydown(event) {
+    if (event.keyCode === 27) this.closeModal(event);
+    if (event.keyCode === 9) this.maintainFocus(event);
+  }
+
+  getFocusableNodes() {
+    const nodes = this.modal.querySelectorAll(FOCUSABLE_ELEMENTS);
+    return Object.keys(nodes).map(key => nodes[key]);
+  }
+
+  setFocusToFirstNode() {
+    const focusableNodes = this.getFocusableNodes();
+    if (focusableNodes.length) focusableNodes[0].focus();
+  }
+
+  maintainFocus(event) {
+    var focusableNodes = this.getFocusableNodes();
+    var focusedItemIndex = focusableNodes.indexOf(document.activeElement);
+
+    if (event.shiftKey && focusedItemIndex === 0) {
+      focusableNodes[focusableNodes.length - 1].focus();
+      event.preventDefault();
+    }
+
+    if (!event.shiftKey && focusedItemIndex === focusableNodes.length - 1) {
+      focusableNodes[0].focus();
+      event.preventDefault();
+    }
+  }
+  }
+
+  const generateTriggerMap = triggers => {
+    const triggerMap = [];
+
+    triggers.forEach(trigger => {
+      const targetModal = trigger.dataset.a11ymodalTrigger;
+    if (triggerMap[targetModal] === undefined) triggerMap[targetModal] = [];
+    triggerMap[targetModal].push(trigger);
+  });
+
+    return triggerMap;
+  };
+
+  const init = cbs => {
+    const triggers = document.querySelectorAll("[data-a11ymodal-trigger]");
+
+    if(triggers.length <= 0) {
+      console.log("❗Please specify at least one %c'micromodal-trigger'", "background-color: #f8f9fa;color: #50596c;font-weight: bold;", "data attribute.");
+      console.log("%cExample:", "background-color: #f8f9fa;color: #50596c;font-weight: bold;", "<a href='#' data-micromodal-trigger='modal1'></a>");
+    }
+
+    const triggerMap = generateTriggerMap(triggers);
+
+    for (var key in triggerMap) {
+      let value = triggerMap[key];
+      new Modal(key, cbs, ...value);
+    }
+  };
+
+  return { init };
+  })();
+
+  const isShown = el => {
+    console.info(`${el.id} is shown`);
+  };
+
+  const isHidden = el => {
+    console.info(`${el.id} is hidden`);
+  };
+
+  const callbacks = {
+    onClose: isHidden,
+    onShow: isShown
+  };
+
+  a11yModal.init(callbacks);
+
+</script>
+
+</body>
+
+</html>

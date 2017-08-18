@@ -115,6 +115,10 @@ const MicroModal = (() => {
   const init = config => {
     const options = config || {}
     const triggers = document.querySelectorAll('[data-micromodal-trigger]')
+    if(triggers.length <= 0) {
+      console.log("❗Please specify at least one %c'micromodal-trigger'", "background-color: #f8f9fa;color: #50596c;font-weight: bold;", "data attribute.");
+      console.log("%cExample:", "background-color: #f8f9fa;color: #50596c;font-weight: bold;", "<a href='#' data-micromodal-trigger='modal1'></a>");
+    }
     const triggerMap = generateTriggerMap(triggers)
 
     for (var key in triggerMap) {
