@@ -4,6 +4,8 @@
 	(global.MicroModal = factory());
 }(this, (function () { 'use strict';
 
+var version = "0.1.0";
+
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -198,8 +200,8 @@ var MicroModal = function () {
 
   var validateArgs = function validateArgs(triggers) {
     if (triggers.length <= 0) {
-      console.log('\u2757Please specify at least one %c\'micromodal-trigger\'', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'data attribute.');
-      console.log('%cExample:', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', '<a href="#" data-micromodal-trigger="modal1"></a>');
+      console.log('MicroModal v' + version + ': \u2757Please specify at least one %c\'micromodal-trigger\'', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'data attribute.');
+      console.log('MicroModal v' + version + ': %cExample:', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', '<a href="#" data-micromodal-trigger="modal1"></a>');
       return false;
     }
     return true;
