@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c && minify dist/micromodal.js",
-    "dev": "rollup -c -w",
+    "dev": "concurrently \"rollup -c -w\" \"reload -b -s example/index.html --port 5000\"",
     "precommit": "yarn build"
   },
   "keywords": [
@@ -21,6 +21,7 @@
     "babel-core": "^6.26.0",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-latest": "^6.24.1",
+    "concurrently": "^3.5.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-node": "^5.1.1",
@@ -28,6 +29,7 @@
     "eslint-plugin-standard": "^3.0.1",
     "husky": "^0.14.3",
     "minifier": "^0.8.1",
+    "reload": "^2.2.1",
     "rollup": "^0.47.6",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-eslint": "^4.0.0",
