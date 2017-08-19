@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c && minify dist/micromodal.js",
     "dev": "rollup -c -w",
-    "precommit": "yarn build",
+    "precommit": "yarn build"
   },
   "keywords": [
     "a11y",
