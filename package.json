@@ -7,7 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c && minify dist/micromodal.js",
-    "dev": "rollup -c -w"
+    "dev": "rollup -c -w",
+    "precommit": "yarn build",
   },
   "keywords": [
     "a11y",
@@ -25,6 +26,7 @@
     "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
+    "husky": "^0.14.3",
     "minifier": "^0.8.1",
     "rollup": "^0.47.6",
     "rollup-plugin-babel": "^3.0.2",
