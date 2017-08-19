@@ -7,11 +7,9 @@ export default {
   entry: 'src/index.js',
   format: 'umd',
   plugins: [
-    eslint(),
+    eslint({ exclude: 'package.json' }),
     json(),
-    babel({
-      exclude: 'node_modules/**'
-    })
+    babel({ exclude: 'node_modules/**' })
   ],
   dest: 'dist/micromodal.js',
 };
