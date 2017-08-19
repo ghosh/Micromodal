@@ -1,0 +1,66 @@
+/**************************\
+  Page Styles
+\**************************/
+
+body {
+  background-color: #f8f9fa;
+  font-family: sans-serif;
+  margin-top: 50px;
+  color: #50596c;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+p {
+  line-height: 1.5;
+}
+
+a {
+  color: #5764c6;
+}
+
+.wrapper {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+
+/**************************\
+  Required Styles
+\**************************/
+
+[aria-hidden="true"] {
+  display: none;
+}
+
+
+/**************************\
+  Basic Modal Styles
+\**************************/
+
+.modal__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal__container {
+  background-color: #fff;
+  padding: 30px 50px;
+}
+
+.modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal__header a:before { content: "\2715"; }

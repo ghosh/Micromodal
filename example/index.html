@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MicroModal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="wrapper">
+    <h1>MicroModal</h1>
+
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. <a href="#" data-micromodal-trigger="modal1">Open Modal 1</a> Temporibus laudantium in nihil dignissimos saepe. Quas, quidem modi? Quis nam commodi veritatis cum placeat ut, fuga tempore natus cupiditate, quod blanditiis. <a href="#" data-micromodal-trigger="modal1">Open Modal 1</a>
+    </p>
+
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. <a href="#" data-micromodal-trigger="modal2">Open Modal 2</a> Temporibus laudantium in nihil dignissimos saepe. Quas, quidem modi? Quis nam commodi veritatis cum placeat ut, fuga tempore natus cupiditate, quod blanditiis.
+    </p>
+  </div>
+
+
+  <div class="modal" id="modal1" aria-hidden="true">
+
+    <div class="modal__overlay" tabindex="-1" data-micromodal-overlay>
+
+      <div class="modal__container" role="dialog" aria-labelledby="modal__title" aria-describedby="modal__content">
+        <div role="document">
+
+          <div class="modal__header">
+            <h3 id="modal__title">
+              Modal One
+            </h3>
+            <a href="#" aria-label="Close modal" data-micromodal-close></a>
+          </div>
+
+          <div class="modal__content" id="modal__content">
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+          </div>
+
+          <div class="modal__footer">
+            <button>Continue</button>
+            <button data-micromodal-close aria-label="Close this dialog window">Close</button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
+  <div class="modal" id="modal2" aria-hidden="true">
+
+    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+
+      <div class="modal__container" role="dialog" aria-labelledby="modal__title" aria-describedby="modal__content">
+        <div role="document">
+
+          <div class="modal__header">
+            <h3 id="modal__title">
+              Modal Two
+            </h3>
+            <a href="#" aria-label="Close modal" data-micromodal-close></a>
+          </div>
+
+          <div class="modal__content" id="modal__content">
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+          </div>
+
+          <div class="modal__footer">
+            <button>Continue</button>
+            <button data-micromodal-close aria-label="Close this dialog window">Close</button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="../dist/micromodal.js"></script>
+  <script>
+    MicroModal.init();
+  </script>
+</body>
+</html>
