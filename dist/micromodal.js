@@ -86,21 +86,19 @@ var MicroModal = function () {
   var FOCUSABLE_ELEMENTS = ['a[href]', 'area[href]', 'input:not([disabled])', 'select:not([disabled])', 'textarea:not([disabled])', 'button:not([disabled])', 'iframe', 'object', 'embed', '[contenteditable]', '[tabindex]:not([tabindex^="-"])'];
 
   var Modal = function () {
-    function Modal() {
-      var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-          targetModal = _ref.targetModal,
-          triggers = _ref.triggers,
+    function Modal(_ref) {
+      var targetModal = _ref.targetModal,
+          _ref$triggers = _ref.triggers,
+          triggers = _ref$triggers === undefined ? [] : _ref$triggers,
           _ref$onShow = _ref.onShow,
           onShow = _ref$onShow === undefined ? function () {} : _ref$onShow,
           _ref$onClose = _ref.onClose,
           onClose = _ref$onClose === undefined ? function () {} : _ref$onClose;
-
       classCallCheck(this, Modal);
 
-      if (triggers !== undefined) this.registerTriggers.apply(this, toConsumableArray(triggers));
+      if (triggers.length > 0) this.registerTriggers.apply(this, toConsumableArray(triggers));
       this.modal = document.getElementById(targetModal);
-      this.onShow = onShow;
-      this.onClose = onClose;
+      this.callbacks = { onShow: onShow, onClose: onClose };
 
       this.onClick = this.onClick.bind(this);
       this.onKeydown = this.onKeydown.bind(this);
@@ -115,8 +113,8 @@ var MicroModal = function () {
           triggers[_key] = arguments[_key];
         }
 
-        triggers.forEach(function (element) {
-          element.addEventListener('click', function () {
+        triggers.forEach(function (trigger) {
+          trigger.addEventListener('click', function () {
             return _this.showModal();
           });
         });
@@ -128,7 +126,7 @@ var MicroModal = function () {
         this.modal.setAttribute('aria-hidden', 'false');
         this.setFocusToFirstNode();
         this.addEventListeners();
-        this.onShow(this.modal);
+        this.callbacks.onShow(this.modal);
       }
     }, {
       key: 'closeModal',
@@ -136,7 +134,7 @@ var MicroModal = function () {
         this.modal.setAttribute('aria-hidden', 'true');
         this.removeEventListeners();
         this.activeElement.focus();
-        this.onClose(this.modal);
+        this.callbacks.onClose(this.modal);
       }
     }, {
       key: 'addEventListeners',
