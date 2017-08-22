@@ -97,8 +97,8 @@ var MicroModal = function () {
 
       classCallCheck(this, Modal);
 
+      if (triggers !== undefined) this.registerTriggers.apply(this, toConsumableArray(triggers));
       this.modal = document.getElementById(targetModal);
-      this.registerTriggers.apply(this, toConsumableArray(triggers));
       this.onShow = onShow;
       this.onClose = onClose;
 
@@ -234,7 +234,12 @@ var MicroModal = function () {
     }
   };
 
-  return { init: init };
+  var show = function show(targetModal) {
+    var modal = new Modal({ targetModal: targetModal }); // eslint-disable-line no-new
+    modal.showModal();
+  };
+
+  return { init: init, show: show };
 }();
 
 return MicroModal;

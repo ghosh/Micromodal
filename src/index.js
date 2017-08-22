@@ -24,8 +24,8 @@ const MicroModal = (() => {
       onShow = () => {},
       onClose = () => {}
     } = {}) {
+      if (triggers !== undefined) this.registerTriggers(...triggers)
       this.modal = document.getElementById(targetModal)
-      this.registerTriggers(...triggers)
       this.onShow = onShow
       this.onClose = onClose
 
@@ -138,7 +138,12 @@ const MicroModal = (() => {
     }
   }
 
-  return { init }
+  const show = targetModal => {
+    const modal = new Modal({ targetModal: targetModal }) // eslint-disable-line no-new
+    modal.showModal()
+  }
+
+  return { init, show }
 })()
 
 export default MicroModal
