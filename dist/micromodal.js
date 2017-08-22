@@ -97,13 +97,14 @@ var MicroModal = function () {
 
       classCallCheck(this, Modal);
 
-      this.modal = document.getElementById(targetModal);
-      this.registerTriggers.apply(this, toConsumableArray(triggers));
-      this.onShow = onShow;
-      this.onClose = onClose;
-
-      this.onClick = this.onClick.bind(this);
-      this.onKeydown = this.onKeydown.bind(this);
+      if (validateArgs('hasNoModal', targetModal)) {
+        this.modal = document.getElementById(targetModal);
+        this.registerTriggers.apply(this, toConsumableArray(triggers));
+        this.onShow = onShow;
+        this.onClose = onClose;
+        this.onClick = this.onClick.bind(this);
+        this.onKeydown = this.onKeydown.bind(this);
+      }
     }
 
     createClass(Modal, [{
@@ -198,12 +199,26 @@ var MicroModal = function () {
     return Modal;
   }();
 
-  var validateArgs = function validateArgs(triggers) {
-    if (triggers.length <= 0) {
-      console.log('MicroModal v' + version + ': \u2757Please specify at least one %c\'micromodal-trigger\'', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'data attribute.');
-      console.log('MicroModal v' + version + ': %cExample:', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', '<a href="#" data-micromodal-trigger="modal1"></a>');
-      return false;
+  var validateArgs = function validateArgs(error, arg) {
+    switch (error) {
+      case 'hasNoTriggers':
+        if (arg.length <= 0) {
+          console.warn('MicroModal v' + version + ': \u2757Please specify at least one %c\'micromodal-trigger\'', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'data attribute.');
+          console.warn('MicroModal v' + version + ': %cExample:', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', '<a href="#" data-micromodal-trigger="' + arg + '"></a>');
+          return false;
+        }
+        break;
+      case 'hasNoModal':
+        if (!document.getElementById(arg)) {
+          console.warn('MicroModal v' + version + ': \u2757Seems like you have missed %c\'' + arg + '\'', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'ID somewhere in your code. Refer example below to resolve it.');
+          console.warn('MicroModal v' + version + ': %cExample:', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', '<div class="modal" id="' + arg + '"></div>');
+          return false;
+        }
+        break;
+      default:
+        console.info('Get some walk. We care for you!');
     }
+
     return true;
   };
 
@@ -223,7 +238,7 @@ var MicroModal = function () {
     var options = config || {};
     var triggers = document.querySelectorAll('[data-micromodal-trigger]');
 
-    if (validateArgs(triggers)) {
+    if (validateArgs('hasNoTriggers', triggers)) {
       var triggerMap = generateTriggerMap(triggers);
       for (var key in triggerMap) {
         var value = triggerMap[key];
