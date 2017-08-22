@@ -104,7 +104,7 @@ const MicroModal = (() => {
   const validateArgs = triggers => {
     if (triggers <= 0) {
       console.warn(`MicroModal v${version}: ❗Please specify at least one %c'micromodal-trigger'`, 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'data attribute.')
-      console.warn(`MicroModal v${version}: %cExample:`, 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', `<a href="#" data-micromodal-trigger="${arg}"></a>`)
+      console.warn(`MicroModal v${version}: %cExample:`, 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', `<a href="#" data-micromodal-trigger="my-modal"></a>`)
       return false
     }
     return true

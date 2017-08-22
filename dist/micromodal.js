@@ -198,10 +198,10 @@ var MicroModal = function () {
     return Modal;
   }();
 
-  var validateArgs = function validateArgs(error, arg) {
-    if (arg.length <= 0) {
+  var validateArgs = function validateArgs(triggers) {
+    if (triggers <= 0) {
       console.warn('MicroModal v' + version + ': \u2757Please specify at least one %c\'micromodal-trigger\'', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'data attribute.');
-      console.warn('MicroModal v' + version + ': %cExample:', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', '<a href="#" data-micromodal-trigger="' + arg + '"></a>');
+      console.warn('MicroModal v' + version + ': %cExample:', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', '<a href="#" data-micromodal-trigger="my-modal"></a>');
       return false;
     }
     return true;
