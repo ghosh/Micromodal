@@ -89,7 +89,12 @@
 
   <script src="../dist/micromodal.js"></script>
   <script>
-    MicroModal.init();
+    // MicroModal.show('modal2');
+    // MicroModal.init();
+    MicroModal.init({
+      onClose: modal => console.info(`${modal.id} is hidden`),
+      onShow: modal => console.info(`${modal.id} is shown`)
+    });
   </script>
 </body>
 </html>

@@ -20,23 +20,22 @@ const MicroModal = (() => {
   class Modal {
     constructor ({
       targetModal,
-      triggers,
+      triggers = [],
       onShow = () => {},
       onClose = () => {}
     } = {}) {
       if (validateArgs('hasNoModal', targetModal)) {
         this.modal = document.getElementById(targetModal)
-        this.registerTriggers(...triggers)
-        this.onShow = onShow
-        this.onClose = onClose
+        if (triggers.length > 0) this.registerTriggers(...triggers)
+        this.callbacks = { onShow, onClose }
         this.onClick = this.onClick.bind(this)
         this.onKeydown = this.onKeydown.bind(this)
       }
     }
 
     registerTriggers (...triggers) {
-      triggers.forEach(element => {
-        element.addEventListener('click', () => this.showModal())
+      triggers.forEach(trigger => {
+        trigger.addEventListener('click', () => this.showModal())
       })
     }
 
@@ -45,14 +44,14 @@ const MicroModal = (() => {
       this.modal.setAttribute('aria-hidden', 'false')
       this.setFocusToFirstNode()
       this.addEventListeners()
-      this.onShow(this.modal)
+      this.callbacks.onShow(this.modal)
     }
 
     closeModal () {
       this.modal.setAttribute('aria-hidden', 'true')
       this.removeEventListeners()
       this.activeElement.focus()
-      this.onClose(this.modal)
+      this.callbacks.onClose(this.modal)
     }
 
     addEventListeners () {
@@ -153,7 +152,12 @@ const MicroModal = (() => {
     }
   }
 
-  return { init }
+  const show = targetModal => {
+    const modal = new Modal({ targetModal: targetModal }) // eslint-disable-line no-new
+    modal.showModal()
+  }
+
+  return { init, show }
 })()
 
 export default MicroModal
