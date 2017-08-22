@@ -24,13 +24,12 @@ const MicroModal = (() => {
       onShow = () => {},
       onClose = () => {}
     } = {}) {
-      if (validateArgs('hasNoModal', targetModal)) {
-        this.modal = document.getElementById(targetModal)
-        if (triggers.length > 0) this.registerTriggers(...triggers)
-        this.callbacks = { onShow, onClose }
-        this.onClick = this.onClick.bind(this)
-        this.onKeydown = this.onKeydown.bind(this)
-      }
+      this.modal = document.getElementById(targetModal)
+      if (triggers.length > 0) this.registerTriggers(...triggers)
+      this.callbacks = { onShow, onClose }
+
+      this.onClick = this.onClick.bind(this)
+      this.onKeydown = this.onKeydown.bind(this)
     }
 
     registerTriggers (...triggers) {
@@ -103,25 +102,11 @@ const MicroModal = (() => {
   }
 
   const validateArgs = (error, arg) => {
-    switch (error) {
-      case 'hasNoTriggers':
-        if (arg.length <= 0) {
-          console.warn(`MicroModal v${version}: ❗Please specify at least one %c'micromodal-trigger'`, 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'data attribute.')
-          console.warn(`MicroModal v${version}: %cExample:`, 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', `<a href="#" data-micromodal-trigger="${arg}"></a>`)
-          return false
-        }
-        break
-      case 'hasNoModal':
-        if (!document.getElementById(arg)) {
-          console.warn(`MicroModal v${version}: ❗Seems like you have missed %c'${arg}'`, 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'ID somewhere in your code. Refer example below to resolve it.')
-          console.warn(`MicroModal v${version}: %cExample:`, 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', `<div class="modal" id="${arg}"></div>`)
-          return false
-        }
-        break
-      default:
-        console.info('Get some walk. We care for you!')
+    if (arg.length <= 0) {
+      console.warn(`MicroModal v${version}: ❗Please specify at least one %c'micromodal-trigger'`, 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'data attribute.')
+      console.warn(`MicroModal v${version}: %cExample:`, 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', `<a href="#" data-micromodal-trigger="${arg}"></a>`)
+      return false
     }
-
     return true
   }
 
@@ -141,7 +126,7 @@ const MicroModal = (() => {
     const options = config || {}
     const triggers = document.querySelectorAll('[data-micromodal-trigger]')
 
-    if (validateArgs('hasNoTriggers', triggers)) {
+    if (validateArgs(triggers)) {
       const triggerMap = generateTriggerMap(triggers)
       for (var key in triggerMap) {
         let value = triggerMap[key]
