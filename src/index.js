@@ -101,15 +101,6 @@ const MicroModal = (() => {
     }
   }
 
-  const validateArgs = triggers => {
-    if (triggers <= 0) {
-      console.warn(`MicroModal v${version}: ❗Please specify at least one %c'micromodal-trigger'`, 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'data attribute.')
-      console.warn(`MicroModal v${version}: %cExample:`, 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', `<a href="#" data-micromodal-trigger="my-modal"></a>`)
-      return false
-    }
-    return true
-  }
-
   const generateTriggerMap = triggers => {
     const triggerMap = []
 
@@ -120,6 +111,24 @@ const MicroModal = (() => {
     })
 
     return triggerMap
+  }
+
+  const validateArgs = triggers => {
+    if (triggers <= 0) {
+      console.warn(`MicroModal v${version}: ❗Please specify at least one %c'micromodal-trigger'`, 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'data attribute.')
+      console.warn(`MicroModal v${version}: %cExample:`, 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', `<a href="#" data-micromodal-trigger="my-modal"></a>`)
+      return false
+    }
+
+    const triggerMap = generateTriggerMap(triggers)
+    for (var id in triggerMap) {
+      if (!document.getElementById(id)) {
+        console.warn('MicroModal v' + version + ': \u2757Seems like you have missed %c\'' + id + '\'', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'ID somewhere in your code. Refer example below to resolve it.')
+        console.warn('MicroModal v' + version + ': %cExample:', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', '<div class="modal" id="' + id + '"></div>')
+        return false
+      }
+    }
+    return true
   }
 
   const init = config => {
