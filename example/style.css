@@ -40,6 +40,55 @@ a {
   Basic Modal Styles
 \**************************/
 
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.8); }
+    to { transform: scale(1); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translate3d(0, 100%, 0); }
+  to { opacity: 1; transform: none; }
+}
+
+
+
+
+.modal[aria-hidden="false"] {
+  animation: fadeIn .4s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.modal[aria-hidden="false"] .modal__container {
+  animation: scaleUp .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.modal[aria-hidden="false"] .modal__header {
+  animation: fadeInUp .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+  animation-fill-mode: forwards;
+  animation-delay: .1s;
+}
+
+.modal[aria-hidden="false"] .modal__content {
+  animation: fadeInUp .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+  animation-fill-mode: forwards;
+  animation-delay: .2s;
+}
+
+.modal[aria-hidden="false"] .modal__footer {
+  animation: fadeInUp .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+  animation-fill-mode: forwards;
+  animation-delay: .3s;
+}
+
+
+.modal {
+  -webkit-backface-visibility:hidden;
+}
+
 .modal__overlay {
   position: absolute;
   top: 0;
@@ -53,8 +102,11 @@ a {
 }
 
 .modal__container {
+  will-change: transform;
+  -webkit-backface-visibility:hidden;
   background-color: #fff;
   padding: 30px 50px;
+  max-width: 400px;
 }
 
 .modal__header {
@@ -64,3 +116,11 @@ a {
 }
 
 .modal__header a:before { content: "\2715"; }
+
+.modal__header,
+.modal__content,
+.modal__footer {
+  opacity: 0;
+  -webkit-backface-visibility:hidden;
+  will-change: transform;
+}
