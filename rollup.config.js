@@ -3,13 +3,15 @@ import babel from 'rollup-plugin-babel';
 import json from 'rollup-plugin-json';
 
 export default {
-  moduleName: 'MicroModal',
-  entry: 'src/index.js',
-  format: 'umd',
+  name: 'MicroModal',
+  input: 'src/index.js',
+  output: {
+    format: 'umd',
+    file: 'dist/micromodal.js',
+  },
   plugins: [
     eslint({ exclude: 'package.json' }),
     json(),
     babel({ exclude: 'node_modules/**' })
-  ],
-  dest: 'dist/micromodal.js',
+  ]
 };
