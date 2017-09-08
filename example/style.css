@@ -54,8 +54,11 @@ a {
 .modal__container {
   background-color: #fff;
   padding: 30px 50px;
-  max-width: 400px;
+  max-width: 500px;
+  max-height: 100vh;
   border-radius: 4px;
+  overflow-y: auto;
+  box-sizing: border-box;
 }
 
 .modal__header {
@@ -64,7 +67,7 @@ a {
   align-items: center;
 }
 
-.modal__header a:before { content: "\2715"; }
+.modal__header .modal__close:before { content: "\2715"; }
 
 
 
