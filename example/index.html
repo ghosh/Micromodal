@@ -8,7 +8,28 @@
 <body>
 
   <div class="wrapper">
-    <h1>MicroModal</h1>
+
+    <div class="logo">
+      <span class="logo__mark"></span>
+      <span class="logo__text">Micromodal.js</span>
+    </div>
+
+    <p class="intro">
+      <strong>Micromodal</strong> is a dependency-free, lightweight library for creating accessible modal dialogs
+    </p>
+
+    <p>
+      It allows you to create modal dialogs, which conform to the WAI-ARIA standards and provides the following abilities out of the box:-
+    </p>
+
+    <ul>
+      <li>Closes modal on overlay click</li>
+      <li>Closes modal on esc button press</li>
+      <li>Toggles aria-hidden attribute</li>
+      <li>Traps tab focus within the modal</li>
+      <li>Maintains focus position while toggling modal</li>
+      <li>Focuses on first focusable element within modal</li>
+    </ul>
 
     <p>
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. <a href="#" data-micromodal-trigger="modal1">Open Modal 1</a> Temporibus laudantium in nihil dignissimos saepe. Quas, quidem modi? Quis nam commodi veritatis cum placeat ut, fuga tempore natus cupiditate, quod blanditiis. <a href="#" data-micromodal-trigger="modal2">Open Modal 2</a>
@@ -28,13 +49,13 @@
         <div role="document">
 
           <div class="modal__header">
-            <h3 id="modal__title">
+            <h3 class="modal__title">
               Modal One
             </h3>
             <a href="#" aria-label="Close modal" data-micromodal-close></a>
           </div>
 
-          <div class="modal__content" id="modal__content">
+          <div class="modal__content">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum id, perspiciatis porro rem.
             </p>
@@ -60,12 +81,12 @@
       <div class="modal__container" role="dialog" aria-labelledby="modal__title" aria-describedby="modal__content">
         <div role="document">
           <header class="modal__header">
-            <h3 id="modal__title">
+            <h3 class="modal__title">
               Modal Two
             </h3>
             <a href="#" aria-label="Close modal" data-micromodal-close></a>
           </header>
-          <div class="modal__content" id="modal__content">
+          <div class="modal__content">
             <p>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit.
             </p>
@@ -85,12 +106,12 @@
       <div class="modal__container" role="dialog" aria-labelledby="modal__title" aria-describedby="modal__content">
         <div role="document">
           <header class="modal__header">
-            <h3 id="modal__title">
+            <h3 class="modal__title">
               Modal Three
             </h3>
             <a href="#" aria-label="Close modal" data-micromodal-close></a>
           </header>
-          <div class="modal__content" id="modal__content">
+          <div class="modal__content">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis suscipit quia ipsa dolore rem! Atque minus porro delectus dolor! Ipsum autem doloremque officia reiciendis assumenda. Eos ut at quidem consectetur?
             </p>
@@ -106,7 +127,7 @@
 
   <script src="../dist/micromodal.js"></script>
   <script>
-    MicroModal.show('modal3');
+    // MicroModal.show('modal3');
     // MicroModal.init();
     MicroModal.init({
       onClose: modal => console.info(`${modal.id} is hidden`),

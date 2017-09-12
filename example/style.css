@@ -3,18 +3,27 @@
 \**************************/
 
 body {
-  background-color: #f8f9fa;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #d0e5ff;;
   font-family: sans-serif;
   margin-top: 50px;
   color: #50596c;
+  font-size: 18px;
 }
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
+h3 {
+  font-size: 22px;
+}
+
 p {
   line-height: 1.5;
+  font-size: 18px;
+  line-height: 32px;
 }
 
 a {
@@ -22,10 +31,38 @@ a {
 }
 
 .wrapper {
-  max-width: 500px;
+  max-width: 560px;
   margin: 0 auto;
 }
 
+strong { font-weight: 600; }
+
+.intro {
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 1.4;
+  margin: 60px 0;
+  color: #3c57a0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 60px;
+  margin-top: 60px;
+}
+.logo__mark {
+  display: inline-block;
+  width: 30px;
+  height: 20px;
+  background-color: #3c57a0;
+  border-radius: 3px;
+}
+.logo__text {
+  margin-left: 5px;
+  color: #3c57a0;
+  margin-top: 1px;
+}
 
 /**************************\
   Required Styles
