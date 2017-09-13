@@ -4,76 +4,104 @@
   <meta charset="UTF-8">
   <title>MicroModal</title>
   <link rel="stylesheet" href="../example/style.css">
+  <link rel="stylesheet" href="../example/tachyons.css">
 </head>
-<body>
+<body class="sans-serif bg-white-20 bt bw2">
 
-  <div class="wrapper">
+  <div class="mw7 center cf">
 
-    <div class="logo">
-      <span class="logo__mark"></span>
-      <span class="logo__text">Micromodal.js</span>
+    <div class="logo mt5">
+      <span class="logo__mark bg-blue"></span>
+      <!-- <span class="logo__text">Micromodal.js</span> -->
     </div>
 
-    <p class="intro">
-      <strong>Micromodal</strong> is a dependency-free, lightweight library for creating accessible modal dialogs
-    </p>
+    <div class="cf mt4 mb5">
 
-    <p>
-      It allows you to create modal dialogs, which conform to the WAI-ARIA standards and provides the following abilities out of the box:-
-    </p>
+      <div class="fl w-third pr5">
 
-    <ul>
-      <li>Closes modal on overlay click</li>
-      <li>Closes modal on esc button press</li>
-      <li>Toggles aria-hidden attribute</li>
-      <li>Traps tab focus within the modal</li>
-      <li>Maintains focus position while toggling modal</li>
-      <li>Focuses on first focusable element within modal</li>
-    </ul>
+        <ul class="list pl0 mt4">
+          <li class="lh-copy pv1 fw6"><a href="#" class="link blue dim">Introduction</a></li>
+          <li class="lh-copy pv1"><a href="#" class="link black-70 dim">Installation</a></li>
+          <li class="lh-copy pv1"><a href="#" class="link black-70 dim">Usage</a></li>
+          <li class="lh-copy pv1"><a href="#" class="link black-70 dim">Styling</a></li>
+          <li class="lh-copy pv1"><a href="#" class="link black-70 dim">Javascript API</a></li>
+          <li class="lh-copy pv1"><a href="#" class="link black-70 dim">Dom API</a></li>
+        </ul>
 
-    <p>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. <a href="#" data-micromodal-trigger="modal1">Open Modal 1</a> Temporibus laudantium in nihil dignissimos saepe. Quas, quidem modi? Quis nam commodi veritatis cum placeat ut, fuga tempore natus cupiditate, quod blanditiis. <a href="#" data-micromodal-trigger="modal2">Open Modal 2</a>
-    </p>
-
-    <p>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. <a href="#" data-micromodal-trigger="modal3">Open Modal 3</a> Temporibus laudantium in nihil dignissimos saepe. Quas, quidem modi? Quis nam commodi veritatis cum placeat ut, fuga tempore natus cupiditate, quod blanditiis.
-    </p>
-  </div>
-
-
-  <div class="modal micromodal-bounce" id="modal1" aria-hidden="true">
-
-    <div class="modal__overlay" tabindex="-1" data-micromodal-overlay>
-
-      <div id="modal__container1" class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal__title" aria-describedby="modal__content">
-        <div role="document">
-
-          <div class="modal__header">
-            <h3 class="modal__title">
-              Modal One
-            </h3>
-            <button class="modal__close" aria-label="Close modal" aria-controls="modal__container1" data-micromodal-close></button>
-          </div>
-
-          <div class="modal__content">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum id, perspiciatis porro rem.
-            </p>
-          </div>
-
-          <div class="modal__footer">
-            <button class="btn">Continue</button>
-            <button class="btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
-          </div>
-
-        </div>
       </div>
 
+      <div class="fl w-two-thirds dark-gray">
+
+        <h1 class="f3 fw6 lh-title mv4 black">
+          Introduction
+        </h1>
+
+        <h1 class="f4 fw4 lh-copy mv4 black-80">
+          <strong>Micromodal</strong> is a modern dependency-free library for creating <em>accessible</em> modal dialogs. Written in ES6, it weighs only 1.6kb.
+        </h1>
+
+        <p class="lh-copy mv4 black-80">
+          Out of the box, it allows you to create modal dialogs which conform to the <a href="
+https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal" target="_blank" class="blue no-underline dim">WAI-ARIA guidelines</a> and implement the interactive functionalities recommend by it.</p>
+
+
+        <div class="bg-washed-green tc">
+          <div class="mv5 dib">
+
+            <button class="f6 grow no-underline br-pill ph3 pv2 dib white bg-dark-green bn"  data-micromodal-trigger="modal1">
+              Demo Modal
+            </button>
+
+          </div>
+        </div>
+
+
+        <p class="lh-copy mv4 black-80">
+          Designed to be easy to use, it does most of the heavy lifting behind the scenes and exposes a simple api to interact with the dom.
+        </p>
+
+        <p class="lh-copy mv4 black-80">
+          Following are some of the interactions handled by the library:-
+        </p>
+
+        <ul class="lh-copy">
+          <li>Closes modal on overlay click</li>
+          <li>Closes modal on <code>esc</code> button press</li>
+          <li>Toggles <code>aria-hidden</code> attribute</li>
+          <li>Traps tab focus within the modal</li>
+          <li>Maintains focus position while toggling modal</li>
+          <li>Focuses on first focusable element within modal</li>
+        </ul>
+
+      </div>
     </div>
 
   </div>
 
 
+<div class="modal micromodal-bounce" id="modal1" aria-hidden="true">
+    <div class="modal__overlay" tabindex="-1" data-micromodal-overlay>
+      <div id="modal__container1" class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal__title" aria-describedby="modal__content">
+        <div role="document">
+          <header class="modal__header">
+            <h3 class="modal__title mv0 f4 fw6 lh-title dark-blue">
+              a11y Modal Example
+            </h3>
+            <button class="modal__close" aria-label="Close modal" aria-controls="modal__container1" data-micromodal-close></button>
+          </header>
+          <div class="modal__content">
+            <p class="lh-copy mv4 black-80">
+              Try hitting the <code>tab</code> key and notice how the focus stays within the modal itself.
+            </p>
+          </div>
+          <footer class="modal__footer">
+            <button class="f6 br2 ph3 pv2 grow white bg-dark-blue bn">Continue</button>
+            <button class="f6 br2 ph3 pv2 grow black bg-black-10 bn" data-micromodal-close aria-label="Close this dialog window">Close</button>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
   <div class="modal micromodal-slide" id="modal2" aria-hidden="true">
@@ -124,6 +152,8 @@
       </div>
     </div>
   </div>
+
+
 
   <script src="../dist/micromodal.js"></script>
   <script>
