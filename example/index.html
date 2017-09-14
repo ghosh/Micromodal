@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>MicroModal</title>
+  <title>Micromodal</title>
   <link rel="stylesheet" href="../example/style.css">
   <link rel="stylesheet" href="../example/tachyons.css">
 </head>
@@ -37,40 +37,35 @@
         </h1>
 
         <h1 class="f4 fw4 lh-copy mv4 black-80">
-          <strong>Micromodal</strong> is a modern dependency-free library for creating <em>accessible</em> modal dialogs. Written in ES6, it weighs only 1.6kb.
+          <strong>Micromodal.js</strong> is a modern, lightweight (1.6kb), dependency-free library for creating <em>accessible</em> modal dialogs.
         </h1>
 
         <p class="lh-copy mv4 black-80">
-          Out of the box, it allows you to create modal dialogs which conform to the <a href="
-https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal" target="_blank" class="blue no-underline dim">WAI-ARIA guidelines</a> and implement the interactive functionalities recommend by it.</p>
+          It enables you to create <a href="https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal" target="_blank" class="blue no-underline dim">WAI-ARIA guidelines</a> compliant modal dialogs, with ease. Designed to be easy to use, it does most of the heavy lifting behind the scenes and exposes a simple api to interact with the dom.
+        </p>
 
 
         <div class="bg-washed-green tc">
           <div class="mv5 dib">
 
-            <button class="f6 grow no-underline br-pill ph3 pv2 dib white bg-dark-green bn"  data-micromodal-trigger="modal1">
+            <button class="f6 grow no-underline br2 ph3 pv2 dib white bg-dark-green bn"  data-micromodal-trigger="modal1">
               Demo Modal
             </button>
 
           </div>
         </div>
 
-
-        <p class="lh-copy mv4 black-80">
-          Designed to be easy to use, it does most of the heavy lifting behind the scenes and exposes a simple api to interact with the dom.
-        </p>
-
         <p class="lh-copy mv4 black-80">
           Following are some of the interactions handled by the library:-
         </p>
 
-        <ul class="lh-copy">
-          <li>Closes modal on overlay click</li>
-          <li>Closes modal on <code>esc</code> button press</li>
-          <li>Toggles <code>aria-hidden</code> attribute</li>
-          <li>Traps tab focus within the modal</li>
-          <li>Maintains focus position while toggling modal</li>
-          <li>Focuses on first focusable element within modal</li>
+        <ul class="lh-copy checkmark pl0 mv4">
+          <li class="mv1">Closing modal on overlay click</li>
+          <li class="mv1">Closing modal on <code>esc</code> button press</li>
+          <li class="mv1">Toggling <code>aria-hidden</code> attribute on modal</li>
+          <li class="mv1">Trapping tab focus within the modal</li>
+          <li class="mv1">Maintaining focus position before and after toggling modal</li>
+          <li class="mv1">Focusing on the first focusable element within the modal</li>
         </ul>
 
       </div>
@@ -85,13 +80,13 @@ https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal" target="_blank" clas
         <div role="document">
           <header class="modal__header">
             <h3 class="modal__title mv0 f4 fw6 lh-title dark-blue">
-              a11y Modal Example
+              Micromodal
             </h3>
             <button class="modal__close" aria-label="Close modal" aria-controls="modal__container1" data-micromodal-close></button>
           </header>
           <div class="modal__content">
             <p class="lh-copy mv4 black-80">
-              Try hitting the <code>tab</code> key and notice how the focus stays within the modal itself.
+              Try hitting the <code>tab</code> key and notice how the focus stays within the modal itself. Also, <code>esc</code> to close modal.
             </p>
           </div>
           <footer class="modal__footer">

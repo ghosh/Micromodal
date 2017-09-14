@@ -1,7 +1,22 @@
 /**************************\
   Page Styles
 \**************************/
+.underline {
+  text-decoration-skip: ink;
+}
+
 code { color: blueviolet; }
+
+ul.checkmark {
+    list-style-type:none;
+}
+ul.checkmark li:before {
+    content:"\2713\0020";
+    font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', Arial;
+    color: #19a974;
+    margin-right: 4px;
+}
+
 // body {
 //   background-color: #d0e5ff;
 //   color: #3c57a0;
