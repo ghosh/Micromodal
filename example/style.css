@@ -7,6 +7,19 @@
 
 code { color: blueviolet; }
 
+
+pre code {
+  word-wrap: normal;
+  white-space: -moz-pre-wrap;
+  white-space: pre-wrap;
+}
+
+code {
+  white-space: pre;
+  font-family: monospace;
+  line-height: 1.5;
+}
+
 ul.checkmark {
     list-style-type:none;
 }
