@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Micromodal</title>
-  <link rel="stylesheet" href="../example/style.css">
   <link rel="stylesheet" href="../example/tachyons.css">
+  <link rel="stylesheet" href="../example/prism.css">
+  <link rel="stylesheet" href="../example/style.css">
 </head>
 <body class="sans-serif bg-white-20 bt bw2">
 
@@ -83,15 +84,18 @@
           Micromodal is available on <code>npm</code> and can be installed from the command line via npm or yarn
         </p>
 
-<pre class="pre bg-near-white" style="overflow: auto"><code class="code dib pa4 w-100 blue microlight">npm install micromodal --save // via npm
+        <pre><code class="language-js">
+npm install micromodal --save // via npm
 yarn add micromodal --save // via yarn
-</code></pre>
+        </code></pre>
 
         <p class="lh-copy mv4 black-80">
           You can also download or link to the latest compiled version using the CDN.
         </p>
 
-        <pre class="pre bg-near-white black-70" style="overflow: auto"><code class="code dib pa4 w-100 blue microlight">https://unpkg.com/micromodal/dist/micromodal.min.js</code></pre>
+        <pre><code class="language-js">
+https://unpkg.com/micromodal/dist/micromodal.min.js
+        </code></pre>
 
 
 
@@ -111,7 +115,8 @@ yarn add micromodal --save // via yarn
           The following html structure is expected for the modal to work. It can of course be extended to suit your needs. As an example of the customization, see the source code of the demo modal <a href="#" target="_blank" class="blue underline dim">here</a>.
         </p>
 
-<pre class="pre bg-near-white" style="overflow: auto"><code class="code dib pa4 w-100 blue microlight">&lt;!-- [1] --&gt;
+        <pre data-line="3" ><code class="language-html">
+&lt;!-- [1] --&gt;
 &lt;div id=&quot;modal-1&quot; aria-hidden=&quot;true&quot;&gt;
 
   &lt;!-- [2] --&gt;
@@ -140,7 +145,7 @@ yarn add micromodal --save // via yarn
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
-</code></pre>
+        </code></pre>
 
         <ul class="ordered lh-copy pl0 mv4">
           <ol class="pl4 pv3">
@@ -174,9 +179,10 @@ yarn add micromodal --save // via yarn
           In cases with a modular workflow, you can directly import the module into your project.
         </p>
 
-<pre class="pre bg-near-white" style="overflow: auto"><code class="code dib pa4 w-100 blue microlight">import MicroModal from 'micromodal';  // es6 module
+        <pre><code class="language-js">
+import MicroModal from 'micromodal';  // es6 module
 var MicroModal = require('micromodal'); // commonjs module
-</code></pre>
+        </code></pre>
 
         <h3 class="f4 fw6 mv4">
           3. Use with data attributes
@@ -190,7 +196,9 @@ var MicroModal = require('micromodal'); // commonjs module
           Then instantiate the <code>MicroModal</code> module, so that it takes care of all the bindings for you.
         </p>
 
-<pre class="pre bg-near-white" style="overflow: auto"><code class="code dib pa4 w-100 blue microlight">MicroModal.init();</code></pre>
+        <pre><code class="language-js">
+MicroModal.init();
+        </code></pre>
 
 
         <p class="lh-copy mv4 black-80">
@@ -199,10 +207,6 @@ var MicroModal = require('micromodal'); // commonjs module
 
         <div class="bg-washed-green tc">
           <div class="mv5 dib">
-
-<!--             <button class="f6 grow no-underline br2 ph4 pv3 dib white bg-dark-green bn"  data-micromodal-trigger="modal1">
-              Demo Modal
-            </button> -->
 
             <a class="f5 fw6 db dark-green no-underline underline-hover" href="#0" data-micromodal-trigger="modal-1">
               Trigger Modal
@@ -216,10 +220,12 @@ var MicroModal = require('micromodal'); // commonjs module
           The <code>init</code> method also accepts and optional configuration object. This can be used to pass hooks to be executed on the modal open and modal close events. Example:-
         </p>
 
-<pre class="pre bg-near-white" style="overflow: auto"><code class="code dib pa4 w-100 blue microlight">MicroModal.init({
-  onClose: modal => console.info(`${modal.id} is hidden`),
-  onShow: modal => console.info(`${modal.id} is shown`)
-});</code></pre>
+        <pre><code class="language-js">
+MicroModal.init({
+  onClose: modal => console.info(`${modal.id} is hidden`), // [1]
+  onShow: modal => console.info(`${modal.id} is shown`) // [2]
+});
+        </code></pre>
 
         <ul class="ordered lh-copy pl0 mv4">
           <ol class="pl4 pv3">
@@ -238,7 +244,9 @@ var MicroModal = require('micromodal'); // commonjs module
           You can also trigger modals programmatically using the <code>show</code> method on the <code>MicroModal</code> object. Example:-
         </p>
 
-<pre class="pre bg-near-white" style="overflow: auto"><code class="code dib pa4 w-100 blue microlight">MicroModal.show('modal3');</code></pre>
+        <pre><code class="language-js">
+MicroModal.show('modal3'); // [1]
+        </code></pre>
 
         <ul class="ordered lh-copy pl0 mv4">
           <ol class="pl4 pv3">
@@ -259,9 +267,11 @@ var MicroModal = require('micromodal'); // commonjs module
           At the very least, we recommend the following bit of <code>css</code> to toggle the modal.
         </p>
 
-<pre class="pre bg-near-white" style="overflow: auto"><code class="code dib pa4 w-100 blue microlight">.modal[aria-hidden='true'] {
+        <pre><code class="language-css">
+.modal[aria-hidden='true'] {
   display: none;
-}</code></pre>
+}
+        </code></pre>
 
         <p class="lh-copy mv4 black-80">
           In case you do want some default styles to get started quickly, you can refer to the styles and the corresponding markup of the demo modal <a href="$" target="_blank" class="blue underline dim">here.</a>
@@ -306,8 +316,9 @@ var MicroModal = require('micromodal'); // commonjs module
 
 
   <script src="../dist/micromodal.js"></script>
-  <script src="https://cdn.rawgit.com/makotot/scrollspy/master/build/scrollspy.js"></script>
+  <script src="../example/prism.js"></script>
   <script>
+
     // MicroModal.show('modal3');
     // MicroModal.init();
     MicroModal.init({

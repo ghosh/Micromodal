@@ -2,6 +2,8 @@
   Page Styles
 \**************************/
 
+button { cursor: pointer; }
+
 .underline {
   text-decoration-skip: ink;
 }
@@ -12,22 +14,18 @@ code {
   font-size: 90% !important;
   background-color: #f7f7f9;
   border-radius: .25rem;
+  font-family: Source Code Pro, Consolas, monaco, monospace !important;
 }
 
-
+pre {
+  border-radius: 5px;
+}
 
 pre code {
-  // word-wrap: normal;
-  // white-space: -moz-pre-wrap;
-  // white-space: pre-wrap;
-  font-size: 15px;
-}
-
-code {
-  // white-space: pre;
-  // font-family: monospace;
-  line-height: 1.5;
-  font-family: Source Code Pro, Consolas, monaco, monospace !important;
+  // -webkit-font-smoothing: antialiased;
+  // -moz-osx-font-smoothing: grayscale;
+  font-size: 100% !important;
+  padding: 0;
 }
 
 ul.sticky {
@@ -144,7 +142,7 @@ ul.ordered ol:before {
   Required Styles
 \**************************/
 
-[aria-hidden="true"] {
+.modal[aria-hidden="true"] {
   display: none;
 }
 
