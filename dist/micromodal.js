@@ -6,7 +6,6 @@
 
 var version = "0.1.0";
 
-
 var asyncGenerator = function () {
   function AwaitValue(value) {
     this.value = value;
@@ -197,7 +196,6 @@ var toConsumableArray = function (arr) {
     return Array.from(arr);
   }
 };
-
 
 var MicroModal = function () {
   'use strict';
