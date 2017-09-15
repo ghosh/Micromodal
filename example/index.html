@@ -10,27 +10,34 @@
 
   <div class="mw7 center cf">
 
-    <div class="logo mt5">
-      <span class="logo__mark bg-blue"></span>
-      <!-- <span class="logo__text">Micromodal.js</span> -->
-    </div>
-
-    <div class="cf mt4 mb5">
-
-      <div class="fl w-third pr5">
-
-        <ul class="list pl0 mt4">
-          <li class="lh-copy pv1 fw6"><a href="#" class="link blue dim">Introduction</a></li>
-          <li class="lh-copy pv1"><a href="#" class="link black-70 dim">Installation</a></li>
-          <li class="lh-copy pv1"><a href="#" class="link black-70 dim">Usage</a></li>
-          <li class="lh-copy pv1"><a href="#" class="link black-70 dim">Styling</a></li>
-        </ul>
-
+    <header class="mt5">
+      <div class="logo">
+        <span class="logo__mark bg-black"></span>
+        <!-- <span class="logo__text">Micromodal.js</span> -->
       </div>
+    </header>
 
-      <div class="fl w-two-thirds dark-gray">
+    <main class="cf mt4 mb5 flex">
 
-        <h1 class="f3 fw6 lh-title mv4 black">
+      <aside class="fl w-25">
+        <ul class="list pl0 sticky">
+          <li class="lh-copy pv1">
+            <a href="#introduction" class="link black-70 blue fw6 active navlink">Introduction</a>
+          </li>
+          <li class="lh-copy pv1">
+            <a href="#installation" class="link black-70 navlink">Installation</a>
+          </li>
+          <li class="lh-copy pv1">
+            <a href="#usage" class="link black-70 navlink">Usage</a>
+          </li>
+          <li class="lh-copy pv1">
+            <a href="#styling" class="link black-70 navlink">Styling</a>
+          </li>
+        </ul>
+      </aside>
+
+      <article class="fl w-75 dark-gray pl5">
+        <h1 class="f3 fw6 lh-title mb4 black heading" id="introduction">
           Introduction
         </h1>
 
@@ -68,7 +75,7 @@
 
 
 
-        <h2 class="f3 fw6 lh-title mt5 mb4 black">
+        <h2 class="f3 fw6 lh-title mt5 mb4 black heading" id="installation">
           Installation
         </h2>
 
@@ -88,7 +95,7 @@ yarn add micromodal --save // via yarn
 
 
 
-        <h2 class="f3 fw6 lh-title mt5 mb4 black">
+        <h2 class="f3 fw6 lh-title mt5 mb4 black heading" id="usage">
           Usage
         </h2>
 
@@ -240,7 +247,7 @@ var MicroModal = require('micromodal'); // commonjs module
         </ul>
 
 
-        <h2 class="f3 fw6 lh-title mt5 mb4 black">
+        <h2 class="f3 fw6 lh-title mt5 mb4 black heading" id="styling">
           Styling
         </h2>
 
@@ -259,91 +266,47 @@ var MicroModal = require('micromodal'); // commonjs module
         <p class="lh-copy mv4 black-80">
           In case you do want some default styles to get started quickly, you can refer to the styles and the corresponding markup of the demo modal <a href="$" target="_blank" class="blue underline dim">here.</a>
         </p>
+      </article>
+    </main>
 
+
+    <footer class="mv6 tc">
+      <p>🤘</p>
+      <div class="mt3">
+        <p class="f6 dib pl2 mid-gray">Built by <a href="https://twitter.com/knowkalpesh" title="Kalpesh's twitter handle" class="f6 dib blue no-underline underline-hover">@knowkalpesh</a> and <a href="https://twitter.com/_ighosh" title="Ghosh's twitter handle" class="f6 dib blue no-underline underline-hover">@ghosh</a></p>
       </div>
-    </div>
+    </footer>
 
   </div>
 
 
-<div class="modal micromodal-bounce" id="modal-1" aria-hidden="true">
-  <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-    <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title" aria-describedby="modal-1-content">
-      <div role="document">
-        <header class="modal__header">
-          <h3 class="modal__title mv0 f4 fw6 lh-title dark-blue" id="modal-1-title">
-            Micromodal
-          </h3>
-          <button class="modal__close" aria-label="Close modal" aria-controls="modal__container1" data-micromodal-close></button>
-        </header>
-        <main class="modal__content" id="modal-1-content">
-          <p class="lh-copy mv4 black-80">
-            Try hitting the <code>tab</code> key and notice how the focus stays within the modal itself. Also, <code>esc</code> to close modal.
-          </p>
-        </main>
-        <footer class="modal__footer">
-          <button class="f6 br2 ph3 pv2 grow white bg-dark-blue bn">Continue</button>
-          <button class="f6 br2 ph3 pv2 grow black bg-black-10 bn" data-micromodal-close aria-label="Close this dialog window">Close</button>
-        </footer>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-  <div class="modal micromodal-slide" id="modal2" aria-hidden="true">
+  <div class="modal micromodal-bounce" id="modal-1" aria-hidden="true">
     <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-      <div id="modal__container2" class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal__title" aria-describedby="modal__content">
+      <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title" aria-describedby="modal-1-content">
         <div role="document">
           <header class="modal__header">
-            <h3 class="modal__title">
-              Modal Two
+            <h3 class="modal__title mv0 f4 fw6 lh-title dark-blue" id="modal-1-title">
+              Micromodal
             </h3>
-            <button class="modal__close" aria-label="Close modal" aria-controls="modal__container2" data-micromodal-close></button>
+            <button class="modal__close" aria-label="Close modal" aria-controls="modal__container1" data-micromodal-close></button>
           </header>
-          <main class="modal__content">
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+          <main class="modal__content" id="modal-1-content">
+            <p class="lh-copy mv4 black-80">
+              Try hitting the <code>tab</code> key and notice how the focus stays within the modal itself. Also, <code>esc</code> to close modal.
             </p>
           </main>
           <footer class="modal__footer">
-            <button>Continue</button>
-            <button data-micromodal-close aria-label="Close this dialog window">Close</button>
+            <button class="f6 br2 ph3 pv2 grow white bg-dark-blue bn">Continue</button>
+            <button class="f6 br2 ph3 pv2 grow black bg-black-10 bn" data-micromodal-close aria-label="Close this dialog window">Close</button>
           </footer>
         </div>
       </div>
     </div>
   </div>
-
-
-  <div class="modal micromodal-scale" id="modal3" aria-hidden="true">
-    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-      <div id="modal__container3" class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal__title" aria-describedby="modal__content">
-        <div role="document">
-          <header class="modal__header">
-            <h3 class="modal__title">
-              Modal Three
-            </h3>
-            <button class="modal__close" aria-label="Close modal" aria-controls="modal__container3" data-micromodal-close></button>
-          </header>
-          <div class="modal__content">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis suscipit quia ipsa dolore rem! Atque minus porro delectus dolor! Ipsum autem doloremque officia reiciendis assumenda. Eos ut at quidem consectetur?
-            </p>
-          </div>
-          <footer class="modal__footer">
-            <button>Continue</button>
-            <button data-micromodal-close aria-label="Close this dialog window">Close</button>
-          </footer>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
 
 
   <script src="../dist/micromodal.js"></script>
+  <script src="https://cdn.rawgit.com/makotot/scrollspy/master/build/scrollspy.js"></script>
   <script>
     // MicroModal.show('modal3');
     // MicroModal.init();
@@ -351,6 +314,28 @@ var MicroModal = require('micromodal'); // commonjs module
       onClose: modal => console.info(`${modal.id} is hidden`),
       onShow: modal => console.info(`${modal.id} is shown`)
     });
+
+
+
+    var section = document.querySelectorAll(".heading");
+    var sections = {};
+
+    Array.prototype.forEach.call(section, function(e) {
+      sections[e.id] = e.offsetTop;
+    });
+
+    window.onscroll = function() {
+      var scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
+
+      for (i in sections) {
+        if (sections[i] <= scrollPosition) {
+          document.querySelector('.active').classList.remove('blue', 'fw6', 'active');
+          document.querySelector('a[href*=' + i + ']').classList.add('blue', 'fw6', 'active');
+        }
+      }
+    };
+
+
   </script>
 </body>
 </html>

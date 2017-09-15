@@ -30,6 +30,12 @@ code {
   font-family: Source Code Pro, Consolas, monaco, monospace !important;
 }
 
+ul.sticky {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 8px;
+}
+
 ul.checkmark {
     list-style-type:none;
 }
