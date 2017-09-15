@@ -11,8 +11,8 @@ The aim of this library is to make modal dialog accessible and easy to include i
 #### npm
 Micromodal is available as node package and can be installed from the command line via npm or yarn.
 ```
-npm install micromodal --save // via npm
-yarn add micromodal --save // via yarn
+npm install micromodal --save  // via npm
+yarn add micromodal --save  // via yarn
 ```
 
 #### CDN 
