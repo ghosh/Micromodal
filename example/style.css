@@ -1,23 +1,33 @@
 /**************************\
   Page Styles
 \**************************/
+
 .underline {
   text-decoration-skip: ink;
 }
 
-code { color: blueviolet; }
+code {
+  color: blueviolet;
+  padding: .2rem .4rem;
+  font-size: 90% !important;
+  background-color: #f7f7f9;
+  border-radius: .25rem;
+}
+
 
 
 pre code {
-  word-wrap: normal;
-  white-space: -moz-pre-wrap;
-  white-space: pre-wrap;
+  // word-wrap: normal;
+  // white-space: -moz-pre-wrap;
+  // white-space: pre-wrap;
+  font-size: 15px;
 }
 
 code {
-  white-space: pre;
-  font-family: monospace;
+  // white-space: pre;
+  // font-family: monospace;
   line-height: 1.5;
+  font-family: Source Code Pro, Consolas, monaco, monospace !important;
 }
 
 ul.checkmark {
@@ -28,6 +38,33 @@ ul.checkmark li:before {
     font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', Arial;
     color: #19a974;
     margin-right: 4px;
+}
+
+ul.ordered {
+    list-style-type:none;
+    counter-reset: comments;
+}
+ul.ordered ol {
+  position: relative;
+}
+ul.ordered ol:before {
+    counter-increment: comments;                 /* Increment the value of comments counter by 1 */
+    content: counter(comments);
+    color: #fff;
+    margin-right: 4px;
+    position: absolute;
+    left: 0;
+    font-size: 12px;
+    background-color: #19a974;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    margin-top: 4px;
 }
 
 // body {
