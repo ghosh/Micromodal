@@ -2,9 +2,9 @@
 ## Micromodal
 ![license](https://img.shields.io/badge/release-v0.1.0-blue.svg) ![license](https://img.shields.io/github/license/mashape/apistatus.svg)
 
->Micromodal is a featherweight, configurable and a11y-enabled modal dialog library written in pure JavaScript.
+>Micromodal is a featherweight, configurable and a11y-enabled modal library written in pure JavaScript
 
-The aim of this library is to make modal dialog accessible and easy to include in your project with minimum configuration. One of the things we considered during development was to make it tiny. It's only 1.6kb - Happy dance 👯
+The aim of this library is to make modal dialog accessible and easy to include in your project with minimum configuration. One of the things we considered during development was to make it tiny. It's only 1.6kb (Happy dance 👯)
 
 ## Installation
 
