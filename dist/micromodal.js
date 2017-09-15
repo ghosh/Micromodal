@@ -6,11 +6,6 @@
 
 var version = "0.1.0";
 
-var babelHelpers = {};
-
-
-
-
 var asyncGenerator = function () {
   function AwaitValue(value) {
     this.value = value;
@@ -201,8 +196,6 @@ var toConsumableArray = function (arr) {
     return Array.from(arr);
   }
 };
-
-babelHelpers;
 
 var MicroModal = function () {
   'use strict';
