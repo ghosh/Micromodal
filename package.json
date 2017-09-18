@@ -7,9 +7,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "styles:dev": "postcss example/assets/style.css -c -o example/style.min.css -w",
-    "livereload": "reload -b -s example/index.html --port 5000",
+    "styles:build": "NODE_ENV=production postcss example/assets/style.css -c -o example/style.min.css",
+    "scripts:dev": "rollup -c -w",
+    "scripts:build": "NODE_ENV=production rollup -c",
+    "livereload": "reload -b -s --dir example --port 5000",
     "build": "rollup -c && minify dist/micromodal.js",
-    "dev": "concurrently \"rollup -c -w\" \"yarn styles:dev\"  \"yarn livereload\"",
+    "dev": "concurrently \"yarn scripts:dev\" \"yarn styles:dev\"  \"yarn livereload\"",
     "precommit": "yarn build"
   },
   "keywords": [
