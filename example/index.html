@@ -6,9 +6,7 @@
   <title>Micromodal - A lightweight, configurable and a11y-modal library written in pure JavaScript. 1.9kb only</title>
   <meta name="description" content="Micromodal enables you to create accessible modal dialogs with minimal configuration. At just 1.9kb minified and gzipped, its a tiny library for big change.">
 
-  <link rel="stylesheet" href="../example/tachyons.css">
-  <link rel="stylesheet" href="../example/prism.css">
-  <link rel="stylesheet" href="../example/style.css">
+  <link rel="stylesheet" href="../example/style.min.css">
 
   <meta property="og:type" content="website"/>
   <meta property="og:site_name" content="Micromodal"/>
@@ -297,7 +295,7 @@ MicroModal.show('modal3'); // [1]
         </code></pre>
 
         <p class="lh-copy mv4 black-80">
-          In case you do want some default styles to get started quickly, you can refer to the styles and the corresponding markup of the demo modal <a href="$" target="_blank" class="blue underline dim">here.</a>
+          In case you do want some default styles to get started quickly, you can refer to the styles and the corresponding markup of the demo modal <a href="https://gist.github.com/ghosh/4f94cf497d7090359a5c9f81caf60699" target="_blank" class="blue underline dim">here.</a>
         </p>
       </article>
     </main>
@@ -318,19 +316,19 @@ MicroModal.show('modal3'); // [1]
       <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title" aria-describedby="modal-1-content">
         <div role="document">
           <header class="modal__header">
-            <h3 class="modal__title mv0 f4 fw6 lh-title dark-blue" id="modal-1-title">
+            <h3 class="modal__title" id="modal-1-title">
               Micromodal
             </h3>
             <button class="modal__close" aria-label="Close modal" aria-controls="modal__container1" data-micromodal-close></button>
           </header>
           <main class="modal__content" id="modal-1-content">
-            <p class="lh-copy mv4 black-80">
+            <p>
               Try hitting the <code>tab</code> key and notice how the focus stays within the modal itself. Also, <code>esc</code> to close modal.
             </p>
           </main>
           <footer class="modal__footer">
-            <button class="f6 br2 ph3 pv2 grow white bg-dark-blue bn">Continue</button>
-            <button class="f6 br2 ph3 pv2 grow black bg-black-10 bn" data-micromodal-close aria-label="Close this dialog window">Close</button>
+            <button class="modal__btn modal__btn-primary">Continue</button>
+            <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
           </footer>
         </div>
       </div>
@@ -339,7 +337,7 @@ MicroModal.show('modal3'); // [1]
 
 
   <script src="../dist/micromodal.js"></script>
-  <script src="../example/prism.js"></script>
+  <script src="../example/assets/prism.js"></script>
   <script>
 
     // MicroModal.show('modal3');
