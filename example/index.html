@@ -6,7 +6,7 @@
   <title>Micromodal - A lightweight, configurable and a11y-modal library written in pure JavaScript. 1.9kb only</title>
   <meta name="description" content="Micromodal enables you to create accessible modal dialogs with minimal configuration. At just 1.9kb minified and gzipped, its a tiny library for big change.">
 
-  <link rel="stylesheet" href="style.min.css">
+  <link rel="stylesheet" href="site.min.css">
 
   <meta property="og:type" content="website"/>
   <meta property="og:site_name" content="Micromodal"/>
@@ -229,7 +229,7 @@ MicroModal.init();
         <div class="bg-washed-green tc">
           <div class="mv5 dib">
 
-            <a class="f5 fw6 db dark-green no-underline underline-hover" href="#0" data-micromodal-trigger="modal-1">
+            <a class="f5 fw6 db dark-green no-underline underline-hover" href="javascript:;" data-micromodal-trigger="modal-1">
               Trigger Modal
             </a>
 
@@ -336,18 +336,14 @@ MicroModal.show('modal3'); // [1]
   </div>
 
 
-  <script src="../dist/micromodal.js"></script>
-  <script src="assets/prism.js"></script>
+  <script src="site.min.js"></script>
+  <!-- <script src="assets/prism.js"></script> -->
   <script>
 
-    // MicroModal.show('modal3');
-    // MicroModal.init();
     MicroModal.init({
       onClose: modal => console.info(`${modal.id} is hidden`),
       onShow: modal => console.info(`${modal.id} is shown`)
     });
-
-
 
     var section = document.querySelectorAll(".heading");
     var sections = {};

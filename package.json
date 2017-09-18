@@ -6,13 +6,14 @@
   "module": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "styles:dev": "postcss example/assets/style.css -c -o example/style.min.css -w",
-    "styles:build": "NODE_ENV=production postcss example/assets/style.css -c -o example/style.min.css",
+    "styles:dev": "postcss example/assets/styles/style.css -c -o example/site.min.css -w",
+    "styles:build": "NODE_ENV=production postcss example/assets/styles/style.css -c -o example/site.min.css",
     "scripts:dev": "rollup -c -w",
     "scripts:build": "NODE_ENV=production rollup -c",
+    "scripts:demo": "minify dist/micromodal.js example/assets/scripts/prism.js --output example/site.min.js",
     "livereload": "reload -b -s --dir example --port 5000",
     "build": "rollup -c && minify dist/micromodal.js",
-    "dev": "concurrently \"yarn scripts:dev\" \"yarn styles:dev\"  \"yarn livereload\"",
+    "dev": "concurrently \"yarn scripts:dev\" \"yarn styles:dev\"  \"yarn scripts:demo\" \"yarn livereload\"",
     "precommit": "yarn build"
   },
   "keywords": [

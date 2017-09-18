@@ -940,6 +940,7 @@ pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;background-color:#
 }
 .modal__btn-primary {
   background-color: #00449e;
+  color: #fff;
 }
 /**************************\
   Demo Animation Style - 1
