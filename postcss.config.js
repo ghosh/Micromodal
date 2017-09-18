@@ -5,6 +5,7 @@ module.exports = () => ({
   //   'postcss-import': { root: ctx.file.dirname },
   //   'cssnano': ctx.env === 'production' ? {} : false
   // }
+  parser: 'postcss-scss',
   plugins: {
     'postcss-import': {
       root: process.cwd()
