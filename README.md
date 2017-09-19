@@ -13,7 +13,7 @@ Micromodal.js
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License">
   </a>
   <a href="https://travis-ci.org/ghosh/microtip" target="_blank">
-    <img src="https://api.travis-ci.org/ghosh/microtip.svg" alt="Build Status">
+    <img src="https://img.shields.io/npm/v/micromodal.svg" alt="Package version">
   </a>
 </p>
 
