@@ -20,6 +20,9 @@ button { cursor: pointer; }
 .underline {
   text-decoration-skip: ink;
 }
+.no-underline-hover:hover {
+  text-decoration: none;
+}
 
 code {
   color: blueviolet;
@@ -59,10 +62,10 @@ ul.ordered {
     list-style-type:none;
     counter-reset: comments;
 }
-ul.ordered ol {
+ul.ordered li {
   position: relative;
 }
-ul.ordered ol:before {
+ul.ordered li:before {
     counter-increment: comments;                 /* Increment the value of comments counter by 1 */
     content: counter(comments);
     color: #fff;

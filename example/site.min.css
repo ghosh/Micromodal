@@ -937,6 +937,19 @@ pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;background-color:#
   overflow: visible;
   line-height: 1.15;
   margin: 0;
+  will-change: transform;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  transition: -webkit-transform .25s ease-out;
+  transition: transform .25s ease-out;
+  transition: transform .25s ease-out,-webkit-transform .25s ease-out;
+}
+.modal__btn:focus, .modal__btn:hover {
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
 }
 .modal__btn-primary {
   background-color: #00449e;
@@ -1002,6 +1015,9 @@ button { cursor: pointer; }
 .underline {
   text-decoration-skip: ink;
 }
+.no-underline-hover:hover {
+  text-decoration: none;
+}
 code {
   color: blueviolet;
   padding: .2rem .4rem;
@@ -1035,10 +1051,10 @@ ul.ordered {
     list-style-type:none;
     counter-reset: comments;
 }
-ul.ordered ol {
+ul.ordered li {
   position: relative;
 }
-ul.ordered ol:before {
+ul.ordered li:before {
     counter-increment: comments;                 /* Increment the value of comments counter by 1 */
     content: counter(comments);
     color: #fff;

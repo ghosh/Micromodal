@@ -7,6 +7,7 @@
   <meta name="description" content="Micromodal enables you to create accessible modal dialogs with minimal configuration. At just 1.9kb minified and gzipped, its a tiny library for big change.">
 
   <link rel="stylesheet" href="site.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta property="og:type" content="website"/>
   <meta property="og:site_name" content="Micromodal"/>
@@ -64,7 +65,7 @@
         </h3>
 
         <p class="lh-copy mv4 black-80">
-          It enables you to create <a href="https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal" target="_blank" class="blue underline dim">WAI-ARIA guidelines</a> compliant modal dialogs, with confidence and with minimal configuration. At just 1.9kb minified and gzipped, its a tiny library for big change.
+          It enables you to create <a href="https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal" target="_blank" class="blue underline no-underline-hover">WAI-ARIA guidelines</a> compliant modal dialogs, with confidence and with minimal configuration. At just 1.9kb minified and gzipped, its a tiny library for big change.
         </p>
 
 
@@ -133,7 +134,7 @@ https://unpkg.com/micromodal/dist/micromodal.min.js
         </h3>
 
         <p class="lh-copy mv4 black-80">
-          The following html structure is expected for the modal to work. It can of course be extended to suit your needs. As an example of the customization, see the source code of the demo modal <a href="#" target="_blank" class="blue underline dim">here</a>.
+          The following html structure is expected for the modal to work. It can of course be extended to suit your needs. As an example of the customization, see the source code of the demo modal <a href="https://gist.github.com/ghosh/4f94cf497d7090359a5c9f81caf60699#file-micromodal-html" target="_blank" class="blue underline no-underline-hover">here</a>.
         </p>
 
         <pre data-line="3" ><code class="language-html">
@@ -169,21 +170,21 @@ https://unpkg.com/micromodal/dist/micromodal.min.js
         </code></pre>
 
         <ul class="ordered lh-copy pl0 mv4">
-          <ol class="pl4 pv3">
+          <li class="pl4 pv3">
             This is the outermost container of the modal. It's job is to toggle the display of the modal. It is important that every modal have a unique <code>id</code>. By default the <code>aria-hidden</code> will be <code>true</code>. Micromodal takes care of toggling the value when required.
-          </ol>
-          <ol class="pl4 pv3">
+          </li>
+          <li class="pl4 pv3">
             This is the <code>div</code> which acts as the overlay for the modal. Notice the <code>data-micromodal-close</code> on it. This is a special attribute which indicates that the element that it is on should trigger the close of the modal on click. If we remove that attribute, clicking on the overlay will not close the modal anymore.
-          </ol>
-          <ol class="pl4 pv3">
+          </li>
+          <li class="pl4 pv3">
             The <code>role="dialog"</code> attribute is used to inform assistive technologies that content within is separate from the rest of the page. Additionally, the <code>aria-labelledby="modal-1-title"</code> attribute points to the <code>id</code> of the modal title. This is to help identify the purpose of the modal. Similarly, the <code>aria-describedby</code> points to the <code>id</code> of the modal content element.
-          </ol>
-          <ol class="pl4 pv3">
+          </li>
+          <li class="pl4 pv3">
             The wrapper with the <code>role="document</code> is not required to be present but is recommended. It helps inform screen-readers and other assistive technologies about a separate document context within the modal.
-          </ol>
-          <ol class="pl4 pv3">
+          </li>
+          <li class="pl4 pv3">
             Ensuring that all buttons have a <code>aria-label</code> attribute which defines the action of the button. Notice the <code>data-micromodal-close</code> attribute is used on the button since we want to close the modal on press.
-          </ol>
+          </li>
         </ul>
 
 
@@ -229,7 +230,7 @@ MicroModal.init();
         <div class="bg-washed-green tc">
           <div class="mv5 dib">
 
-            <a class="f5 fw6 db dark-green no-underline underline-hover" href="javascript:;" data-micromodal-trigger="modal-1">
+            <a class="f5 fw6 db dark-green underline no-underline-hover" href="javascript:;" data-micromodal-trigger="modal-1">
               Trigger Modal
             </a>
 
@@ -249,12 +250,12 @@ MicroModal.init({
         </code></pre>
 
         <ul class="ordered lh-copy pl0 mv4">
-          <ol class="pl4 pv3">
+          <li class="pl4 pv3">
             <code>onShow {Function}</code> This is fired when the modal is opening. The function receives the modal object as the first parameter.
-          </ol>
-          <ol class="pl4 pv3">
+          </li>
+          <li class="pl4 pv3">
             <code>onClose {Function}</code> This is fired when the modal is closing. The function receives the modal object as the first parameter.
-          </ol>
+          </li>
         </ul>
 
         <h3 class="f4 fw6 mv4">
@@ -270,9 +271,9 @@ MicroModal.show('modal3'); // [1]
         </code></pre>
 
         <ul class="ordered lh-copy pl0 mv4">
-          <ol class="pl4 pv3">
+          <li class="pl4 pv3">
             The string passed to the <code>show</code> method must correspond to the <code>id</code> of the modal to be toggled
-          </ol>
+          </li>
         </ul>
 
 
@@ -295,7 +296,7 @@ MicroModal.show('modal3'); // [1]
         </code></pre>
 
         <p class="lh-copy mv4 black-80">
-          In case you do want some default styles to get started quickly, you can refer to the styles and the corresponding markup of the demo modal <a href="https://gist.github.com/ghosh/4f94cf497d7090359a5c9f81caf60699" target="_blank" class="blue underline dim">here.</a>
+          In case you do want some default styles to get started quickly, you can refer to the styles and the corresponding markup of the demo modal <a href="https://gist.github.com/ghosh/4f94cf497d7090359a5c9f81caf60699" target="_blank" class="blue underline no-underline-hover">here.</a>
         </p>
       </article>
     </main>
@@ -304,7 +305,7 @@ MicroModal.show('modal3'); // [1]
     <footer class="mv6 tc">
       <p class="f4 mb2">🤘</p>
       <div class="mt3">
-        <p class="f6 dib pl2 mid-gray">Built by <a href="https://twitter.com/knowkalpesh" title="Kalpesh's twitter handle" class="f6 dib blue no-underline underline-hover">@knowkalpesh</a> and <a href="https://twitter.com/_ighosh" title="Ghosh's twitter handle" class="f6 dib blue no-underline underline-hover">@ghosh</a></p>
+        <p class="f6 dib pl2 mid-gray">Built by <a href="https://twitter.com/knowkalpesh" target="_blank" title="Kalpesh's twitter handle" class="f6 dib blue underline no-underline-hover">@knowkalpesh</a> and <a href="https://twitter.com/_ighosh" target="_blank" title="Ghosh's twitter handle" class="f6 dib blue underline no-underline-hover">@ghosh</a></p>
       </div>
     </footer>
 
@@ -337,31 +338,30 @@ MicroModal.show('modal3'); // [1]
 
 
   <script src="site.min.js"></script>
-  <!-- <script src="assets/prism.js"></script> -->
   <script>
 
-    MicroModal.init({
-      onClose: modal => console.info(`${modal.id} is hidden`),
-      onShow: modal => console.info(`${modal.id} is shown`)
-    });
+  MicroModal.init({
+    onClose: modal => console.info(`${modal.id} is hidden`),
+    onShow: modal => console.info(`${modal.id} is shown`)
+  });
 
-    var section = document.querySelectorAll(".heading");
-    var sections = {};
+  var section = document.querySelectorAll(".heading");
+  var sections = {};
 
-    Array.prototype.forEach.call(section, function(e) {
-      sections[e.id] = e.offsetTop;
-    });
+  Array.prototype.forEach.call(section, function(e) {
+    sections[e.id] = e.offsetTop;
+  });
 
-    window.onscroll = function() {
-      var scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
+  window.onscroll = function() {
+    var scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
 
-      for (i in sections) {
-        if (sections[i] <= scrollPosition) {
-          document.querySelector('.active').classList.remove('blue', 'fw6', 'active');
-          document.querySelector('a[href*=' + i + ']').classList.add('blue', 'fw6', 'active');
-        }
+    for (i in sections) {
+      if (sections[i] <= scrollPosition) {
+        document.querySelector('.active').classList.remove('blue', 'fw6', 'active');
+        document.querySelector('a[href*=' + i + ']').classList.add('blue', 'fw6', 'active');
       }
-    };
+    }
+  };
 
 
   </script>
