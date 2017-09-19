@@ -13,7 +13,7 @@
     "scripts:build": "NODE_ENV=production rollup -c",
     "scripts:demo": "minify dist/micromodal.js example/assets/scripts/prism.js --output example/site.min.js",
     "livereload": "reload -b -s --dir example --port 5000",
-    "build": "rollup -c && minify dist/micromodal.js",
+    "build": "concurrently \"yarn scripts:build\" \"yarn styles:build\"  \"yarn scripts:demo\"",
     "dev": "concurrently \"yarn scripts:dev\" \"yarn styles:dev\"  \"yarn scripts:demo\" \"yarn livereload\"",
     "precommit": "yarn build"
   },
