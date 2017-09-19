@@ -10,7 +10,7 @@ export default {
     file: 'dist/micromodal.js',
   },
   plugins: [
-    eslint({ exclude: 'package.json' }),
+    eslint({ exclude: ['package.json', 'example/**'] }),
     json(),
     babel({ exclude: 'node_modules/**' })
   ]
