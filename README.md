@@ -25,8 +25,6 @@ Micromodal.js
 
 The aim of this library is to make modal dialogs accessible and easy to include in your project with minimum configuration. It's only 1.9kb minified and gzipped (Happy dance 👯) - A tiny library for big change.
 
-&nbsp;
-
 **[Demo and documentation](https://micromodal.now.sh/)**
 
 &nbsp;
