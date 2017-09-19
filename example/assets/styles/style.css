@@ -86,6 +86,12 @@ ul.ordered li:before {
 }
 
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -101,4 +107,9 @@ ul.ordered li:before {
   margin-left: 5px;
   /* color: #3c57a0; */
   margin-top: 1px;
+}
+
+.github__logo {
+  width: 30px;
+  height: 30px;
 }
