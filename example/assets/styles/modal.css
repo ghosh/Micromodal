@@ -100,44 +100,48 @@
   Demo Animation Style - 1
 \**************************/
 
-@keyframes mm-fadeIn {
+@keyframes mmfadeIn {
     from { opacity: 0; }
       to { opacity: 1; }
 }
 
-@keyframes mm-scaleUp {
+@keyframes mmscaleUp {
   from { transform: scale(0.8); }
     to { transform: scale(1); }
 }
 
-@keyframes mm-fadeInUp {
+@keyframes mmfadeInUp {
   from { opacity: 0; transform: translate3d(0, 150%, 0); }
   to { opacity: 1; transform: none; }
 }
 
-
+/* uncss:ignore */
 .micromodal-bounce[aria-hidden="false"] {
-  animation: mm-fadeIn .4s cubic-bezier(0.0, 0.0, 0.2, 1);
+  animation: mmfadeIn .4s cubic-bezier(0.0, 0.0, 0.2, 1);
 }
 
+/* uncss:ignore */
 .micromodal-bounce[aria-hidden="false"] .modal__container {
-  animation: mm-scaleUp .5s cubic-bezier(0.68, -0.55, 0.13, 1.94)
+  animation: mmscaleUp .5s cubic-bezier(0.68, -0.55, 0.13, 1.94)
 }
 
+/* uncss:ignore */
 .micromodal-bounce[aria-hidden="false"] .modal__header {
-  animation: mm-fadeInUp .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+  animation: mmfadeInUp .3s cubic-bezier(0.0, 0.0, 0.2, 1);
   animation-fill-mode: forwards;
   animation-delay: .1s;
 }
 
+/* uncss:ignore */
 .micromodal-bounce[aria-hidden="false"] .modal__content {
-  animation: mm-fadeInUp .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+  animation: mmfadeInUp .3s cubic-bezier(0.0, 0.0, 0.2, 1);
   animation-fill-mode: forwards;
   animation-delay: .2s;
 }
 
+/* uncss:ignore */
 .micromodal-bounce[aria-hidden="false"] .modal__footer {
-  animation: mm-fadeInUp .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+  animation: mmfadeInUp .3s cubic-bezier(0.0, 0.0, 0.2, 1);
   animation-fill-mode: forwards;
   animation-delay: .3s;
 }

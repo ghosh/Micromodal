@@ -5,7 +5,6 @@
   "main": "src/index.js",
   "module": "src/index.js",
   "scripts": {
-    "start": "echo \"Hello\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "styles:dev": "postcss example/assets/styles/style.css -c -o example/site.min.css -w",
     "styles:build": "NODE_ENV=production postcss example/assets/styles/style.css -c -o example/site.min.css",
@@ -40,12 +39,14 @@
     "postcss-cli": "^4.1.1",
     "postcss-import": "^11.0.0",
     "postcss-scss": "^1.0.2",
+    "postcss-uncss": "^0.15.0",
     "reload": "^2.2.1",
     "rollup": "^0.49.2",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-eslint": "^4.0.0",
     "rollup-plugin-json": "^2.3.0",
     "rollup-watch": "^4.3.1",
-    "tachyons": "^4.8.1"
+    "tachyons": "^4.8.1",
+    "uncss": "^0.15.0"
   }
 }
