@@ -1,13 +1,38 @@
+<p align="center">
+  <img src="https://www.dropbox.com/s/dhi0o4hfn3n8vtc/logo.svg?raw=1" width="100px">
+</p>
+<h3 align="center">
+Micromodal.js
+</h3>
 
-## Micromodal
-![license](https://img.shields.io/badge/release-v0.1.0-blue.svg) ![license](https://img.shields.io/github/license/mashape/apistatus.svg)
+<p align="center">
+  <a href="#">
+    <img src="https://img.shields.io/badge/made%20with-love-E760A4.svg" alt="Made with love">
+  </a>
+  <a href="https://opensource.org/licenses/MIT" target="_blank">
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License">
+  </a>
+  <a href="https://travis-ci.org/ghosh/microtip" target="_blank">
+    <img src="https://api.travis-ci.org/ghosh/microtip.svg" alt="Build Status">
+  </a>
+</p>
 
->Micromodal is a lightweight, configurable and a11y-enabled modal library written in pure JavaScript
+<p align="center">
+  A lightweight, configurable accessible modal library written in pure JavaScript. Just 1.9kb.
+</p>
+
+---
+
+&nbsp;
 
 The aim of this library is to make modal dialog accessible and easy to include in your project with minimum configuration. One of the things we considered during development was to make it tiny. It's only 1.9kb minified and gzipped (Happy dance 👯)
 
+&nbsp;
+
 ## Usage Example
 We have setup a separate demo page for examples. Please refer to our [demo page](https://demo-page-link.html) for complete usage examples and salient features.
+
+&nbsp;
 
 ## Installation
 
@@ -24,9 +49,13 @@ You can also download or link to the latest minified version using the unpkg CDN
 https://unpkg.com/micromodal/dist/micromodal.min.js
 ```
 
+&nbsp;
+
 ## Release History
 * 0.1.0
     * CHANGE: Released first minor version 😊
+
+&nbsp;
 
 ## Contributors
 
@@ -34,11 +63,15 @@ Indrashish Ghosh – [@_ighosh](https://twitter.com/_ighosh) -  [ghosh.io](https
 
 Kalpesh Singh - [@knowkalpesh](https://twitter.com/knowkalpesh) - [knowkalpesh.in](https://knowkalpesh.in) 🇮🇳
 
+&nbsp;
+
 ## Contributing
 
 We are always open and invite developers to contribute to Micromodal. We have kept the guidelines and process dead simple, so you invest more time in making modals great again! 🇺🇸
 
 Micromodal follows the [standardjs](https://standardjs.com/) coding standard and is part of our `package.json` file. It will help us to maintain consistency in the codebase.
+
+&nbsp;
 
 #### Development setup
 1. Clone Github repo `$ git clone https://github.com/ghosh/micromodal.git`
@@ -48,8 +81,12 @@ Micromodal follows the [standardjs](https://standardjs.com/) coding standard and
 5. [Optional] Run `yarn build` to build the files for distribution. This is run automatically as a pre-commit hook as well.
 6. Send us pull request and chill
 
+&nbsp;
+
 ## Licensing
 This project is licensed under [MIT license](https://opensource.org/licenses/MIT).
+
+&nbsp;
 
 ## Contact
 You can mention us on Twitter for any questions, suggestions or just send us funny GIF. We ♥️ GIF.
