@@ -4,7 +4,7 @@
 	(global.MicroModal = factory());
 }(this, (function () { 'use strict';
 
-var version = "0.1.0";
+var version = "0.1.1";
 
 var asyncGenerator = function () {
   function AwaitValue(value) {
@@ -327,14 +327,13 @@ var MicroModal = function () {
     return triggerMap;
   };
 
-  var validateArgs = function validateArgs(triggers) {
-    if (triggers <= 0) {
+  var validateArgs = function validateArgs(triggers, triggerMap) {
+    if (triggers.length <= 0) {
       console.warn('MicroModal v' + version + ': \u2757Please specify at least one %c\'micromodal-trigger\'', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'data attribute.');
       console.warn('MicroModal v' + version + ': %cExample:', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', '<a href="#" data-micromodal-trigger="my-modal"></a>');
       return false;
     }
 
-    var triggerMap = generateTriggerMap(triggers);
     for (var id in triggerMap) {
       if (!document.getElementById(id)) {
         console.warn('MicroModal v' + version + ': \u2757Seems like you have missed %c\'' + id + '\'', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'ID somewhere in your code. Refer example below to resolve it.');
@@ -347,10 +346,11 @@ var MicroModal = function () {
 
   var init = function init(config) {
     var options = config || {};
-    var triggers = document.querySelectorAll('[data-micromodal-trigger]');
 
-    if (validateArgs(triggers)) {
-      var triggerMap = generateTriggerMap(triggers);
+    var triggers = document.querySelectorAll('[data-micromodal-trigger]');
+    var triggerMap = generateTriggerMap(triggers);
+
+    if (validateArgs(triggers, triggerMap)) {
       for (var key in triggerMap) {
         var value = triggerMap[key];
         options.targetModal = key;
