@@ -4,11 +4,11 @@ module.exports = (ctx) => ({
     'postcss-import': {
       root: process.cwd()
     },
-    'postcss-uncss': {
+    'postcss-uncss': ctx.env === 'production' ? {
       'html': ['example/index.html'],
       'ignore': ['.modal*', '.micromodal*'],
       'report': false
-    },
+    } : false,
     'cssnano': ctx.env === 'production' ? {preset: 'default'} : false
   }
 })
