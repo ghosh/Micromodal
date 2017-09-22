@@ -2,7 +2,7 @@
   <img src="https://www.dropbox.com/s/dhi0o4hfn3n8vtc/logo.svg?raw=1" width="100px">
 </p>
 <h3 align="center">
-Micromodal.js
+  Micromodal.js
 </h3>
 
 <p align="center">
@@ -76,7 +76,7 @@ This project is licensed under [MIT license](https://opensource.org/licenses/MIT
 ## Contact
 You can mention us on Twitter for any questions, suggestions or just send us funny GIF. We ♥️ GIF.
 #### Tweet some love   ![Tweet](https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/twitter-20.png)
-[Tweet](https://twitter.com/intent/tweet?url=https%3A%2F%2Fgoo.gl%2FRHH3MC&via=_ighosh&text=Make%20your%20modal%20dialogs%20accessible%20to%20all%20using%20Micromodal.js%2C%20a%20tiny%20library%20for%20big%20change.&hashtags=a11y "Tweet about Micromodal") about Micromodal and help us to spread the message about the importance of Web accessibility and Inclusive design.
+[Tweet](https://twitter.com/intent/tweet?url=https%3A%2F%2Fgoo.gl%2FsEgnBZ&via=_ighosh&text=Make%20your%20modal%20dialogs%20accessible%20to%20all%20using%20Micromodal.js%2C%20a%20tiny%20library%20for%20big%20change.&hashtags=a11y "Tweet about Micromodal") about Micromodal and help us to spread the message about the importance of Web accessibility and Inclusive design.
 
 &nbsp;
 
