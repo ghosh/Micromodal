@@ -99,25 +99,25 @@
 /**************************\
   Demo Animation Style
 \**************************/
-@keyframes mm-fadeIn {
+@keyframes mmfadeIn {
     from { opacity: 0; }
       to { opacity: 1; }
 }
 
-@keyframes mm-slideIn {
+@keyframes mmslideIn {
   from { transform: translateY(35%); }
     to { transform: translateY(0); }
 }
 
 .micromodal-slide[aria-hidden="false"] .modal__overlay {
-  animation: mm-fadeIn .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+  animation: mmfadeIn .3s cubic-bezier(0.0, 0.0, 0.2, 1);
 }
 
 .micromodal-slide[aria-hidden="false"] .modal__container {
-  animation: mm-slideIn .3s cubic-bezier(0, 0, .2, 1);
+  animation: mmslideIn .3s cubic-bezier(0, 0, .2, 1);
 }
 
-.micromodal-bounce .modal__container,
-.micromodal-bounce .modal__content {
+.micromodal-slide .modal__container,
+.micromodal-slide .modal__overlay {
   will-change: transform;
 }
