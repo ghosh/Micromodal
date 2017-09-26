@@ -97,64 +97,27 @@
 }
 
 /**************************\
-  Demo Animation Style - 1
+  Demo Animation Style
 \**************************/
-
-@keyframes mmfadeIn {
+@keyframes mm-fadeIn {
     from { opacity: 0; }
       to { opacity: 1; }
 }
 
-@keyframes mmscaleUp {
-  from { transform: scale(0.8); }
-    to { transform: scale(1); }
+@keyframes mm-slideIn {
+  from { transform: translateY(35%); }
+    to { transform: translateY(0); }
 }
 
-@keyframes mmfadeInUp {
-  from { opacity: 0; transform: translate3d(0, 150%, 0); }
-  to { opacity: 1; transform: none; }
+.micromodal-slide[aria-hidden="false"] .modal__overlay {
+  animation: mm-fadeIn .3s cubic-bezier(0.0, 0.0, 0.2, 1);
 }
 
-/* uncss:ignore */
-.micromodal-bounce[aria-hidden="false"] {
-  animation: mmfadeIn .4s cubic-bezier(0.0, 0.0, 0.2, 1);
-}
-
-/* uncss:ignore */
-.micromodal-bounce[aria-hidden="false"] .modal__container {
-  animation: mmscaleUp .5s cubic-bezier(0.68, -0.55, 0.13, 1.94)
-}
-
-/* uncss:ignore */
-.micromodal-bounce[aria-hidden="false"] .modal__header {
-  animation: mmfadeInUp .3s cubic-bezier(0.0, 0.0, 0.2, 1);
-  animation-fill-mode: forwards;
-  animation-delay: .1s;
-}
-
-/* uncss:ignore */
-.micromodal-bounce[aria-hidden="false"] .modal__content {
-  animation: mmfadeInUp .3s cubic-bezier(0.0, 0.0, 0.2, 1);
-  animation-fill-mode: forwards;
-  animation-delay: .2s;
-}
-
-/* uncss:ignore */
-.micromodal-bounce[aria-hidden="false"] .modal__footer {
-  animation: mmfadeInUp .3s cubic-bezier(0.0, 0.0, 0.2, 1);
-  animation-fill-mode: forwards;
-  animation-delay: .3s;
+.micromodal-slide[aria-hidden="false"] .modal__container {
+  animation: mm-slideIn .3s cubic-bezier(0, 0, .2, 1);
 }
 
 .micromodal-bounce .modal__container,
-.micromodal-bounce .modal__header,
-.micromodal-bounce .modal__content,
-.micromodal-bounce .modal__footer {
+.micromodal-bounce .modal__content {
   will-change: transform;
-}
-
-.micromodal-bounce .modal__header,
-.micromodal-bounce .modal__content,
-.micromodal-bounce .modal__footer {
-  opacity: 0;
 }
