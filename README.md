@@ -31,17 +31,24 @@ The aim of this library is to make modal dialogs accessible and easy to include 
 
 ## Installation
 
-#### npm
-Micromodal is available as node package and can be installed from the command line via npm or yarn.
-```
-npm install micromodal --save  // via npm
-yarn add micromodal --save  // via yarn
+**via npm**
+```shell
+npm install micromodal --save
 ```
 
-#### CDN
-You can also download or link to the latest minified version using the unpkg CDN.
+**via yarn**
+```shell
+yarn add micromodal
 ```
-https://unpkg.com/micromodal/dist/micromodal.min.js
+
+**via CDN direct link**
+```
+<script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
+```
+
+**direct download**
+```shell
+curl -o https://unpkg.com/micromodal/dist/micromodal.min.js
 ```
 
 &nbsp;
