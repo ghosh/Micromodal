@@ -72,6 +72,10 @@ Micromodal follows the [standardjs](https://standardjs.com/) coding standard and
 This project is licensed under [MIT license](https://opensource.org/licenses/MIT).
 
 &nbsp;
+## Related
+- [Microtip](https://github.com/ghosh/microtip) - Modern, lightweight, accessible css tooltip library. Just 1kb.
+
+&nbsp;
 
 ## Contact
 You can mention us on Twitter for any questions, suggestions or just send us funny GIF. We ♥️ GIF.
