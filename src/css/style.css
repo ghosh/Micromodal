@@ -1,0 +1,115 @@
+@import "tachyons";
+
+@import "prism.css";
+@import "modal.css";
+
+/**************************\
+  Required Styles
+\**************************/
+
+.modal[aria-hidden="true"] {
+  display: none;
+}
+
+/**************************\
+  Page Styles
+\**************************/
+
+button { cursor: pointer; }
+
+.underline {
+  text-decoration-skip: ink;
+}
+.no-underline-hover:hover {
+  text-decoration: none;
+}
+
+code {
+  color: blueviolet;
+  padding: .2rem .4rem;
+  font-size: 90% !important;
+  background-color: #f7f7f9;
+  border-radius: .25rem;
+  font-family: Source Code Pro, Consolas, monaco, monospace !important;
+}
+
+pre {
+  border-radius: 5px;
+}
+
+pre code {
+  font-size: 100% !important;
+  padding: 0;
+}
+
+ul.sticky {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 8px;
+}
+
+ul.checkmark {
+    list-style-type:none;
+}
+ul.checkmark li:before {
+    content:"\2713\0020";
+    font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', Arial;
+    color: #19a974;
+    margin-right: 4px;
+}
+
+ul.ordered {
+    list-style-type:none;
+    counter-reset: comments;
+}
+ul.ordered li {
+  position: relative;
+}
+ul.ordered li:before {
+    counter-increment: comments;                 /* Increment the value of comments counter by 1 */
+    content: counter(comments);
+    color: #fff;
+    margin-right: 4px;
+    position: absolute;
+    left: 0;
+    font-size: 12px;
+    background-color: #19a974;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    margin-top: 4px;
+}
+
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logo__mark {
+  display: inline-block;
+  width: 30px;
+  height: 20px;
+  /* background-color: #3c57a0; */
+  border-radius: 3px;
+}
+.logo__text {
+  margin-left: 5px;
+  /* color: #3c57a0; */
+  margin-top: 1px;
+}
+
+.github__logo {
+  width: 30px;
+  height: 30px;
+}

@@ -1,0 +1,27 @@
+{
+  "name": "micromodal.now.sh",
+  "version": "1.0.0",
+  "description": "A dedicated demo site for micromodal.js (micromodal.now.sh)",
+  "main": "site.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "a11y",
+    "modal",
+    "accesible"
+  ],
+  "author": "Kalpesh Singh",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^7.1.4",
+    "cssnano": "^3.10.0",
+    "gulp": "^3.9.1",
+    "gulp-imagemin": "^3.3.0",
+    "gulp-postcss": "^7.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-webserver": "^0.9.1",
+    "postcss-import": "^11.0.0",
+    "tachyons": "^4.8.1"
+  }
+}

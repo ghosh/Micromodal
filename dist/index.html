@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Micromodal.js - Tiny javascript library for creating accessible modal dialogs</title>
+  <meta name="description" content="Micromodal enables you to create accessible modal dialogs with minimal configuration. At just 1.9kb minified and gzipped, its a tiny library for big change.">
+
+  <link rel="stylesheet" href="main.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
+  <meta name="theme-color" content="#000000">
+
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="Micromodal"/>
+  <meta property="og:url" content="https://micromodal.now.sh/"/>
+  <meta property="og:title" content="Micromodal - Tiny javascript library for creating accessible modal dialogs"/>
+  <meta property="og:description" content="Micromodal enables you to create accessible modal dialogs with minimal configuration. At just 1.9kb minified and gzipped, its a tiny library for big change." />
+  <meta property="og:image" content="images/micromodal.jpg"/>
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@_ighosh">
+  <meta name="twitter:title" content="Micromodal - Tiny javascript library for creating accessible modal dialogs">
+  <meta name="twitter:description" content="Accessible modal dialogs with minimal configuration. Just 1.9kb minified and gzipped, its a tiny library for big change.">
+  <meta name="twitter:image" content="images/micromodal.jpg">
+  <meta name="twitter:image:width" content="1200">
+  <meta name="twitter:image:height" content="630">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-49604576-5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)};
+    gtag('js', new Date());
+
+    gtag('config', 'UA-49604576-5');
+  </script>
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:628380,hjsv:5};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+
+</head>
+<body class="sans-serif bg-white-20 bt bw3">
+
+  <div class="center cf ph3 mw6 mw7-l">
+
+    <header class="header mt5">
+      <div class="logo pv2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="25" viewBox="0 0 40 25">
+          <g fill-rule="evenodd">
+            <path d="M1.2 0h37.6c.6627 0 1.2.5373 1.2 1.2v22.6c0 .6627-.5373 1.2-1.2 1.2H1.2C.5373 25 0 24.4627 0 23.8V1.2C0 .5373.5373 0 1.2 0zm5.6 6.0484c-.4418 0-.8.3582-.8.8v11.3032c0 .4418.3582.8.8.8h26.8c.4418 0 .8-.3582.8-.8V6.8484c0-.4418-.3582-.8-.8-.8H6.8z"/>
+            <rect width="10.4" height="2.419" x="15.2" y="14.516" rx=".4"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="github">
+        <a href="https://github.com/Ghosh/micromodal" target="_blank" rel="noopener" class="db">
+          <svg xmlns="http://www.w3.org/2000/svg" width="438.549" height="438.549" viewBox="0 0 438.549 438.549" class="github__logo">
+            <path d="M409.132 114.573c-19.608-33.596-46.205-60.194-79.798-79.8-33.598-19.607-70.277-29.408-110.063-29.408-39.781 0-76.472 9.804-110.063 29.408-33.596 19.605-60.192 46.204-79.8 79.8C9.803 148.168 0 184.854 0 224.63c0 47.78 13.94 90.745 41.827 128.906 27.884 38.164 63.906 64.572 108.063 79.227 5.14.954 8.945.283 11.419-1.996 2.475-2.282 3.711-5.14 3.711-8.562 0-.571-.049-5.708-.144-15.417a2549.81 2549.81 0 0 1-.144-25.406l-6.567 1.136c-4.187.767-9.469 1.092-15.846 1-6.374-.089-12.991-.757-19.842-1.999-6.854-1.231-13.229-4.086-19.13-8.559-5.898-4.473-10.085-10.328-12.56-17.556l-2.855-6.57c-1.903-4.374-4.899-9.233-8.992-14.559-4.093-5.331-8.232-8.945-12.419-10.848l-1.999-1.431c-1.332-.951-2.568-2.098-3.711-3.429-1.142-1.331-1.997-2.663-2.568-3.997-.572-1.335-.098-2.43 1.427-3.289 1.525-.859 4.281-1.276 8.28-1.276l5.708.853c3.807.763 8.516 3.042 14.133 6.851 5.614 3.806 10.229 8.754 13.846 14.842 4.38 7.806 9.657 13.754 15.846 17.847 6.184 4.093 12.419 6.136 18.699 6.136 6.28 0 11.704-.476 16.274-1.423 4.565-.952 8.848-2.383 12.847-4.285 1.713-12.758 6.377-22.559 13.988-29.41-10.848-1.14-20.601-2.857-29.264-5.14-8.658-2.286-17.605-5.996-26.835-11.14-9.235-5.137-16.896-11.516-22.985-19.126-6.09-7.614-11.088-17.61-14.987-29.979-3.901-12.374-5.852-26.648-5.852-42.826 0-23.035 7.52-42.637 22.557-58.817-7.044-17.318-6.379-36.732 1.997-58.24 5.52-1.715 13.706-.428 24.554 3.853 10.85 4.283 18.794 7.952 23.84 10.994 5.046 3.041 9.089 5.618 12.135 7.708 17.705-4.947 35.976-7.421 54.818-7.421s37.117 2.474 54.823 7.421l10.849-6.849c7.419-4.57 16.18-8.758 26.262-12.565 10.088-3.805 17.802-4.853 23.134-3.138 8.562 21.509 9.325 40.922 2.279 58.24 15.036 16.18 22.559 35.787 22.559 58.817 0 16.178-1.958 30.497-5.853 42.966-3.9 12.471-8.941 22.457-15.125 29.979-6.191 7.521-13.901 13.85-23.131 18.986-9.232 5.14-18.182 8.85-26.84 11.136-8.662 2.286-18.415 4.004-29.263 5.146 9.894 8.562 14.842 22.077 14.842 40.539v60.237c0 3.422 1.19 6.279 3.572 8.562 2.379 2.279 6.136 2.95 11.276 1.995 44.163-14.653 80.185-41.062 108.068-79.226 27.88-38.161 41.825-81.126 41.825-128.906-.01-39.771-9.818-76.454-29.414-110.049z"></path>
+          </svg>
+        </a>
+      </div>
+    </header>
+
+    <main class="cf mt4 mb5 flex">
+
+      <aside class="fl dn db-l w-25">
+        <ul class="list pl0 sticky">
+          <li class="lh-copy pv2 ba bl-0 bt-0 br-0 b--dotted b--black-10">
+            <a href="#introduction" class="link black-70 blue fw6 active navlink">Introduction</a>
+          </li>
+          <li class="lh-copy pv2 ba bl-0 bt-0 br-0 b--dotted b--black-10">
+            <a href="#installation" class="link black-70 navlink">Installation</a>
+          </li>
+          <li class="lh-copy pv2 ba bl-0 bt-0 br-0 b--dotted b--black-10">
+            <a href="#usage" class="link black-70 navlink">Usage</a>
+          </li>
+          <li class="lh-copy pv2 ba bl-0 bt-0 br-0 b--dotted b--black-10">
+            <a href="#styling" class="link black-70 navlink">Styling</a>
+          </li>
+        </ul>
+      </aside>
+
+      <article class="fl dark-gray w-100 w-75-l pl5-l">
+        <h1 class="f3 fw6 lh-title mb4 black heading" id="introduction">
+          Introduction
+        </h1>
+
+        <h3 class="f4 fw4 lh-copy mv4 black-80">
+          <strong>Micromodal.js</strong> is a lightweight, configurable and a11y-enabled modal library written in pure JavaScript
+        </h3>
+
+        <p class="lh-copy mv4 black-80">
+          It enables you to create <a href="https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal" target="_blank" rel="noopener" class="blue underline no-underline-hover">WAI-ARIA guidelines</a> compliant modal dialogs, with confidence and with minimal configuration. At just 1.9kb minified and gzipped, its a tiny library for big change.
+        </p>
+
+
+        <div class="bg-washed-green tc">
+          <div class="mv5 dib">
+
+            <button class="f6 grow no-underline br2 ph4 pv3 dib white bg-dark-green bn"  data-micromodal-trigger="modal-1" role="button">
+              Demo Modal
+            </button>
+
+          </div>
+        </div>
+
+        <p class="lh-copy mv4 black-80">
+          Following are some of the interactions handled by the library:-
+        </p>
+
+        <ul class="lh-copy checkmark pl0 mv4">
+          <li class="mv1">Closing modal on overlay click</li>
+          <li class="mv1">Closing modal on <code>esc</code> button press</li>
+          <li class="mv1">Toggling <code>aria-hidden</code> attribute on modal</li>
+          <li class="mv1">Trapping tab focus within the modal</li>
+          <li class="mv1">Maintaining focus position before and after toggling modal</li>
+          <li class="mv1">Focusing on the first focusable element within the modal</li>
+        </ul>
+
+
+
+        <h2 class="f3 fw6 lh-title mt5 mb4 black heading" id="installation">
+          Installation
+        </h2>
+
+        <p class="lh-copy mv4 black-80">
+          Micromodal is available on <code>npm</code> and can be installed from the command line via npm or yarn
+        </p>
+
+        <pre><code class="language-js">
+npm install micromodal --save // via npm
+yarn add micromodal --save // via yarn
+        </code></pre>
+
+        <p class="lh-copy mv4 black-80">
+          You can also download or link to the latest compiled version using the CDN.
+        </p>
+
+        <pre><code class="language-js">
+https://unpkg.com/micromodal/dist/micromodal.min.js
+        </code></pre>
+
+
+
+        <h2 class="f3 fw6 lh-title mt5 mb4 black heading" id="usage">
+          Usage
+        </h2>
+
+        <p class="lh-copy mv4 black-80">
+          Designed to be easy to use, it does most of the heavy lifting behind the scenes and exposes a simple api to interact with the dom.
+        </p>
+
+        <p class="lh-copy mv4 black-80">
+          Typically modals have an overlay which cover the rest of the content. To achieve this, it is normal to put the modal code just before the closing <code>body</code> tag, so that the modal overlay is relative to the body and covers the whole screen.
+        </p>
+
+        <h3 class="f4 fw6 mv4">
+          1. Add the modal markup
+        </h3>
+
+        <p class="lh-copy mv4 black-80">
+          The following html structure is expected for the modal to work. It can of course be extended to suit your needs. As an example of the customization, see the source code of the demo modal <a href="https://gist.github.com/ghosh/4f94cf497d7090359a5c9f81caf60699#file-micromodal-html" target="_blank" rel="noopener" class="blue underline no-underline-hover">here</a>.
+        </p>
+
+        <pre data-line="3" ><code class="language-html">
+&lt;!-- [1] --&gt;
+&lt;div id=&quot;modal-1&quot; aria-hidden=&quot;true&quot;&gt;
+
+  &lt;!-- [2] --&gt;
+  &lt;div tabindex=&quot;-1&quot; data-micromodal-close&gt;
+
+    &lt;!-- [3] --&gt;
+    &lt;div role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;modal-1-title&quot; aria-describedby=&quot;modal-1-content&quot;&gt;
+
+      &lt;!-- [4] --&gt;
+      &lt;div role=&quot;document&quot;&gt;
+
+        &lt;header&gt;
+          &lt;h3 id=&quot;modal-1-title&quot;&gt;
+            Modal Title
+          &lt;/h3&gt;
+
+          &lt;!-- [5] --&gt;
+          &lt;button aria-label=&quot;Close modal&quot; aria-controls=&quot;modal-1&quot; data-micromodal-close&gt;&lt;/button&gt;
+        &lt;/header&gt;
+
+        &lt;main id=&quot;modal-1-content&quot;&gt;
+          Modal Content
+        &lt;/main&gt;
+
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+        </code></pre>
+
+        <ul class="ordered lh-copy pl0 mv4">
+          <li class="pl4 pv3">
+            This is the outermost container of the modal. It's job is to toggle the display of the modal. It is important that every modal have a unique <code>id</code>. By default the <code>aria-hidden</code> will be <code>true</code>. Micromodal takes care of toggling the value when required.
+          </li>
+          <li class="pl4 pv3">
+            This is the <code>div</code> which acts as the overlay for the modal. Notice the <code>data-micromodal-close</code> on it. This is a special attribute which indicates that the element that it is on should trigger the close of the modal on click. If we remove that attribute, clicking on the overlay will not close the modal anymore.
+          </li>
+          <li class="pl4 pv3">
+            The <code>role="dialog"</code> attribute is used to inform assistive technologies that content within is separate from the rest of the page. Additionally, the <code>aria-labelledby="modal-1-title"</code> attribute points to the <code>id</code> of the modal title. This is to help identify the purpose of the modal. Similarly, the <code>aria-describedby</code> points to the <code>id</code> of the modal content element.
+          </li>
+          <li class="pl4 pv3">
+            The wrapper with the <code>role="document</code> is not required to be present but is recommended. It helps inform screen-readers and other assistive technologies about a separate document context within the modal.
+          </li>
+          <li class="pl4 pv3">
+            Ensuring that all buttons have a <code>aria-label</code> attribute which defines the action of the button. Notice the <code>data-micromodal-close</code> attribute is used on the button since we want to close the modal on press.
+          </li>
+        </ul>
+
+
+
+        <h3 class="f4 fw6 mv4">
+          2. Add micromodal.js
+        </h3>
+
+        <p class="lh-copy mv4 black-80">
+          If you included the compiled file from the CDN into your project, you will have access to a <code>MicroModal</code> global variable, which you can use to instantiate the module.
+        </p>
+
+        <p class="lh-copy mv4 black-80">
+          In cases with a modular workflow, you can directly import the module into your project.
+        </p>
+
+        <pre><code class="language-js">
+import MicroModal from 'micromodal';  // es6 module
+var MicroModal = require('micromodal'); // commonjs module
+        </code></pre>
+
+        <h3 class="f4 fw6 mv4">
+          3. Use with data attributes
+        </h3>
+
+        <p class="lh-copy mv4 black-80">
+          Set <code>data-micromodal-trigger="modal-1"</code> on an element, like a button or link, on whose click you want to show the modal. The value of the attribute, in this case <code>modal-1</code> should correspond to the <code>id</code> of the modal you want to toggle.
+        </p>
+
+        <p class="lh-copy mv4 black-80">
+          Then instantiate the <code>MicroModal</code> module, so that it takes care of all the bindings for you.
+        </p>
+
+        <pre><code class="language-js">
+MicroModal.init();
+        </code></pre>
+
+
+        <p class="lh-copy mv4 black-80">
+          Example:-
+        </p>
+
+        <div class="bg-washed-green tc">
+          <div class="mv5 dib">
+
+            <a class="f5 fw6 db dark-green underline no-underline-hover" href="javascript:;" data-micromodal-trigger="modal-1">
+              Trigger Modal
+            </a>
+
+          </div>
+        </div>
+
+
+        <p class="lh-copy mv4 black-80">
+          The <code>init</code> method also accepts and optional configuration object. This can be used to pass hooks to be executed on the modal open and modal close events. Example:-
+        </p>
+
+        <pre><code class="language-js">
+MicroModal.init({
+  onClose: modal => console.info(`${modal.id} is hidden`), // [1]
+  onShow: modal => console.info(`${modal.id} is shown`) // [2]
+});
+        </code></pre>
+
+        <ul class="ordered lh-copy pl0 mv4">
+          <li class="pl4 pv3">
+            <code>onShow {Function}</code> This is fired when the modal is opening. The function receives the modal object as the first parameter.
+          </li>
+          <li class="pl4 pv3">
+            <code>onClose {Function}</code> This is fired when the modal is closing. The function receives the modal object as the first parameter.
+          </li>
+        </ul>
+
+        <h3 class="f4 fw6 mv4">
+          4. Use with javascript
+        </h3>
+
+        <p class="lh-copy mv4 black-80">
+          You can also trigger modals programmatically using the <code>show</code> method on the <code>MicroModal</code> object. Example:-
+        </p>
+
+        <pre><code class="language-js">
+MicroModal.show('modal3'); // [1]
+        </code></pre>
+
+        <ul class="ordered lh-copy pl0 mv4">
+          <li class="pl4 pv3">
+            The string passed to the <code>show</code> method must correspond to the <code>id</code> of the modal to be toggled
+          </li>
+        </ul>
+
+
+        <h2 class="f3 fw6 lh-title mt5 mb4 black heading" id="styling">
+          Styling
+        </h2>
+
+        <p class="lh-copy mv4 black-80">
+          Micromodal does not make any stylistic choices about your modal and hence comes with no styling at all. It does not even toggle the visibility of the modal. You are free to style the modal in anyway you wish.
+        </p>
+
+        <p class="lh-copy mv4 black-80">
+          At the very least, we recommend the following bit of <code>css</code> to toggle the modal.
+        </p>
+
+        <pre><code class="language-css">
+.modal[aria-hidden='true'] {
+  display: none;
+}
+        </code></pre>
+
+        <p class="lh-copy mv4 black-80">
+          In case you do want some default styles to get started quickly, you can refer to the styles and the corresponding markup of the demo modal <a href="https://gist.github.com/ghosh/4f94cf497d7090359a5c9f81caf60699" target="_blank" rel="noopener" class="blue underline no-underline-hover">here.</a>
+        </p>
+      </article>
+    </main>
+
+
+    <footer class="mv6 tc">
+      <p class="f4 mb2">🤘</p>
+      <div class="mt3">
+        <p class="f6 dib pl2 mid-gray">Built by <a href="https://twitter.com/knowkalpesh" target="_blank" rel="noopener" title="Kalpesh's twitter handle" class="f6 dib blue underline no-underline-hover">@knowkalpesh</a> and <a href="https://twitter.com/_ighosh" target="_blank" rel="noopener" title="Ghosh's twitter handle" class="f6 dib blue underline no-underline-hover">@ghosh</a></p>
+      </div>
+    </footer>
+
+  </div>
+
+
+  <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+      <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title" aria-describedby="modal-1-content">
+        <div role="document">
+          <header class="modal__header">
+            <h3 class="modal__title" id="modal-1-title">
+              Micromodal
+            </h3>
+            <button class="modal__close" aria-label="Close modal" aria-controls="modal__container1" data-micromodal-close></button>
+          </header>
+          <main class="modal__content" id="modal-1-content">
+            <p>
+              Try hitting the <code>tab</code> key and notice how the focus stays within the modal itself. Also, <code>esc</code> to close modal.
+            </p>
+          </main>
+          <footer class="modal__footer">
+            <button class="modal__btn modal__btn-primary">Continue</button>
+            <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/src/js/prism.js"></script>
+  <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
+  <script>
+
+      Prism.highlightAll();
+
+      MicroModal.init({
+        onClose: modal => console.info(`${modal.id} is hidden`),
+        onShow: modal => console.info(`${modal.id} is shown`)
+      });
+
+      var section = document.querySelectorAll(".heading");
+      var sections = {};
+
+      Array.prototype.forEach.call(section, function(e) {
+        sections[e.id] = e.offsetTop;
+      });
+
+      window.onscroll = function() {
+        var scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
+
+        for (i in sections) {
+          if (sections[i] <= scrollPosition) {
+            document.querySelector('.active').classList.remove('blue', 'fw6', 'active');
+            document.querySelector('a[href*=' + i + ']').classList.add('blue', 'fw6', 'active');
+          }
+        }
+      };
+
+
+  </script>
+</body>
+</html>
