@@ -66,10 +66,10 @@ curl -o https://unpkg.com/micromodal/dist/micromodal.min.js
 &nbsp;
 
 ## Release History
-* 0.1.0
-    * CHANGE: Released first minor version 😊
 * 0.1.1
     * BUGFIX: Fixed issue where validation was not firing
+* 0.1.0
+    * CHANGE: Released first minor version 😊
 
 &nbsp;
 
