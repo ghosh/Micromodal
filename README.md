@@ -23,6 +23,8 @@
 
 ---
 
+<img src="https://www.dropbox.com/s/8g7fr091tk8o62j/micromodal.gif?raw=1" width="100%">
+
 The aim of this library is to make modal dialogs accessible and easy to include in your project with minimum configuration. It's only 1.9kb minified and gzipped (Happy dance 👯) - A tiny library for big change.
 
 **[Demo and documentation](https://micromodal.now.sh/)**
@@ -64,6 +66,8 @@ curl -o https://unpkg.com/micromodal/dist/micromodal.min.js
 &nbsp;
 
 ## Release History
+* 0.1.1
+    * BUGFIX: Fixed issue where validation was not firing
 * 0.1.0
     * CHANGE: Released first minor version 😊
 
@@ -97,7 +101,7 @@ This project is licensed under [MIT license](https://opensource.org/licenses/MIT
 ## Contact
 You can mention us on Twitter for any questions, suggestions or just send us funny GIF. We ♥️ GIF.
 #### Tweet some love   ![Tweet](https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/twitter-20.png)
-[Tweet](https://twitter.com/intent/tweet?url=https%3A%2F%2Fgoo.gl%2FsEgnBZ&via=_ighosh&text=Make%20your%20modal%20dialogs%20accessible%20to%20all%20using%20Micromodal.js%2C%20a%20tiny%20library%20for%20big%20change.&hashtags=a11y "Tweet about Micromodal") about Micromodal and help us to spread the message about the importance of Web accessibility and Inclusive design.
+[Tweet](https://twitter.com/intent/tweet?url=https%3A%2F%2Fgoo.gl%2FsEgnBZ&text=Make%20your%20modal%20dialogs%20accessible%20to%20all%20using%20Micromodal.js%2C%20a%20tiny%20library%20for%20big%20change.&hashtags=a11y "Tweet about Micromodal") about Micromodal and help us to spread the message about the importance of Web accessibility and Inclusive design.
 
 &nbsp;
 
