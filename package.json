@@ -3,6 +3,7 @@
   "version": "0.1.1",
   "description": "Tiny javascript library for creating accessible modal dialogs",
   "main": "src/index.js",
+  "jsdelivr": "dist/micromodal.min.js",
   "module": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
