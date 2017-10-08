@@ -55,6 +55,8 @@ yarn add micromodal
 
 **via CDN direct link**
 ```
+<script src="https://cdn.jsdelivr.net/npm/micromodal/dist/micromodal.min.js"></script>
+<!-- or -->
 <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
 ```
 
