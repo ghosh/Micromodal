@@ -208,6 +208,8 @@ var MicroModal = function () {
           targetModal = _ref.targetModal,
           _ref$triggers = _ref.triggers,
           triggers = _ref$triggers === undefined ? [] : _ref$triggers,
+          _ref$noScroll = _ref.noScroll,
+          noScroll = _ref$noScroll === undefined ? false : _ref$noScroll,
           _ref$onShow = _ref.onShow,
           onShow = _ref$onShow === undefined ? function () {} : _ref$onShow,
           _ref$onClose = _ref.onClose,
@@ -217,6 +219,7 @@ var MicroModal = function () {
 
       this.modal = document.getElementById(targetModal);
       if (triggers.length > 0) this.registerTriggers.apply(this, toConsumableArray(triggers));
+      this.noScroll = noScroll;
       this.callbacks = { onShow: onShow, onClose: onClose };
 
       this.onClick = this.onClick.bind(this);
@@ -243,6 +246,7 @@ var MicroModal = function () {
       value: function showModal() {
         this.activeElement = document.activeElement;
         this.modal.setAttribute('aria-hidden', 'false');
+        if (this.noScroll) document.querySelector('body').classList.add('modal__showing');
         this.setFocusToFirstNode();
         this.addEventListeners();
         this.callbacks.onShow(this.modal);
@@ -252,6 +256,7 @@ var MicroModal = function () {
       value: function closeModal() {
         this.modal.setAttribute('aria-hidden', 'true');
         this.removeEventListeners();
+        if (this.noScroll) document.querySelector('body').classList.remove('modal__showing');
         this.activeElement.focus();
         this.callbacks.onClose(this.modal);
       }

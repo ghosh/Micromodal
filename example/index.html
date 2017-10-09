@@ -378,6 +378,7 @@ MicroModal.show('modal3'); // [1]
   <script>
 
   MicroModal.init({
+    noScroll: false,
     onClose: modal => console.info(`${modal.id} is hidden`),
     onShow: modal => console.info(`${modal.id} is shown`)
   });
