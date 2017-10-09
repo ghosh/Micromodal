@@ -6,7 +6,7 @@ const MicroModal = (() => {
   const FOCUSABLE_ELEMENTS = [
     'a[href]',
     'area[href]',
-    'input:not([disabled])',
+    'input:not([disabled]):not([type="hidden"])',
     'select:not([disabled])',
     'textarea:not([disabled])',
     'button:not([disabled])',
