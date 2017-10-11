@@ -66,8 +66,10 @@ const MicroModal = (() => {
     }
 
     onClick (event) {
-      if (event.target.hasAttribute('data-micromodal-close')) this.closeModal()
-      event.preventDefault()
+      if (event.target.hasAttribute('data-micromodal-close')) {
+        this.closeModal()
+        event.preventDefault()
+      }
     }
 
     onKeydown (event) {

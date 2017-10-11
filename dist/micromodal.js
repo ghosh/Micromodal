@@ -272,8 +272,10 @@ var MicroModal = function () {
     }, {
       key: 'onClick',
       value: function onClick(event) {
-        if (event.target.hasAttribute('data-micromodal-close')) this.closeModal();
-        event.preventDefault();
+        if (event.target.hasAttribute('data-micromodal-close')) {
+          this.closeModal();
+          event.preventDefault();
+        }
       }
     }, {
       key: 'onKeydown',
