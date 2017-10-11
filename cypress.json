@@ -1,0 +1,11 @@
+{
+  "baseUrl": "http://localhost:5000",
+  "fixturesFolder": false,
+  "supportFile": false,
+  "videoRecording": false,
+  "integrationFolder": "tests/",
+  "screenshotsFolder": "tests/screenshots",
+  "videosFolder": "tests/videos",
+  "viewportWidth": 980,
+  "viewportHeight": 800
+}
