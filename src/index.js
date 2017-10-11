@@ -6,7 +6,7 @@ const MicroModal = (() => {
   const FOCUSABLE_ELEMENTS = [
     'a[href]',
     'area[href]',
-    'input:not([disabled])',
+    'input:not([disabled]):not([type="hidden"])',
     'select:not([disabled])',
     'textarea:not([disabled])',
     'button:not([disabled])',
@@ -70,8 +70,10 @@ const MicroModal = (() => {
     }
 
     onClick (event) {
-      if (event.target.hasAttribute('data-micromodal-close')) this.closeModal()
-      event.preventDefault()
+      if (event.target.hasAttribute('data-micromodal-close')) {
+        this.closeModal()
+        event.preventDefault()
+      }
     }
 
     onKeydown (event) {
@@ -120,14 +122,14 @@ const MicroModal = (() => {
   const validateArgs = (triggers, triggerMap) => {
     if (triggers.length <= 0) {
       console.warn(`MicroModal v${version}: \u2757Please specify at least one %c'micromodal-trigger'`, 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'data attribute.')
-      console.warn(`MicroModal v${version}: %cExample:`, 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', `<a href="#" data-micromodal-trigger="my-modal"></a>`)
+      console.warn(`%cExample:`, 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', `<a href="#" data-micromodal-trigger="my-modal"></a>`)
       return false
     }
 
     for (var id in triggerMap) {
       if (!document.getElementById(id)) {
         console.warn(`MicroModal v${version}: \u2757Seems like you have missed %c'${id}'`, 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'ID somewhere in your code. Refer example below to resolve it.')
-        console.warn(`MicroModal v${version}: %cExample:`, 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', `<div class="modal" id="${id}"></div>`)
+        console.warn(`%cExample:`, 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', `<div class="modal" id="${id}"></div>`)
         return false
       }
     }
@@ -140,13 +142,12 @@ const MicroModal = (() => {
     const triggers = document.querySelectorAll('[data-micromodal-trigger]')
     const triggerMap = generateTriggerMap(triggers)
 
-    if (validateArgs(triggers, triggerMap)) {
-      for (var key in triggerMap) {
-        let value = triggerMap[key]
-        options.targetModal = key
-        options.triggers = [...value]
-        new Modal(options) // eslint-disable-line no-new
-      }
+    if (options.debugMode === true && validateArgs(triggers, triggerMap) === false) return
+    for (var key in triggerMap) {
+      let value = triggerMap[key]
+      options.targetModal = key
+      options.triggers = [...value]
+      new Modal(options) // eslint-disable-line no-new
     }
   }
 

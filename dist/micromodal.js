@@ -200,7 +200,7 @@ var toConsumableArray = function (arr) {
 var MicroModal = function () {
   'use strict';
 
-  var FOCUSABLE_ELEMENTS = ['a[href]', 'area[href]', 'input:not([disabled])', 'select:not([disabled])', 'textarea:not([disabled])', 'button:not([disabled])', 'iframe', 'object', 'embed', '[contenteditable]', '[tabindex]:not([tabindex^="-"])'];
+  var FOCUSABLE_ELEMENTS = ['a[href]', 'area[href]', 'input:not([disabled]):not([type="hidden"])', 'select:not([disabled])', 'textarea:not([disabled])', 'button:not([disabled])', 'iframe', 'object', 'embed', '[contenteditable]', '[tabindex]:not([tabindex^="-"])'];
 
   var Modal = function () {
     function Modal() {
@@ -277,8 +277,10 @@ var MicroModal = function () {
     }, {
       key: 'onClick',
       value: function onClick(event) {
-        if (event.target.hasAttribute('data-micromodal-close')) this.closeModal();
-        event.preventDefault();
+        if (event.target.hasAttribute('data-micromodal-close')) {
+          this.closeModal();
+          event.preventDefault();
+        }
       }
     }, {
       key: 'onKeydown',
@@ -335,14 +337,14 @@ var MicroModal = function () {
   var validateArgs = function validateArgs(triggers, triggerMap) {
     if (triggers.length <= 0) {
       console.warn('MicroModal v' + version + ': \u2757Please specify at least one %c\'micromodal-trigger\'', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'data attribute.');
-      console.warn('MicroModal v' + version + ': %cExample:', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', '<a href="#" data-micromodal-trigger="my-modal"></a>');
+      console.warn('%cExample:', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', '<a href="#" data-micromodal-trigger="my-modal"></a>');
       return false;
     }
 
     for (var id in triggerMap) {
       if (!document.getElementById(id)) {
         console.warn('MicroModal v' + version + ': \u2757Seems like you have missed %c\'' + id + '\'', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'ID somewhere in your code. Refer example below to resolve it.');
-        console.warn('MicroModal v' + version + ': %cExample:', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', '<div class="modal" id="' + id + '"></div>');
+        console.warn('%cExample:', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', '<div class="modal" id="' + id + '"></div>');
         return false;
       }
     }
@@ -355,13 +357,12 @@ var MicroModal = function () {
     var triggers = document.querySelectorAll('[data-micromodal-trigger]');
     var triggerMap = generateTriggerMap(triggers);
 
-    if (validateArgs(triggers, triggerMap)) {
-      for (var key in triggerMap) {
-        var value = triggerMap[key];
-        options.targetModal = key;
-        options.triggers = [].concat(toConsumableArray(value));
-        new Modal(options); // eslint-disable-line no-new
-      }
+    if (options.debugMode === true && validateArgs(triggers, triggerMap) === false) return;
+    for (var key in triggerMap) {
+      var value = triggerMap[key];
+      options.targetModal = key;
+      options.triggers = [].concat(toConsumableArray(value));
+      new Modal(options); // eslint-disable-line no-new
     }
   };
 
