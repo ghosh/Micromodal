@@ -258,14 +258,8 @@ var MicroModal = function () {
     }, {
       key: 'addEventListeners',
       value: function addEventListeners() {
-        var _this2 = this;
-
         this.modal.addEventListener('touchstart', this.onClick);
-        this.modal.addEventListener('click', function (event) {
-          if (event.target.hasAttribute('data-micromodal-close')) {
-            _this2.onClick(event);
-          }
-        });
+        this.modal.addEventListener('click', this.onClick);
         document.addEventListener('keydown', this.onKeydown);
       }
     }, {
@@ -278,8 +272,10 @@ var MicroModal = function () {
     }, {
       key: 'onClick',
       value: function onClick(event) {
-        this.closeModal();
-        event.preventDefault();
+        if (event.target.hasAttribute('data-micromodal-close')) {
+          this.closeModal();
+          event.preventDefault();
+        }
       }
     }, {
       key: 'onKeydown',
