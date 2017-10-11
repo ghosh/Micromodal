@@ -21,11 +21,13 @@ const MicroModal = (() => {
     constructor ({
       targetModal,
       triggers = [],
+      noScroll = false,
       onShow = () => {},
       onClose = () => {}
     } = {}) {
       this.modal = document.getElementById(targetModal)
       if (triggers.length > 0) this.registerTriggers(...triggers)
+      this.noScroll = noScroll
       this.callbacks = { onShow, onClose }
 
       this.onClick = this.onClick.bind(this)
@@ -41,6 +43,7 @@ const MicroModal = (() => {
     showModal () {
       this.activeElement = document.activeElement
       this.modal.setAttribute('aria-hidden', 'false')
+      if (this.noScroll) document.querySelector('body').classList.add('modal__showing')
       this.setFocusToFirstNode()
       this.addEventListeners()
       this.callbacks.onShow(this.modal)
@@ -49,6 +52,7 @@ const MicroModal = (() => {
     closeModal () {
       this.modal.setAttribute('aria-hidden', 'true')
       this.removeEventListeners()
+      if (this.noScroll) document.querySelector('body').classList.remove('modal__showing')
       this.activeElement.focus()
       this.callbacks.onClose(this.modal)
     }
