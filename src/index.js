@@ -21,13 +21,15 @@ const MicroModal = (() => {
     constructor ({
       targetModal,
       triggers = [],
-      noScroll = false,
+      disableScroll = false,
+      debugMode = false,
       onShow = () => {},
       onClose = () => {}
     } = {}) {
       this.modal = document.getElementById(targetModal)
       if (triggers.length > 0) this.registerTriggers(...triggers)
-      this.noScroll = noScroll
+
+      this.disableScroll = disableScroll
       this.callbacks = { onShow, onClose }
 
       this.onClick = this.onClick.bind(this)
@@ -43,7 +45,7 @@ const MicroModal = (() => {
     showModal () {
       this.activeElement = document.activeElement
       this.modal.setAttribute('aria-hidden', 'false')
-      if (this.noScroll) document.querySelector('body').classList.add('modal__showing')
+      this.scrollBehaviour('disable')
       this.setFocusToFirstNode()
       this.addEventListeners()
       this.callbacks.onShow(this.modal)
@@ -52,9 +54,24 @@ const MicroModal = (() => {
     closeModal () {
       this.modal.setAttribute('aria-hidden', 'true')
       this.removeEventListeners()
-      if (this.noScroll) document.querySelector('body').classList.remove('modal__showing')
+      this.scrollBehaviour('enable')
       this.activeElement.focus()
       this.callbacks.onClose(this.modal)
+    }
+
+    scrollBehaviour (toggle) {
+      if (this.disableScroll === false) return
+
+      const body = document.querySelector('body')
+      switch (toggle) {
+        case 'enable':
+          Object.assign(body.style, {overflow: 'initial', height: 'initial'})
+          break
+        case 'disable':
+          Object.assign(body.style, {overflow: 'hidden', height: '100vh'})
+          break
+        default:
+      }
     }
 
     addEventListeners () {
@@ -143,6 +160,7 @@ const MicroModal = (() => {
     const triggerMap = generateTriggerMap(triggers)
 
     if (options.debugMode === true && validateArgs(triggers, triggerMap) === false) return
+
     for (var key in triggerMap) {
       let value = triggerMap[key]
       options.targetModal = key

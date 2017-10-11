@@ -208,8 +208,10 @@ var MicroModal = function () {
           targetModal = _ref.targetModal,
           _ref$triggers = _ref.triggers,
           triggers = _ref$triggers === undefined ? [] : _ref$triggers,
-          _ref$noScroll = _ref.noScroll,
-          noScroll = _ref$noScroll === undefined ? false : _ref$noScroll,
+          _ref$disableScroll = _ref.disableScroll,
+          disableScroll = _ref$disableScroll === undefined ? false : _ref$disableScroll,
+          _ref$debugMode = _ref.debugMode,
+          debugMode = _ref$debugMode === undefined ? false : _ref$debugMode,
           _ref$onShow = _ref.onShow,
           onShow = _ref$onShow === undefined ? function () {} : _ref$onShow,
           _ref$onClose = _ref.onClose,
@@ -219,7 +221,8 @@ var MicroModal = function () {
 
       this.modal = document.getElementById(targetModal);
       if (triggers.length > 0) this.registerTriggers.apply(this, toConsumableArray(triggers));
-      this.noScroll = noScroll;
+
+      this.disableScroll = disableScroll;
       this.callbacks = { onShow: onShow, onClose: onClose };
 
       this.onClick = this.onClick.bind(this);
@@ -246,7 +249,7 @@ var MicroModal = function () {
       value: function showModal() {
         this.activeElement = document.activeElement;
         this.modal.setAttribute('aria-hidden', 'false');
-        if (this.noScroll) document.querySelector('body').classList.add('modal__showing');
+        this.scrollBehaviour('disable');
         this.setFocusToFirstNode();
         this.addEventListeners();
         this.callbacks.onShow(this.modal);
@@ -256,9 +259,25 @@ var MicroModal = function () {
       value: function closeModal() {
         this.modal.setAttribute('aria-hidden', 'true');
         this.removeEventListeners();
-        if (this.noScroll) document.querySelector('body').classList.remove('modal__showing');
+        this.scrollBehaviour('enable');
         this.activeElement.focus();
         this.callbacks.onClose(this.modal);
+      }
+    }, {
+      key: 'scrollBehaviour',
+      value: function scrollBehaviour(toggle) {
+        if (this.disableScroll === false) return;
+
+        var body = document.querySelector('body');
+        switch (toggle) {
+          case 'enable':
+            Object.assign(body.style, { overflow: 'initial', height: 'initial' });
+            break;
+          case 'disable':
+            Object.assign(body.style, { overflow: 'hidden', height: '100vh' });
+            break;
+          default:
+        }
       }
     }, {
       key: 'addEventListeners',
@@ -358,6 +377,7 @@ var MicroModal = function () {
     var triggerMap = generateTriggerMap(triggers);
 
     if (options.debugMode === true && validateArgs(triggers, triggerMap) === false) return;
+
     for (var key in triggerMap) {
       var value = triggerMap[key];
       options.targetModal = key;
