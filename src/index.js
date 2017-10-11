@@ -55,7 +55,11 @@ const MicroModal = (() => {
 
     addEventListeners () {
       this.modal.addEventListener('touchstart', this.onClick)
-      this.modal.addEventListener('click', this.onClick)
+      this.modal.addEventListener('click', (event) => {
+        if (event.target.hasAttribute('data-micromodal-close')) {
+          this.onClick(event)
+        }
+      })
       document.addEventListener('keydown', this.onKeydown)
     }
 
@@ -66,7 +70,7 @@ const MicroModal = (() => {
     }
 
     onClick (event) {
-      if (event.target.hasAttribute('data-micromodal-close')) this.closeModal()
+      this.closeModal()
       event.preventDefault()
     }
 
