@@ -178,6 +178,7 @@ const MicroModal = (() => {
     }
   }
 
+  let activeModal = null
 
   /**
    * Shows a particular modal
@@ -194,11 +195,15 @@ const MicroModal = (() => {
       validateModalPresence(targetModal) === false
     ) return
 
-    const modal = new Modal(options) // eslint-disable-line no-new
-    modal.showModal()
+    activeModal = new Modal(options) // eslint-disable-line no-new
+    activeModal.showModal()
   }
 
-  return { init, show }
+  const close = () => {
+    activeModal.closeModal()
+  }
+
+  return { init, show, close }
 })()
 
 export default MicroModal

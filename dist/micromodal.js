@@ -393,6 +393,8 @@ var MicroModal = function () {
     }
   };
 
+  var activeModal = null;
+
   /**
    * Shows a particular modal
    * @param  {string} targetModal [The id of the modal to display]
@@ -405,11 +407,15 @@ var MicroModal = function () {
 
     if (options.debugMode === true && validateModalPresence(targetModal) === false) return;
 
-    var modal = new Modal(options); // eslint-disable-line no-new
-    modal.showModal();
+    activeModal = new Modal(options); // eslint-disable-line no-new
+    activeModal.showModal();
   };
 
-  return { init: init, show: show };
+  var close = function close() {
+    activeModal.closeModal();
+  };
+
+  return { init: init, show: show, close: close };
 }();
 
 return MicroModal;

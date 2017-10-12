@@ -400,7 +400,7 @@ MicroModal.show('modal-id'); // [1]
           </main>
           <footer class="modal__footer">
             <input type="submit" class="modal__btn modal__btn-primary" value="Login"/>
-            <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Cancel</button>
+            <a class="f6 ml2 dark-blue no-underline underline-hover js-modal-close-trigger" href="#" aria-label="Close this dialog window">Cancel</a>
           </footer>
           </form>
         </div>
@@ -425,6 +425,11 @@ MicroModal.show('modal-id'); // [1]
       onClose: modal => console.info(`${modal.id} is hidden`),
       onShow: modal => console.info(`${modal.id} is shown`)
     })
+  });
+
+  document.querySelector('.js-modal-close-trigger').addEventListener('click', function (event) {
+    event.preventDefault();
+    MicroModal.close('modal-2')
   });
 
   // Scrollspy
