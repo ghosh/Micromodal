@@ -266,7 +266,7 @@ MicroModal.init();
         <div class="bg-washed-green tc">
           <div class="mv5 dib">
 
-            <a class="f5 fw6 db dark-green underline no-underline-hover" href="javascript:;" data-micromodal-trigger="modal-1">
+            <a class="f5 fw6 db dark-green underline no-underline-hover" href="javascript:;" data-micromodal-trigger="modal-2">
               Trigger Modal
             </a>
 
@@ -379,10 +379,43 @@ MicroModal.show('modal3'); // [1]
   </div>
 
 
+  <div class="modal micromodal-slide" id="modal-2" aria-hidden="true">
+    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+      <div class="modal__container w-90 w-40-ns" role="dialog" aria-modal="true" aria-labelledby="modal-1-title" aria-describedby="modal-1-content">
+        <div role="document">
+          <header class="modal__header">
+            <h3 class="modal__title" id="modal-1-title">
+              Login
+            </h3>
+            <button class="modal__close" aria-label="Close modal" aria-controls="modal__container1" data-micromodal-close></button>
+          </header>
+          <form class="black-80" action="/">
+          <main class="modal__content" id="modal-1-content">
+              <div class="measure">
+                <label for="name" class="f6 b db mb2 js-name">Name</label>
+                <input id="name" class="input-reset ba b--black-20 pa2 mb2 db w-100 js-nameInput" type="text">
+
+                <label for="password" class="f6 b db mb2 mt3">Password <span class="normal black-60">(required)</span></label>
+                <input id="password" class="input-reset ba b--black-20 pa2 mb2 db w-100" type="password" required>
+                <small id="name-desc" class="f6 black-60 db mb2">Must be atleast 6 characters long.</small>
+              </div>
+          </main>
+          <footer class="modal__footer">
+            <input type="submit" class="modal__btn modal__btn-primary" value="Login"/>
+            <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Cancel</button>
+          </footer>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <script src="site.min.js"></script>
   <script>
 
   MicroModal.init({
+    debugMode: true,
     onClose: modal => console.info(`${modal.id} is hidden`),
     onShow: modal => console.info(`${modal.id} is shown`)
   });

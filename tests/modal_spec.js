@@ -1,10 +1,10 @@
-describe('Modal page', () => {
+describe('Modal', () => {
   const openModal = () => {
     cy.contains('Demo Modal').click()
   }
 
   const closeModal = () => {
-    cy.get('.modal__overlay').click('left')
+    cy.get('#modal-1 .modal__overlay').click('left')
   }
 
   it('should sucessfully load', () => {
@@ -16,8 +16,8 @@ describe('Modal page', () => {
   })
 
   it('should not see the modal by default', () => {
-    cy.get('.modal').and('not.be.visible')
-    cy.get('.modal__overlay').and('not.be.visible')
+    cy.get('#modal-1').and('not.be.visible')
+    cy.get('#modal-1 .modal__overlay').and('not.be.visible')
   })
 
   /**
@@ -27,31 +27,31 @@ describe('Modal page', () => {
    */
   it('should fire modal on clicking button', () => {
     openModal()
-    cy.get('.modal__overlay').and('be.visible')
+    cy.get('#modal-1 .modal__overlay').and('be.visible')
   })
 
   it('should close modal on overlay click', () => {
     closeModal()
-    cy.get('.modal__overlay').and('not.be.visible')
+    cy.get('#modal-1 .modal__overlay').and('not.be.visible')
   })
 
   it('should close modal on button click', () => {
     openModal()
-    cy.get('.modal__btn:last').click()
-    cy.get('.modal__overlay').and('not.be.visible')
+    cy.get('#modal-1 .modal__btn:last').click()
+    cy.get('#modal-1 .modal__overlay').and('not.be.visible')
   })
 
   it('should close modal on escape button press', () => {
     openModal()
     cy.get('body').type('{esc}')
-    cy.get('.modal__overlay').and('not.be.visible')
+    cy.get('#modal-1 .modal__overlay').and('not.be.visible')
   })
 
   it('should toggle aria-hidden class', () => {
-    cy.get('.modal').should('have.attr', 'aria-hidden', 'true')
+    cy.get('#modal-1').should('have.attr', 'aria-hidden', 'true')
     openModal()
-    cy.get('.modal').should('have.attr', 'aria-hidden', 'false')
+    cy.get('#modal-1').should('have.attr', 'aria-hidden', 'false')
     closeModal()
-    cy.get('.modal').should('have.attr', 'aria-hidden', 'true')
+    cy.get('#modal-1').should('have.attr', 'aria-hidden', 'true')
   })
 })
