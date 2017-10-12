@@ -353,21 +353,28 @@ var MicroModal = function () {
     return triggerMap;
   };
 
-  var validateArgs = function validateArgs(triggers, triggerMap) {
+  var validateModalPresence = function validateModalPresence(id) {
+    if (!document.getElementById(id)) {
+      console.warn('MicroModal v' + version + ': \u2757Seems like you have missed %c\'' + id + '\'', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'ID somewhere in your code. Refer example below to resolve it.');
+      console.warn('%cExample:', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', '<div class="modal" id="' + id + '"></div>');
+      return false;
+    }
+  };
+
+  var validateTriggerPresence = function validateTriggerPresence(triggers) {
     if (triggers.length <= 0) {
       console.warn('MicroModal v' + version + ': \u2757Please specify at least one %c\'micromodal-trigger\'', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'data attribute.');
       console.warn('%cExample:', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', '<a href="#" data-micromodal-trigger="my-modal"></a>');
       return false;
     }
+  };
 
+  var validateArgs = function validateArgs(triggers, triggerMap) {
+    validateTriggerPresence(triggers);
+    if (!triggerMap) return true;
     for (var id in triggerMap) {
-      if (!document.getElementById(id)) {
-        console.warn('MicroModal v' + version + ': \u2757Seems like you have missed %c\'' + id + '\'', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'ID somewhere in your code. Refer example below to resolve it.');
-        console.warn('%cExample:', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', '<div class="modal" id="' + id + '"></div>');
-        return false;
-      }
-    }
-    return true;
+      validateModalPresence(id);
+    }return true;
   };
 
   var init = function init(config) {
@@ -386,8 +393,19 @@ var MicroModal = function () {
     }
   };
 
-  var show = function show(targetModal) {
-    var modal = new Modal({ targetModal: targetModal }); // eslint-disable-line no-new
+  /**
+   * Shows a particular modal
+   * @param  {string} targetModal [The id of the modal to display]
+   * @param  {{object}} config [The configuration object to pass]
+   * @return {void}
+   */
+  var show = function show(targetModal, config) {
+    var options = config || {};
+    options.targetModal = targetModal;
+
+    if (options.debugMode === true && validateModalPresence(targetModal) === false) return;
+
+    var modal = new Modal(options); // eslint-disable-line no-new
     modal.showModal();
   };
 

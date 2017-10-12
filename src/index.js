@@ -136,20 +136,26 @@ const MicroModal = (() => {
     return triggerMap
   }
 
-  const validateArgs = (triggers, triggerMap) => {
+  const validateModalPresence = id => {
+    if (!document.getElementById(id)) {
+      console.warn(`MicroModal v${version}: \u2757Seems like you have missed %c'${id}'`, 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'ID somewhere in your code. Refer example below to resolve it.')
+      console.warn(`%cExample:`, 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', `<div class="modal" id="${id}"></div>`)
+      return false
+    }
+  }
+
+  const validateTriggerPresence = triggers => {
     if (triggers.length <= 0) {
       console.warn(`MicroModal v${version}: \u2757Please specify at least one %c'micromodal-trigger'`, 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'data attribute.')
       console.warn(`%cExample:`, 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', `<a href="#" data-micromodal-trigger="my-modal"></a>`)
       return false
     }
+  }
 
-    for (var id in triggerMap) {
-      if (!document.getElementById(id)) {
-        console.warn(`MicroModal v${version}: \u2757Seems like you have missed %c'${id}'`, 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'ID somewhere in your code. Refer example below to resolve it.')
-        console.warn(`%cExample:`, 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', `<div class="modal" id="${id}"></div>`)
-        return false
-      }
-    }
+  const validateArgs = (triggers, triggerMap) => {
+    validateTriggerPresence(triggers)
+    if (!triggerMap) return true
+    for (var id in triggerMap) validateModalPresence(id)
     return true
   }
 
@@ -159,7 +165,10 @@ const MicroModal = (() => {
     const triggers = document.querySelectorAll('[data-micromodal-trigger]')
     const triggerMap = generateTriggerMap(triggers)
 
-    if (options.debugMode === true && validateArgs(triggers, triggerMap) === false) return
+    if (
+      options.debugMode === true &&
+      validateArgs(triggers, triggerMap) === false
+    ) return
 
     for (var key in triggerMap) {
       let value = triggerMap[key]
@@ -169,8 +178,23 @@ const MicroModal = (() => {
     }
   }
 
-  const show = targetModal => {
-    const modal = new Modal({ targetModal: targetModal }) // eslint-disable-line no-new
+
+  /**
+   * Shows a particular modal
+   * @param  {string} targetModal [The id of the modal to display]
+   * @param  {{object}} config [The configuration object to pass]
+   * @return {void}
+   */
+  const show = (targetModal, config) => {
+    const options = config || {}
+    options.targetModal = targetModal
+
+    if (
+      options.debugMode === true &&
+      validateModalPresence(targetModal) === false
+    ) return
+
+    const modal = new Modal(options) // eslint-disable-line no-new
     modal.showModal()
   }
 
