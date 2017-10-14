@@ -49,12 +49,12 @@
 
 
 </head>
-<body class="sans-serif bg-white-20 bt bw3">
+<body class="js-body sans-serif bg-white-20 bt bw3">
 
   <div class="center cf ph3 mw6 mw7-l">
 
     <header class="header mt5">
-      <div class="logo pv2">
+      <div class="logo pv2" id="logo">
         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="25" viewBox="0 0 40 25">
           <g fill-rule="evenodd">
             <path d="M1.2 0h37.6c.6627 0 1.2.5373 1.2 1.2v22.6c0 .6627-.5373 1.2-1.2 1.2H1.2C.5373 25 0 24.4627 0 23.8V1.2C0 .5373.5373 0 1.2 0zm5.6 6.0484c-.4418 0-.8.3582-.8.8v11.3032c0 .4418.3582.8.8.8h26.8c.4418 0 .8-.3582.8-.8V6.8484c0-.4418-.3582-.8-.8-.8H6.8z"/>
@@ -342,7 +342,7 @@ MicroModal.show('modal-id'); // [1]
     </main>
 
 
-    <footer class="mv6 tc">
+    <footer class="mv6 tc" id="footer">
       <p class="f4 mb2">🤘</p>
       <div class="mt3">
         <p class="f6 dib pl2 mid-gray">Built by <a href="https://twitter.com/knowkalpesh" target="_blank" rel="noopener" title="Kalpesh's twitter handle" class="f6 dib blue underline no-underline-hover">@knowkalpesh</a> and <a href="https://twitter.com/_ighosh" target="_blank" rel="noopener" title="Ghosh's twitter handle" class="f6 dib blue underline no-underline-hover">@ghosh</a></p>
@@ -409,44 +409,11 @@ MicroModal.show('modal-id'); // [1]
   </div>
 
 
-  <div class="modal micromodal-slide" id="modal-2" aria-hidden="true">
-    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-      <div class="modal__container w-90 w-40-ns" role="dialog" aria-modal="true" aria-labelledby="modal-1-title" aria-describedby="modal-1-content">
-        <div role="document">
-          <header class="modal__header">
-            <h3 class="modal__title" id="modal-1-title">
-              Login
-            </h3>
-            <button class="modal__close" aria-label="Close modal" aria-controls="modal__container1" data-micromodal-close></button>
-          </header>
-          <form class="black-80" action="/">
-          <main class="modal__content" id="modal-1-content">
-              <div class="measure">
-                <label for="name" class="f6 b db mb2 js-name">Name</label>
-                <input id="name" class="input-reset ba b--black-20 pa2 mb2 db w-100 js-nameInput" type="text">
-
-                <label for="password" class="f6 b db mb2 mt3">Password <span class="normal black-60">(required)</span></label>
-                <input id="password" class="input-reset ba b--black-20 pa2 mb2 db w-100" type="password" required>
-                <small id="name-desc" class="f6 black-60 db mb2">Must be atleast 6 characters long.</small>
-              </div>
-          </main>
-          <footer class="modal__footer">
-            <input type="submit" class="modal__btn modal__btn-primary" value="Login"/>
-            <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Cancel</button>
-          </footer>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
   <script src="site.min.js"></script>
   <script>
 
   // Initial config for setting up modals
   MicroModal.init({
-    debugMode: true,
     onClose: modal => console.info(`${modal.id} is hidden`),
     onShow: modal => console.info(`${modal.id} is shown`)
   });
@@ -454,6 +421,8 @@ MicroModal.show('modal-id'); // [1]
   // Programmatically show modal
   document.querySelector('.js-modal-trigger').addEventListener('click', function () {
     MicroModal.show('modal-2', {
+      debugMode: true,
+      disableScroll: true,
       onClose: modal => console.info(`${modal.id} is hidden`),
       onShow: modal => console.info(`${modal.id} is shown`)
     })
