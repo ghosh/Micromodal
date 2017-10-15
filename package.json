@@ -7,7 +7,7 @@
   "module": "src/index.js",
   "scripts": {
     "test": "cypress run",
-    "test:dash": "cypress open",
+    "test:gui": "cypress open",
     "styles:dev": "postcss example/assets/styles/style.css -c -o example/site.min.css -w",
     "styles:build": "NODE_ENV=production postcss example/assets/styles/style.css -c -o example/site.min.css",
     "scripts:dev": "rollup -c -w",
