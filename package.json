@@ -6,7 +6,8 @@
   "jsdelivr": "dist/micromodal.min.js",
   "module": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "cypress run",
+    "test:gui": "cypress open",
     "styles:dev": "postcss example/assets/styles/style.css -c -o example/site.min.css -w",
     "styles:build": "NODE_ENV=production postcss example/assets/styles/style.css -c -o example/site.min.css",
     "scripts:dev": "rollup -c -w",
@@ -31,6 +32,7 @@
     "babel-preset-latest": "^6.24.1",
     "concurrently": "^3.5.0",
     "cssnano": "^3.10.0",
+    "cypress": "^1.0.1",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-node": "^5.2.0",

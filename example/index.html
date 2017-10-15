@@ -49,12 +49,12 @@
 
 
 </head>
-<body class="sans-serif bg-white-20 bt bw3">
+<body class="js-body sans-serif bg-white-20 bt bw3">
 
   <div class="center cf ph3 mw6 mw7-l">
 
     <header class="header mt5">
-      <div class="logo pv2">
+      <div class="logo pv2" id="logo">
         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="25" viewBox="0 0 40 25">
           <g fill-rule="evenodd">
             <path d="M1.2 0h37.6c.6627 0 1.2.5373 1.2 1.2v22.6c0 .6627-.5373 1.2-1.2 1.2H1.2C.5373 25 0 24.4627 0 23.8V1.2C0 .5373.5373 0 1.2 0zm5.6 6.0484c-.4418 0-.8.3582-.8.8v11.3032c0 .4418.3582.8.8.8h26.8c.4418 0 .8-.3582.8-.8V6.8484c0-.4418-.3582-.8-.8-.8H6.8z"/>
@@ -342,7 +342,7 @@ MicroModal.show('modal-id'); // [1]
     </main>
 
 
-    <footer class="mv6 tc">
+    <footer class="mv6 tc" id="footer">
       <p class="f4 mb2">🤘</p>
       <div class="mt3">
         <p class="f6 dib pl2 mid-gray">Built by <a href="https://twitter.com/knowkalpesh" target="_blank" rel="noopener" title="Kalpesh's twitter handle" class="f6 dib blue underline no-underline-hover">@knowkalpesh</a> and <a href="https://twitter.com/_ighosh" target="_blank" rel="noopener" title="Ghosh's twitter handle" class="f6 dib blue underline no-underline-hover">@ghosh</a></p>
@@ -414,7 +414,6 @@ MicroModal.show('modal-id'); // [1]
 
   // Initial config for setting up modals
   MicroModal.init({
-    debugMode: true,
     onClose: modal => console.info(`${modal.id} is hidden`),
     onShow: modal => console.info(`${modal.id} is shown`)
   });
@@ -422,8 +421,10 @@ MicroModal.show('modal-id'); // [1]
   // Programmatically show modal
   document.querySelector('.js-modal-trigger').addEventListener('click', function () {
     MicroModal.show('modal-2', {
-      onClose: modal => console.info(`${modal.id} is hidden`),
-      onShow: modal => console.info(`${modal.id} is shown`)
+      debugMode: true,
+      disableScroll: true,
+      onClose: modal => document.querySelector('.js-body').classList.remove(`${modal.id}`),
+      onShow: modal =>  document.querySelector('.js-body').classList.add(`${modal.id}`)
     })
   });
 
