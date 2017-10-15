@@ -21,7 +21,7 @@ describe('Scroll', () => {
     closeModal1()
   })
 
-  it('should should not work when not enabled', () => {
+  it('should not work when disabled', () => {
     cy.visit('/')
     openModal2()
     cy.get('.js-body').should('have.css', 'overflow', 'hidden')

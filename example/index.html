@@ -423,8 +423,8 @@ MicroModal.show('modal-id'); // [1]
     MicroModal.show('modal-2', {
       debugMode: true,
       disableScroll: true,
-      onClose: modal => console.info(`${modal.id} is hidden`),
-      onShow: modal => console.info(`${modal.id} is shown`)
+      onClose: modal => document.querySelector('.js-body').classList.remove(`${modal.id}`),
+      onShow: modal =>  document.querySelector('.js-body').classList.add(`${modal.id}`)
     })
   });
 
