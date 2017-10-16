@@ -12,7 +12,7 @@
   <a href="https://opensource.org/licenses/MIT" target="_blank">
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License">
   </a>
-  <a href="https://travis-ci.org/ghosh/microtip" target="_blank">
+  <a href="https://travis-ci.org/ghosh/micromodal" target="_blank">
     <img src="https://img.shields.io/npm/v/micromodal.svg" alt="Package version">
   </a>
 </p>
