@@ -6,7 +6,7 @@
   "jsdelivr": "dist/micromodal.min.js",
   "module": "src/index.js",
   "scripts": {
-    "test": "cypress run && bundlesize",
+    "test": "cypress run",
     "test:gui": "cypress open",
     "bundlesize": "bundlesize",
     "styles:dev": "postcss example/assets/styles/style.css -c -o example/site.min.css -w",
