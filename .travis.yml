@@ -8,7 +8,8 @@ cache:
 before_install:
   - npm install -g yarn
   - yarn
+  - yarn dev &
 script:
-  - yarn bundlesize
+  - yarn test
 notifications:
   email: false
