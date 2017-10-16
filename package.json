@@ -6,8 +6,9 @@
   "jsdelivr": "dist/micromodal.min.js",
   "module": "src/index.js",
   "scripts": {
-    "test": "cypress run",
+    "test": "cypress run && bundlesize",
     "test:gui": "cypress open",
+    "bundlesize": "bundlesize",
     "styles:dev": "postcss example/assets/styles/style.css -c -o example/site.min.css -w",
     "styles:build": "NODE_ENV=production postcss example/assets/styles/style.css -c -o example/site.min.css",
     "scripts:dev": "rollup -c -w",
@@ -30,6 +31,7 @@
     "babel-core": "^6.26.0",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-latest": "^6.24.1",
+    "bundlesize": "^0.15.3",
     "concurrently": "^3.5.0",
     "cssnano": "^3.10.0",
     "cypress": "^1.0.2",
@@ -53,5 +55,11 @@
     "tachyons": "^4.8.1",
     "uncss": "^0.15.0",
     "watch": "^1.0.2"
-  }
+  },
+  "bundlesize": [
+    {
+      "path": "./dist/micromodal.min.js",
+      "maxSize": "2.5 kB"
+    }
+  ]
 }
