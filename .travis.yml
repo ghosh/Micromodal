@@ -12,5 +12,6 @@ before_install:
   - yarn dev &
 script:
   - yarn test
+  - yarn bundlesize
 notifications:
   email: false
