@@ -1,0 +1,14 @@
+dist: trusty
+language: node_js
+node_js:
+  - "node"
+cache:
+  directories:
+    - node_modules
+before_install:
+  - npm install -g yarn
+  - yarn
+script:
+  - yarn test
+notifications:
+  email: false
