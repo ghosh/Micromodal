@@ -9,6 +9,6 @@ before_install:
   - npm install -g yarn
   - yarn
 script:
-  - yarn test
+  - yarn bundlesize
 notifications:
   email: false
