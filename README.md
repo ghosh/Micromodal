@@ -31,6 +31,12 @@ The aim of this library is to make modal dialogs accessible and easy to include 
 
 &nbsp;
 
+<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/U7SKSneQBRgvgkE68HFbqR1q/ghosh/micromodal'>
+  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/U7SKSneQBRgvgkE68HFbqR1q/ghosh/micromodal.svg' />
+</a>
+
+&nbsp;
+
 ## Features
 ✔︎ Toggles relevant aria attributes on open and close   
 ✔︎ Closes modal on overlay click   
