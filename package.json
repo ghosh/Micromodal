@@ -27,6 +27,10 @@
   ],
   "author": "Indrashish Ghosh",
   "license": "MIT",
+  "repository": "https://github.com/ghosh/micromodal",
+  "bugs": {
+    "url": "https://github.com/ghosh/micromodal/issues"
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-plugin-external-helpers": "^6.22.0",
