@@ -9,11 +9,14 @@
   <a href="#">
     <img src="https://img.shields.io/badge/made%20with-love-E760A4.svg" alt="Made with love">
   </a>
-  <a href="https://opensource.org/licenses/MIT" target="_blank">
+  <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License">
   </a>
-  <a href="https://travis-ci.org/ghosh/micromodal" target="_blank">
+  <a href="https://www.npmjs.com/package/micromodal" target="_blank" rel="noopener">
     <img src="https://img.shields.io/npm/v/micromodal.svg" alt="Package version">
+  </a>
+  <a href="https://travis-ci.org/ghosh/micromodal" target="_blank" rel="noopener">
+    <img src="https://api.travis-ci.org/ghosh/micromodal.svg" alt="Build Status">
   </a>
 </p>
 
