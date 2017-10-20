@@ -37,9 +37,10 @@ const MicroModal = (() => {
     }
 
     registerTriggers (...triggers) {
-      triggers.forEach(trigger => {
-        trigger.addEventListener('click', () => this.showModal())
-      })
+	  var triggerLen = triggers.length;
+	  while (triggerLen--) {
+	    trigger.addEventListener('click', () => this.showModal())
+	  }
     }
 
     showModal () {
@@ -126,12 +127,13 @@ const MicroModal = (() => {
 
   const generateTriggerMap = triggers => {
     const triggerMap = []
-
-    triggers.forEach(trigger => {
+	
+	var triggerLen = triggers.length;
+	while (triggerLen--) {
       const targetModal = trigger.dataset.micromodalTrigger
       if (triggerMap[targetModal] === undefined) triggerMap[targetModal] = []
       triggerMap[targetModal].push(trigger)
-    })
+	}
 
     return triggerMap
   }
