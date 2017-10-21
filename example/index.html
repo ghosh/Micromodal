@@ -414,8 +414,17 @@ MicroModal.show('modal-id'); // [1]
 
   // Initial config for setting up modals
   MicroModal.init({
-    onClose: modal => console.info(`${modal.id} is hidden`),
-    onShow: modal => console.info(`${modal.id} is shown`)
+    onClose: modal => {
+        console.info(`${modal.id} is hidden`);
+        document.getElementById(modal.id).classList.add('is-close');
+        document.getElementById(modal.id).classList.remove('is-open');
+    },
+    onShow: modal => {
+        console.info(`${modal.id} is shown`);
+        document.getElementById(modal.id).classList.add('is-open');
+        document.getElementById(modal.id).classList.remove('is-close');
+    }
+
   });
 
   // Programmatically show modal
@@ -423,8 +432,14 @@ MicroModal.show('modal-id'); // [1]
     MicroModal.show('modal-2', {
       debugMode: true,
       disableScroll: true,
-      onClose: modal => document.querySelector('.js-body').classList.remove(`${modal.id}`),
-      onShow: modal =>  document.querySelector('.js-body').classList.add(`${modal.id}`)
+      onClose: modal => {
+          document.getElementById(modal.id).classList.add('is-close');
+          document.getElementById(modal.id).classList.remove('is-open');
+      },
+      onShow: modal =>  {
+          document.getElementById(modal.id).classList.add('is-open');
+          document.getElementById(modal.id).classList.remove('is-close');
+      }
     })
   });
 
