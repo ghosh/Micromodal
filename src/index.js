@@ -38,11 +38,13 @@ const MicroModal = (() => {
 
     registerTriggers (...triggers) {
       triggers.forEach(trigger => {
-        trigger.addEventListener('click', () => this.showModal())
+        trigger.addEventListener('click', event => this.showModal(event))
       })
     }
 
-    showModal () {
+    showModal (event) {
+      if (event.target.nodeName === 'A') event.preventDefault()
+
       this.activeElement = document.activeElement
       this.modal.setAttribute('aria-hidden', 'false')
       this.scrollBehaviour('disable')
