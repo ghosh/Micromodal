@@ -380,7 +380,7 @@ var MicroModal = function () {
   var init = function init(config) {
     var options = config || {};
 
-    var triggers = document.querySelectorAll('[data-micromodal-trigger]');
+    var triggers = [].concat(toConsumableArray(document.querySelectorAll('[data-micromodal-trigger]')));
     var triggerMap = generateTriggerMap(triggers);
 
     if (options.debugMode === true && validateArgs(triggers, triggerMap) === false) return;
