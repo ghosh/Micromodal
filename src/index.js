@@ -162,7 +162,7 @@ const MicroModal = (() => {
   const init = config => {
     const options = config || {}
 
-    const triggers = document.querySelectorAll('[data-micromodal-trigger]')
+    const triggers = [...document.querySelectorAll('[data-micromodal-trigger]')]
     const triggerMap = generateTriggerMap(triggers)
 
     if (
