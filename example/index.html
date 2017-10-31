@@ -413,18 +413,13 @@ MicroModal.show('modal-id'); // [1]
   <script>
 
   // Initial config for setting up modals
-  MicroModal.init({
-    onClose: modal => console.info(`${modal.id} is hidden`),
-    onShow: modal => console.info(`${modal.id} is shown`)
-  });
+  MicroModal.init();
 
   // Programmatically show modal
   document.querySelector('.js-modal-trigger').addEventListener('click', function () {
     MicroModal.show('modal-2', {
       debugMode: true,
-      disableScroll: true,
-      onClose: modal => document.querySelector('.js-body').classList.remove(`${modal.id}`),
-      onShow: modal =>  document.querySelector('.js-body').classList.add(`${modal.id}`)
+      disableScroll: true
     })
   });
 
