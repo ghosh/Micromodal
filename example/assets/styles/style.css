@@ -7,9 +7,9 @@
   Required Styles
 \**************************/
 
-.modal[aria-hidden="true"] {
+/*.modal[aria-hidden="true"] {
   display: none;
-}
+}*/
 
 /**************************\
   Page Styles

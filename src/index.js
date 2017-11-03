@@ -45,13 +45,21 @@ const MicroModal = (() => {
     showModal () {
       this.activeElement = document.activeElement
       this.modal.setAttribute('aria-hidden', 'false')
+      window.requestAnimationFrame(() => {
+        this.modal.classList.add('is-open')
+        this.setFocusToFirstNode()
+      })
       this.scrollBehaviour('disable')
-      this.setFocusToFirstNode()
       this.addEventListeners()
       this.callbacks.onShow(this.modal)
     }
 
     closeModal () {
+      const modal = this.modal
+      this.modal.addEventListener('animationend', function handler () {
+        window.requestAnimationFrame(() => modal.classList.remove('is-open'))
+        modal.removeEventListener('animationend', handler, false)
+      }, false)
       this.modal.setAttribute('aria-hidden', 'true')
       this.removeEventListeners()
       this.scrollBehaviour('enable')

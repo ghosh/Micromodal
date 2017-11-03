@@ -247,16 +247,28 @@ var MicroModal = function () {
     }, {
       key: 'showModal',
       value: function showModal() {
+        var _this2 = this;
+
         this.activeElement = document.activeElement;
         this.modal.setAttribute('aria-hidden', 'false');
+        window.requestAnimationFrame(function () {
+          _this2.modal.classList.add('is-open');
+          _this2.setFocusToFirstNode();
+        });
         this.scrollBehaviour('disable');
-        this.setFocusToFirstNode();
         this.addEventListeners();
         this.callbacks.onShow(this.modal);
       }
     }, {
       key: 'closeModal',
       value: function closeModal() {
+        var modal = this.modal;
+        this.modal.addEventListener('animationend', function handler() {
+          window.requestAnimationFrame(function () {
+            return modal.classList.remove('is-open');
+          });
+          modal.removeEventListener('animationend', handler, false);
+        }, false);
         this.modal.setAttribute('aria-hidden', 'true');
         this.removeEventListeners();
         this.scrollBehaviour('enable');
