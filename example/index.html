@@ -419,7 +419,9 @@ MicroModal.show('modal-id'); // [1]
   document.querySelector('.js-modal-trigger').addEventListener('click', function () {
     MicroModal.show('modal-2', {
       debugMode: true,
-      disableScroll: true
+      disableScroll: true,
+      onShow: function (modal) { document.querySelector('.js-body').classList.add(modal.id) },
+      onClose: function (modal) { document.querySelector('.js-body').classList.remove(modal.id) }
     })
   });
 
