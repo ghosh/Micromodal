@@ -114,7 +114,7 @@ You can mention us on Twitter for any questions, suggestions or just send us fun
 
 &nbsp;
 
-## Contributors
+## Created by
 
 Indrashish Ghosh – [@_ighosh](https://twitter.com/_ighosh) 🇮🇳
 
