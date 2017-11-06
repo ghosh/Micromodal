@@ -41,12 +41,12 @@ The aim of this library is to make modal dialogs accessible and easy to include 
 &nbsp;
 
 ## Features
-✔︎ Toggles relevant aria attributes on open and close   
-✔︎ Closes modal on overlay click   
-✔︎ Closes modal on pressing the `esc` key  
-✔︎ Traps tab focus within the modal  
-✔︎ Focuses on the first focusable element within the modal  
-✔︎ Retains the focused element state after closing the modal  
+✔︎ Toggles relevant aria attributes on open and close
+✔︎ Closes modal on overlay click
+✔︎ Closes modal on pressing the `esc` key
+✔︎ Traps tab focus within the modal
+✔︎ Focuses on the first focusable element within the modal
+✔︎ Retains the focused element state after closing the modal
 
 &nbsp;
 
@@ -73,14 +73,6 @@ yarn add micromodal
 ```shell
 curl -o https://unpkg.com/micromodal/dist/micromodal.min.js
 ```
-
-&nbsp;
-
-## Release History
-* 0.1.1
-    * BUGFIX: Fixed issue where validation was not firing
-* 0.1.0
-    * CHANGE: Released first minor version 😊
 
 &nbsp;
 
@@ -121,5 +113,3 @@ You can mention us on Twitter for any questions, suggestions or just send us fun
 Indrashish Ghosh – [@_ighosh](https://twitter.com/_ighosh) 🇮🇳
 
 Kalpesh Singh - [@knowkalpesh](https://twitter.com/knowkalpesh) 🇮🇳
-
-
