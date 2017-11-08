@@ -3,13 +3,7 @@
 @import "prism.css";
 @import "modal.css";
 
-/**************************\
-  Required Styles
-\**************************/
 
-.modal[aria-hidden="true"] {
-  display: none;
-}
 
 /**************************\
   Page Styles

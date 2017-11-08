@@ -181,25 +181,22 @@ https://unpkg.com/micromodal/dist/micromodal.min.js
   &lt;div tabindex=&quot;-1&quot; data-micromodal-close&gt;
 
     &lt;!-- [3] --&gt;
-    &lt;div role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;modal-1-title&quot; aria-describedby=&quot;modal-1-content&quot;&gt;
+    &lt;div role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;modal-1-title&quot; &gt;
 
-      &lt;!-- [4] --&gt;
-      &lt;div role=&quot;document&quot;&gt;
 
-        &lt;header&gt;
-          &lt;h3 id=&quot;modal-1-title&quot;&gt;
-            Modal Title
-          &lt;/h3&gt;
+      &lt;header&gt;
+        &lt;h2 id=&quot;modal-1-title&quot;&gt;
+          Modal Title
+        &lt;/h2&gt;
 
-          &lt;!-- [5] --&gt;
-          &lt;button aria-label=&quot;Close modal&quot; aria-controls=&quot;modal-1&quot; data-micromodal-close&gt;&lt;/button&gt;
-        &lt;/header&gt;
+        &lt;!-- [4] --&gt;
+        &lt;button aria-label=&quot;Close modal&quot; data-micromodal-close&gt;&lt;/button&gt;
+      &lt;/header&gt;
 
-        &lt;main id=&quot;modal-1-content&quot;&gt;
-          Modal Content
-        &lt;/main&gt;
-
+      &lt;div id=&quot;modal-1-content&quot;&gt;
+        Modal Content
       &lt;/div&gt;
+
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -213,10 +210,7 @@ https://unpkg.com/micromodal/dist/micromodal.min.js
             This is the <code>div</code> which acts as the overlay for the modal. Notice the <code>data-micromodal-close</code> on it. This is a special attribute which indicates that the element that it is on should trigger the close of the modal on click. If we remove that attribute, clicking on the overlay will not close the modal anymore.
           </li>
           <li class="pl4 pv3">
-            The <code>role="dialog"</code> attribute is used to inform assistive technologies that content within is separate from the rest of the page. Additionally, the <code>aria-labelledby="modal-1-title"</code> attribute points to the <code>id</code> of the modal title. This is to help identify the purpose of the modal. Similarly, the <code>aria-describedby</code> points to the <code>id</code> of the modal content element.
-          </li>
-          <li class="pl4 pv3">
-            The wrapper with the <code>role="document</code> is not required to be present but is recommended. It helps inform screen-readers and other assistive technologies about a separate document context within the modal.
+            The <code>role="dialog"</code> attribute is used to inform assistive technologies that content within is separate from the rest of the page. Additionally, the <code>aria-labelledby="modal-1-title"</code> attribute points to the <code>id</code> of the modal title. This is to help identify the purpose of the modal.
           </li>
           <li class="pl4 pv3">
             Ensuring that all buttons have a <code>aria-label</code> attribute which defines the action of the button. Notice the <code>data-micromodal-close</code> attribute is used on the button since we want to close the modal on press.
@@ -330,13 +324,21 @@ MicroModal.show('modal-id'); // [1]
         </p>
 
         <pre><code class="language-css">
-.modal[aria-hidden='true'] {
+.modal {
   display: none;
+}
+
+.modal.is-open {
+  display: block;
 }
         </code></pre>
 
         <p class="lh-copy mv4 black-80">
-          In case you do want some default styles to get started quickly, you can refer to the styles and the corresponding markup of the demo modal <a href="https://gist.github.com/ghosh/4f94cf497d7090359a5c9f81caf60699" target="_blank" rel="noopener" class="blue underline no-underline-hover">here.</a>
+          In case you do want some default styles to get started quickly, you can refer to the styles and the corresponding markup of the demo modal here:-
+        </p>
+
+        <p class="lh-copy fw6 db">
+          <a href="https://gist.github.com/ghosh/4f94cf497d7090359a5c9f81caf60699" target="_blank" rel="noopener" class="blue underline no-underline-hover">Demo markup and styles.</a>
         </p>
       </article>
     </main>
@@ -354,33 +356,33 @@ MicroModal.show('modal-id'); // [1]
 
   <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
     <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-      <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title" aria-describedby="modal-1-content">
-        <div role="document">
-          <header class="modal__header">
-            <h3 class="modal__title" id="modal-1-title">
-              Micromodal 🔥
-            </h3>
-            <button class="modal__close" aria-label="Close modal" aria-controls="modal__container1" data-micromodal-close></button>
-          </header>
-          <main class="modal__content" id="modal-1-content">
-            <p>This is a completely accessible modal.</p>
-            <p>
-              Try hitting the <code>tab</code> key and notice how the focus stays within the modal itself. To close modal hit the <code>esc</code> button, click on the overlay or just click the close button.
-            </p>
-          </main>
-          <footer class="modal__footer">
-            <button class="modal__btn modal__btn-primary">Continue</button>
-            <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
-          </footer>
+      <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+        <header class="modal__header">
+          <h2 class="modal__title" id="modal-1-title">
+            Micromodal 🔥
+          </h2>
+          <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+        </header>
+        <div class="modal__content" id="modal-1-content">
+          <p>This is a completely accessible modal.</p>
+          <p>
+            Try hitting the <code>tab</code> key* and notice how the focus stays within the modal itself. To close modal hit the <code>esc</code> button, click on the overlay or just click the close button.
+          </p>
+          <p>
+            <small>* <code>alt+tab</code> in safari</small>
+          </p>
         </div>
+        <footer class="modal__footer">
+          <button class="modal__btn modal__btn-primary">Continue</button>
+          <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
+        </footer>
       </div>
     </div>
   </div>
 
   <div class="modal micromodal-slide" id="modal-2" aria-hidden="true">
     <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-      <div class="modal__container w-90 w-40-ns" role="dialog" aria-modal="true" aria-labelledby="modal-1-title" aria-describedby="modal-1-content">
-        <div role="document">
+      <div class="modal__container w-90 w-40-ns" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
           <header class="modal__header">
             <h3 class="modal__title" id="modal-1-title">
               🔒 Login
@@ -388,22 +390,21 @@ MicroModal.show('modal-id'); // [1]
             <button class="modal__close" aria-label="Close modal" aria-controls="modal__container1" data-micromodal-close></button>
           </header>
           <form class="black-80" action="/">
-          <main class="modal__content" id="modal-1-content">
-              <div class="measure">
-                <label for="name" class="f6 b db mb2 js-name">Name</label>
-                <input id="name" class="input-reset ba b--black-20 pa2 mb2 db w-100 js-nameInput" type="text">
+            <div class="modal__content" id="modal-1-content">
+                <div class="measure">
+                  <label for="name" class="f6 b db mb2 js-name">Name</label>
+                  <input id="name" class="input-reset ba b--black-20 pa2 mb2 db w-100 js-nameInput" type="text">
 
-                <label for="password" class="f6 b db mb2 mt3">Password <span class="normal black-60">(required)</span></label>
-                <input id="password" class="input-reset ba b--black-20 pa2 mb2 db w-100" type="password" required>
-                <small id="name-desc" class="f6 black-60 db mb2">Must be atleast 6 characters long.</small>
-              </div>
-          </main>
-          <footer class="modal__footer">
-            <input type="submit" class="modal__btn modal__btn-primary" value="Login"/>
-            <a class="f6 ml2 dark-blue no-underline underline-hover js-modal-close-trigger" href="#" aria-label="Close this dialog window">Cancel</a>
-          </footer>
+                  <label for="password" class="f6 b db mb2 mt3">Password <span class="normal black-60">(required)</span></label>
+                  <input id="password" class="input-reset ba b--black-20 pa2 mb2 db w-100" type="password" required>
+                  <small id="name-desc" class="f6 black-60 db mb2">Must be atleast 6 characters long.</small>
+                </div>
+            </div>
+            <footer class="modal__footer">
+              <input type="submit" class="modal__btn modal__btn-primary" value="Login"/>
+              <a class="f6 ml2 dark-blue no-underline underline-hover js-modal-close-trigger" href="#" aria-label="Close this dialog window">Cancel</a>
+            </footer>
           </form>
-        </div>
       </div>
     </div>
   </div>
@@ -413,18 +414,15 @@ MicroModal.show('modal-id'); // [1]
   <script>
 
   // Initial config for setting up modals
-  MicroModal.init({
-    onClose: modal => console.info(`${modal.id} is hidden`),
-    onShow: modal => console.info(`${modal.id} is shown`)
-  });
+  MicroModal.init();
 
   // Programmatically show modal
   document.querySelector('.js-modal-trigger').addEventListener('click', function () {
     MicroModal.show('modal-2', {
       debugMode: true,
       disableScroll: true,
-      onClose: modal => document.querySelector('.js-body').classList.remove(`${modal.id}`),
-      onShow: modal =>  document.querySelector('.js-body').classList.add(`${modal.id}`)
+      onShow: function (modal) { document.querySelector('.js-body').classList.add(modal.id) },
+      onClose: function (modal) { document.querySelector('.js-body').classList.remove(modal.id) }
     })
   });
 

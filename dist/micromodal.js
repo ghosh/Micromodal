@@ -4,7 +4,7 @@
 	(global.MicroModal = factory());
 }(this, (function () { 'use strict';
 
-var version = "0.1.1";
+var version = "0.2.0";
 
 var asyncGenerator = function () {
   function AwaitValue(value) {
@@ -247,16 +247,28 @@ var MicroModal = function () {
     }, {
       key: 'showModal',
       value: function showModal() {
+        var _this2 = this;
+
         this.activeElement = document.activeElement;
         this.modal.setAttribute('aria-hidden', 'false');
+        window.requestAnimationFrame(function () {
+          _this2.modal.classList.add('is-open');
+          _this2.setFocusToFirstNode();
+        });
         this.scrollBehaviour('disable');
-        this.setFocusToFirstNode();
         this.addEventListeners();
         this.callbacks.onShow(this.modal);
       }
     }, {
       key: 'closeModal',
       value: function closeModal() {
+        var modal = this.modal;
+        this.modal.addEventListener('animationend', function handler() {
+          window.requestAnimationFrame(function () {
+            return modal.classList.remove('is-open');
+          });
+          modal.removeEventListener('animationend', handler, false);
+        }, false);
         this.modal.setAttribute('aria-hidden', 'true');
         this.removeEventListeners();
         this.scrollBehaviour('enable');
@@ -380,7 +392,7 @@ var MicroModal = function () {
   var init = function init(config) {
     var options = config || {};
 
-    var triggers = document.querySelectorAll('[data-micromodal-trigger]');
+    var triggers = [].concat(toConsumableArray(document.querySelectorAll('[data-micromodal-trigger]')));
     var triggerMap = generateTriggerMap(triggers);
 
     if (options.debugMode === true && validateArgs(triggers, triggerMap) === false) return;
