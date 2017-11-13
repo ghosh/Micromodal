@@ -21,14 +21,14 @@
 </p>
 
 <p align="center">
-  Lightweight, configurable accessible modal library written in pure JavaScript.
+  Tiny, dependency-free javascript library for creating accessible modal dialogs
 </p>
 
 ---
 
 <img src="https://www.dropbox.com/s/8g7fr091tk8o62j/micromodal.gif?raw=1" width="100%">
 
-The aim of this library is to make modal dialogs accessible and easy to include in your project with minimum configuration. It's only 1.9kb minified and gzipped (Happy dance 👯) - A tiny library for big change.
+The aim of this library is to make modal dialogs accessible and easy to include in your project with minimum configuration. It's only ~2kb minified and gzipped - A tiny library for big change.
 
 **[Demo and documentation](https://micromodal.now.sh/)**
 
