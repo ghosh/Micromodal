@@ -276,7 +276,8 @@ MicroModal.init();
 MicroModal.init({
   onClose: modal => console.info(`${modal.id} is hidden`), // [1]
   onShow: modal => console.info(`${modal.id} is shown`), // [2]
-  debugMode: true // [3]
+  debugMode: true, // [3]
+  disableScroll: true // [4]
 });
         </code></pre>
 
@@ -288,7 +289,10 @@ MicroModal.init({
             <code>onClose (function)</code> This is fired when the modal is closing. The function receives the modal object as the first parameter.
           </li>
           <li class="pl4 pv3">
-            <code>debugMode (boolean)</code> This option will suppress console warnings if passed true. The default value is false.
+            <code>debugMode (boolean)</code> This option will suppress console warnings if passed true. The default value is <code>false</code>.
+          </li>
+          <li class="pl4 pv3">
+            <code>disableScroll (boolean)</code> This option will disbable scrolling on the page while the modal is open. The default value is <code>false</code>.
           </li>
         </ul>
 
@@ -297,16 +301,20 @@ MicroModal.init({
         </h3>
 
         <p class="lh-copy mv4 black-80">
-          You can also trigger modals programmatically using the <code>show</code> method on the <code>MicroModal</code> object. Example:-
+          You can also triggera and close modals programmatically using the <code>show</code> and <code>close</code> methods on the <code>MicroModal</code> object. Example:-
         </p>
 
         <pre><code class="language-js">
 MicroModal.show('modal-id'); // [1]
+MicroModal.close('modal-id'); // [2]
         </code></pre>
 
         <ul class="ordered lh-copy pl0 mv4">
           <li class="pl4 pv3">
-            The string passed to the <code>show</code> method must correspond to the <code>id</code> of the modal to be toggled
+            The string passed to the <code>show</code> method must correspond to the <code>id</code> of the modal to be open. You can also pass in a config object in the <code>show</code> method and it will apply only to this modal.
+          </li>
+          <li class="pl4 pv3">
+            The string passed to the <code>close</code> method must correspond to the <code>id</code> of the modal to be closed
           </li>
         </ul>
 
