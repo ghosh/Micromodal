@@ -57,7 +57,7 @@
     "rollup-plugin-json": "^2.3.0",
     "rollup-watch": "^4.3.1",
     "tachyons": "^4.9.0",
-    "uncss": "^0.15.0",
+    "uncss": "^0.16.1",
     "watch": "^1.0.2"
   },
   "bundlesize": [
