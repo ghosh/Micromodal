@@ -38,7 +38,7 @@
     "bundlesize": "^0.15.3",
     "concurrently": "^3.5.0",
     "cssnano": "^3.10.0",
-    "cypress": "^1.0.3",
+    "cypress": "^1.1.2",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-node": "^5.2.1",

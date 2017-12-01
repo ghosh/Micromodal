@@ -1179,9 +1179,9 @@ cssom@0.3.x, "cssom@>= 0.3.2 < 0.4.0":
   dependencies:
     cssom "0.3.x"
 
-cypress@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/cypress/-/cypress-1.0.3.tgz#ef3a8fbe72d6f69b2c02e384db405cc49c5773be"
+cypress@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/cypress/-/cypress-1.1.2.tgz#fa477495a99d0c2c78eb2d2bf52eb721a4325cf8"
   dependencies:
     "@cypress/listr-verbose-renderer" "0.4.1"
     "@cypress/xvfb" "1.0.4"
