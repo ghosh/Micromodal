@@ -267,6 +267,25 @@ MicroModal.init();
           </div>
         </div>
 
+        <h4 class="f5 fw6 mv4">
+          3.1. Custom data attributes
+        </h4>
+
+        <p class="lh-copy mv4 black-80">
+          You can also specify custom attributes to open and close modals. Set <code>data-custom-open="modal-1"</code> to any element on the page and pass it in <code>init</code> method as parameter of <code>openTrigger</code>.
+        </p>
+
+        <p class="lh-copy mv4 black-80">
+          The working and usage is same as <code>data-micromodal-trigger</code>, but with your own defined data attribute, in this case it's <code>data-custom-open</code>
+        </p>
+
+        <p class="lh-copy mv4 black-80">
+          Similarly, you can also define custom close attribute. Example:-
+        </p>
+
+        <pre><code class="language-html">
+&lt;button class="Button Button--Large" data-custom-close="modal-1"&gt;Accept&lt;/button&gt;
+        </code></pre>
 
         <p class="lh-copy mv4 black-80">
           The <code>init</code> method also accepts and optional configuration object. This can be used to pass hooks to be executed on the modal open and modal close events. Example:-
@@ -276,7 +295,9 @@ MicroModal.init();
 MicroModal.init({
   onClose: modal => console.info(`${modal.id} is hidden`), // [1]
   onShow: modal => console.info(`${modal.id} is shown`), // [2]
-  debugMode: true // [3]
+  debugMode: true, // [3]
+  openTrigger: 'data-custom-open', // [4]
+  closeTrigger: 'data-custom-close', // [5]
 });
         </code></pre>
 
@@ -289,6 +310,12 @@ MicroModal.init({
           </li>
           <li class="pl4 pv3">
             <code>debugMode (boolean)</code> This option will suppress console warnings if passed true. The default value is false.
+          </li>
+          <li class="pl4 pv3">
+            <code>openTrigger (string)</code> This option will take custom data attribute to open modal.
+          </li>
+          <li class="pl4 pv3">
+            <code>closeTrigger (string)</code> This option will take custom data attribute to close modal.
           </li>
         </ul>
 
