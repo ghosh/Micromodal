@@ -34,19 +34,13 @@ The aim of this library is to make modal dialogs accessible and easy to include 
 
 &nbsp;
 
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/U7SKSneQBRgvgkE68HFbqR1q/ghosh/micromodal'>
-  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/U7SKSneQBRgvgkE68HFbqR1q/ghosh/micromodal.svg' />
-</a>
-
-&nbsp;
-
 ## Features
-✔︎ Toggles relevant aria attributes on open and close   
-✔︎ Closes modal on overlay click   
-✔︎ Closes modal on pressing the `esc` key   
-✔︎ Traps tab focus within the modal   
-✔︎ Focuses on the first focusable element within the modal   
-✔︎ Retains the focused element state after closing the modal   
+✔︎ Toggles relevant aria attributes on open and close
+✔︎ Closes modal on overlay click
+✔︎ Closes modal on pressing the `esc` key
+✔︎ Traps tab focus within the modal
+✔︎ Focuses on the first focusable element within the modal
+✔︎ Retains the focused element state after closing the modal
 
 &nbsp;
 
@@ -84,7 +78,7 @@ Find the latest changelog [here](https://github.com/ghosh/micromodal/blob/master
 
 ## Contributing
 
-We are always open and invite developers to contribute to Micromodal. We have kept the guidelines and process dead simple, so you invest more time in making modals great again! 🇺🇸
+We are always open and invite developers to contribute to Micromodal. We have kept the guidelines and process dead simple, so you invest more time in making modals accessible to all.
 
 Micromodal follows the [standardjs](https://standardjs.com/) coding standard and is part of our `package.json` file. It will help us to maintain consistency in the codebase.
 
@@ -108,8 +102,9 @@ This project is licensed under [MIT license](https://opensource.org/licenses/MIT
 &nbsp;
 
 ## Contact
-You can mention us on Twitter for any questions, suggestions or just send us funny GIF. We ♥️ GIF.
-#### Tweet some love   ![Tweet](https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/twitter-20.png)
+You can mention us on Twitter for any questions, suggestions or just send us funny GIF. We ♥️ GIFs.
+
+#### Tweet some love
 [Tweet](https://twitter.com/intent/tweet?url=https%3A%2F%2Fgoo.gl%2FsEgnBZ&text=Make%20your%20modal%20dialogs%20accessible%20to%20all%20using%20Micromodal.js%2C%20a%20tiny%20library%20for%20big%20change.&hashtags=a11y "Tweet about Micromodal") about Micromodal and help us to spread the message about the importance of Web accessibility and Inclusive design.
 
 &nbsp;
@@ -119,3 +114,5 @@ You can mention us on Twitter for any questions, suggestions or just send us fun
 Indrashish Ghosh – [@_ighosh](https://twitter.com/_ighosh) 🇮🇳
 
 Kalpesh Singh - [@knowkalpesh](https://twitter.com/knowkalpesh) 🇮🇳
+
+Contributors - [list](https://github.com/ghosh/micromodal/graphs/contributors) 🌐
