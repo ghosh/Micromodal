@@ -4,7 +4,7 @@
 	(global.MicroModal = factory());
 }(this, (function () { 'use strict';
 
-var version = "0.2.0";
+var version = "0.2.1";
 
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
