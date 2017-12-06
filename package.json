@@ -1,6 +1,6 @@
 {
   "name": "micromodal",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Tiny javascript library for creating accessible modal dialogs",
   "main": "dist/micromodal.js",
   "jsdelivr": "dist/micromodal.min.js",
