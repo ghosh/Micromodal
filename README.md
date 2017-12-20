@@ -28,19 +28,19 @@
 
 <img src="https://www.dropbox.com/s/8g7fr091tk8o62j/micromodal.gif?raw=1" width="100%">
 
-The aim of this library is to make modal dialogs accessible and easy to include in your project with minimum configuration. It's only ~2kb minified and gzipped - A tiny library for big change.
+The aim of this library is to make modal dialogs accessible and easy to include in your project with minimum configuration. It's only ~1.8kb minified and gzipped - A tiny library for big change.
 
 **[Demo and documentation](https://micromodal.now.sh/)**
 
 &nbsp;
 
 ## Features
-✔︎ Toggles relevant aria attributes on open and close
-✔︎ Closes modal on overlay click
-✔︎ Closes modal on pressing the `esc` key
-✔︎ Traps tab focus within the modal
-✔︎ Focuses on the first focusable element within the modal
-✔︎ Retains the focused element state after closing the modal
+✅ Toggles relevant aria attributes on open and close   
+✅ Closes modal on overlay click   
+✅ Closes modal on pressing the `esc` key   
+✅ Traps tab focus within the modal   
+✅ Focuses on the first focusable element within the modal   
+✅ Retains the focused element state after closing the modal   
 
 &nbsp;
 
