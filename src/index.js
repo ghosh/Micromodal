@@ -95,7 +95,7 @@ const MicroModal = (() => {
     }
 
     onClick (event) {
-      if (event.target.hasAttribute('data-micromodal-close')) {
+      if (event.target.hasAttribute('data-close') || event.target.hasAttribute('data-micromodal-close')) {
         this.closeModal()
         event.preventDefault()
       }
@@ -132,11 +132,11 @@ const MicroModal = (() => {
     }
   }
 
-  const generateTriggerMap = triggers => {
+  const generateTriggerMap = (triggers, triggerAttr) => {
     const triggerMap = []
 
     triggers.forEach(trigger => {
-      const targetModal = trigger.dataset.micromodalTrigger
+      const targetModal = (triggerAttr && trigger.attributes[triggerAttr].value) || trigger.dataset.micromodalTrigger
       if (triggerMap[targetModal] === undefined) triggerMap[targetModal] = []
       triggerMap[targetModal].push(trigger)
     })
@@ -169,9 +169,8 @@ const MicroModal = (() => {
 
   const init = config => {
     const options = config || {}
-
-    const triggers = [...document.querySelectorAll('[data-micromodal-trigger]')]
-    const triggerMap = generateTriggerMap(triggers)
+    const triggers = [...document.querySelectorAll((options.openTrigger ? '[' + options.openTrigger + ']' : false) || '[data-micromodal-trigger]')]
+    const triggerMap = generateTriggerMap(triggers, options.openTrigger)
 
     if (
       options.debugMode === true &&
