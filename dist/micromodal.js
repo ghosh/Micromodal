@@ -80,6 +80,19 @@ var toConsumableArray = function (arr) {
   }
 };
 
+var matches = window.Element.prototype.matches || window.Element.prototype.msMatchesSelector || window.Element.prototype.webkitMatchesSelector;
+
+var closest = function closest(el, selector) {
+  if (el.closest) return el.closest(selector);
+
+  if (!document.documentElement.contains(el)) return null;
+  do {
+    if (matches.call(el, selector)) return el;
+    el = el.parentElement || el.parentNode;
+  } while (el !== null);
+  return null;
+};
+
 var MicroModal = function () {
   var FOCUSABLE_ELEMENTS = ['a[href]', 'area[href]', 'input:not([disabled]):not([type="hidden"])', 'select:not([disabled])', 'textarea:not([disabled])', 'button:not([disabled])', 'iframe', 'object', 'embed', '[contenteditable]', '[tabindex]:not([tabindex^="-"])'];
 
@@ -189,7 +202,7 @@ var MicroModal = function () {
     }, {
       key: 'onClick',
       value: function onClick(event) {
-        if (event.target.hasAttribute('data-micromodal-close')) {
+        if (closest(event.target, '[data-micromodal-close]')) {
           this.closeModal();
           event.preventDefault();
         }

@@ -14,6 +14,7 @@
     "scripts:dev": "rollup -c -w",
     "scripts:build:es": "NODE_ENV=production TARGET=es rollup -c",
     "scripts:build:umd": "NODE_ENV=production TARGET=umd rollup -c && minify dist/micromodal.js --output dist/micromodal.min.js",
+    "demo:scripts": "cp dist/micromodal.min.js example/site.min.js",
     "demo:watch": "watch 'yarn demo:scripts' dist/",
     "livereload": "reload -b -s --dir example --port 5000",
     "build": "concurrently \"run-p scripts:build:*\" \"yarn styles:build\"",
