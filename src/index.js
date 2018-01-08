@@ -1,5 +1,20 @@
 import { version } from '../package.json'
 
+const matches = window.Element.prototype.matches ||
+  window.Element.prototype.msMatchesSelector ||
+  window.Element.prototype.webkitMatchesSelector
+
+const closest = (el, selector) => {
+  if (el.closest) return el.closest(selector)
+
+  if (!document.documentElement.contains(el)) return null
+  do {
+    if (matches.call(el, selector)) return el
+    el = el.parentElement || el.parentNode
+  } while (el !== null)
+  return null
+}
+
 const MicroModal = (() => {
   'use strict'
 
@@ -95,7 +110,7 @@ const MicroModal = (() => {
     }
 
     onClick (event) {
-      if (event.target.hasAttribute('data-micromodal-close')) {
+      if (closest(event.target, '[data-micromodal-close]')) {
         this.closeModal()
         event.preventDefault()
       }
