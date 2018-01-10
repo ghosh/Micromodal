@@ -24,12 +24,15 @@ const MicroModal = (() => {
       disableScroll = false,
       debugMode = false,
       onShow = () => {},
-      onClose = () => {}
+      onClose = () => {},
+      openTrigger = 'data-micromodal-trigger',
+      closeTrigger = 'data-micromodal-close'
     } = {}) {
       this.modal = document.getElementById(targetModal)
       if (triggers.length > 0) this.registerTriggers(...triggers)
 
       this.disableScroll = disableScroll
+      this.closeTrigger = closeTrigger
       this.callbacks = { onShow, onClose }
 
       this.onClick = this.onClick.bind(this)
@@ -95,7 +98,7 @@ const MicroModal = (() => {
     }
 
     onClick (event) {
-      if (event.target.hasAttribute('data-close') || event.target.hasAttribute('data-micromodal-close')) {
+      if (event.target.hasAttribute(this.closeTrigger)) {
         this.closeModal()
         event.preventDefault()
       }

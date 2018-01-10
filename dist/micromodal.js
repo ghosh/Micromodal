@@ -96,7 +96,11 @@ var MicroModal = function () {
           _ref$onShow = _ref.onShow,
           onShow = _ref$onShow === undefined ? function () {} : _ref$onShow,
           _ref$onClose = _ref.onClose,
-          onClose = _ref$onClose === undefined ? function () {} : _ref$onClose;
+          onClose = _ref$onClose === undefined ? function () {} : _ref$onClose,
+          _ref$openTrigger = _ref.openTrigger,
+          openTrigger = _ref$openTrigger === undefined ? 'data-micromodal-trigger' : _ref$openTrigger,
+          _ref$closeTrigger = _ref.closeTrigger,
+          closeTrigger = _ref$closeTrigger === undefined ? 'data-micromodal-close' : _ref$closeTrigger;
 
       classCallCheck(this, Modal);
 
@@ -104,6 +108,7 @@ var MicroModal = function () {
       if (triggers.length > 0) this.registerTriggers.apply(this, toConsumableArray(triggers));
 
       this.disableScroll = disableScroll;
+      this.closeTrigger = closeTrigger;
       this.callbacks = { onShow: onShow, onClose: onClose };
 
       this.onClick = this.onClick.bind(this);
@@ -189,7 +194,7 @@ var MicroModal = function () {
     }, {
       key: 'onClick',
       value: function onClick(event) {
-        if (event.target.hasAttribute('data-close') || event.target.hasAttribute('data-micromodal-close')) {
+        if (event.target.hasAttribute(this.closeTrigger)) {
           this.closeModal();
           event.preventDefault();
         }
