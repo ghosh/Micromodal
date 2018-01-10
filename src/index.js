@@ -142,12 +142,10 @@ const MicroModal = (() => {
   }
 
   const generateTriggerMap = (triggers, triggerAttr) => {
-    console.log(triggers, triggerAttr)
     const triggerMap = []
 
     triggers.forEach(trigger => {
-      const targetModal = (triggerAttr && trigger.attributes[triggerAttr].value) || trigger.dataset.micromodalTrigger
-      console.log(targetModal)
+      const targetModal = trigger.attributes[triggerAttr].value
       if (triggerMap[targetModal] === undefined) triggerMap[targetModal] = []
       triggerMap[targetModal].push(trigger)
     })
@@ -179,8 +177,8 @@ const MicroModal = (() => {
   }
 
   const init = config => {
-    const options = config || {}
-    const triggers = [...document.querySelectorAll((options.openTrigger ? '[' + options.openTrigger + ']' : false) || '[data-micromodal-trigger]')]
+    const options = Object.assign({}, { openTrigger: 'data-micromodal-trigger' }, config)
+    const triggers = [...document.querySelectorAll(`[${options.openTrigger}]`)]
     const triggerMap = generateTriggerMap(triggers, options.openTrigger)
 
     if (

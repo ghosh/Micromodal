@@ -17,8 +17,7 @@
     "demo:watch": "watch 'yarn demo:scripts' dist/",
     "livereload": "reload -b -s --dir example --port 5000",
     "build": "concurrently \"yarn scripts:build\" \"yarn styles:build\"",
-    "dev": "concurrently \"yarn scripts:dev\" \"yarn styles:dev\"  \"yarn demo:watch\" \"yarn livereload\"",
-    "precommit": "yarn build"
+    "dev": "concurrently \"yarn scripts:dev\" \"yarn styles:dev\"  \"yarn demo:watch\" \"yarn livereload\""
   },
   "keywords": [
     "a11y",

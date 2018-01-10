@@ -246,12 +246,10 @@ var MicroModal = function () {
   }();
 
   var generateTriggerMap = function generateTriggerMap(triggers, triggerAttr) {
-    console.log(triggers, triggerAttr);
     var triggerMap = [];
 
     triggers.forEach(function (trigger) {
-      var targetModal = triggerAttr && trigger.attributes[triggerAttr].value || trigger.dataset.micromodalTrigger;
-      console.log(targetModal);
+      var targetModal = trigger.attributes[triggerAttr].value;
       if (triggerMap[targetModal] === undefined) triggerMap[targetModal] = [];
       triggerMap[targetModal].push(trigger);
     });
@@ -284,8 +282,8 @@ var MicroModal = function () {
   };
 
   var init = function init(config) {
-    var options = config || {};
-    var triggers = [].concat(toConsumableArray(document.querySelectorAll((options.openTrigger ? '[' + options.openTrigger + ']' : false) || '[data-micromodal-trigger]')));
+    var options = Object.assign({}, { openTrigger: 'data-micromodal-trigger' }, config);
+    var triggers = [].concat(toConsumableArray(document.querySelectorAll('[' + options.openTrigger + ']')));
     var triggerMap = generateTriggerMap(triggers, options.openTrigger);
 
     if (options.debugMode === true && validateArgs(triggers, triggerMap) === false) return;

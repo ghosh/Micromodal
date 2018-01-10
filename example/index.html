@@ -108,7 +108,7 @@
         <div class="bg-washed-green tc">
           <div class="mv5 dib">
 
-            <button class="f6 grow no-underline br2 ph4 pv3 dib white bg-dark-green bn"  data-micromodal-trigger="modal-1" role="button">
+            <button class="f6 grow no-underline br2 ph4 pv3 dib white bg-dark-green bn"  data-custom-open="modal-1" role="button">
               Demo Modal
             </button>
 
@@ -449,7 +449,9 @@ MicroModal.close('modal-id'); // [2]
   <script>
 
   // Initial config for setting up modals
-  MicroModal.init();
+  MicroModal.init({
+    openTrigger: 'data-custom-open'
+  });
 
   // Programmatically show modal
   document.querySelector('.js-modal-trigger').addEventListener('click', function () {
