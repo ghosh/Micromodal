@@ -27,18 +27,24 @@ const MicroModal = (() => {
       onClose = () => {},
       openTrigger = 'data-micromodal-trigger',
       closeTrigger = 'data-micromodal-close'
-    } = {}) {
+    }) {
+      // setup the modal
       this.modal = document.getElementById(targetModal)
       if (triggers.length > 0) this.registerTriggers(...triggers)
 
-      this.disableScroll = disableScroll
-      this.closeTrigger = closeTrigger
-      this.callbacks = { onShow, onClose }
+      // Save a reference to the config settings
+      this.config = { debugMode, disableScroll, openTrigger, closeTrigger, onShow, onClose }
 
+      // bind the methods
       this.onClick = this.onClick.bind(this)
       this.onKeydown = this.onKeydown.bind(this)
     }
 
+    /**
+     * Loops through all openTriggers and binds click event
+     * @param  {[array]} triggers [Array of node elements]
+     * @return {void}
+     */
     registerTriggers (...triggers) {
       triggers.forEach(trigger => {
         trigger.addEventListener('click', () => this.showModal())
@@ -54,7 +60,7 @@ const MicroModal = (() => {
       })
       this.scrollBehaviour('disable')
       this.addEventListeners()
-      this.callbacks.onShow(this.modal)
+      this.config.onShow(this.modal)
     }
 
     closeModal () {
@@ -67,11 +73,11 @@ const MicroModal = (() => {
       this.removeEventListeners()
       this.scrollBehaviour('enable')
       this.activeElement.focus()
-      this.callbacks.onClose(this.modal)
+      this.config.onClose(this.modal)
     }
 
     scrollBehaviour (toggle) {
-      if (this.disableScroll === false) return
+      if (this.config.disableScroll === false) return
 
       const body = document.querySelector('body')
       switch (toggle) {
@@ -98,7 +104,7 @@ const MicroModal = (() => {
     }
 
     onClick (event) {
-      if (event.target.hasAttribute(this.closeTrigger)) {
+      if (event.target.hasAttribute(this.config.closeTrigger)) {
         this.closeModal()
         event.preventDefault()
       }
@@ -136,10 +142,12 @@ const MicroModal = (() => {
   }
 
   const generateTriggerMap = (triggers, triggerAttr) => {
+    console.log(triggers, triggerAttr)
     const triggerMap = []
 
     triggers.forEach(trigger => {
       const targetModal = (triggerAttr && trigger.attributes[triggerAttr].value) || trigger.dataset.micromodalTrigger
+      console.log(targetModal)
       if (triggerMap[targetModal] === undefined) triggerMap[targetModal] = []
       triggerMap[targetModal].push(trigger)
     })

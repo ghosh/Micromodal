@@ -84,9 +84,8 @@ var MicroModal = function () {
   var FOCUSABLE_ELEMENTS = ['a[href]', 'area[href]', 'input:not([disabled]):not([type="hidden"])', 'select:not([disabled])', 'textarea:not([disabled])', 'button:not([disabled])', 'iframe', 'object', 'embed', '[contenteditable]', '[tabindex]:not([tabindex^="-"])'];
 
   var Modal = function () {
-    function Modal() {
-      var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-          targetModal = _ref.targetModal,
+    function Modal(_ref) {
+      var targetModal = _ref.targetModal,
           _ref$triggers = _ref.triggers,
           triggers = _ref$triggers === undefined ? [] : _ref$triggers,
           _ref$disableScroll = _ref.disableScroll,
@@ -101,19 +100,26 @@ var MicroModal = function () {
           openTrigger = _ref$openTrigger === undefined ? 'data-micromodal-trigger' : _ref$openTrigger,
           _ref$closeTrigger = _ref.closeTrigger,
           closeTrigger = _ref$closeTrigger === undefined ? 'data-micromodal-close' : _ref$closeTrigger;
-
       classCallCheck(this, Modal);
 
+      // setup the modal
       this.modal = document.getElementById(targetModal);
       if (triggers.length > 0) this.registerTriggers.apply(this, toConsumableArray(triggers));
 
-      this.disableScroll = disableScroll;
-      this.closeTrigger = closeTrigger;
-      this.callbacks = { onShow: onShow, onClose: onClose };
+      // Save a reference to the config settings
+      this.config = { debugMode: debugMode, disableScroll: disableScroll, openTrigger: openTrigger, closeTrigger: closeTrigger, onShow: onShow, onClose: onClose
 
-      this.onClick = this.onClick.bind(this);
+        // bind the methods
+      };this.onClick = this.onClick.bind(this);
       this.onKeydown = this.onKeydown.bind(this);
     }
+
+    /**
+     * Loops through all openTriggers and binds click event
+     * @param  {[array]} triggers [Array of node elements]
+     * @return {void}
+     */
+
 
     createClass(Modal, [{
       key: 'registerTriggers',
@@ -143,7 +149,7 @@ var MicroModal = function () {
         });
         this.scrollBehaviour('disable');
         this.addEventListeners();
-        this.callbacks.onShow(this.modal);
+        this.config.onShow(this.modal);
       }
     }, {
       key: 'closeModal',
@@ -159,12 +165,12 @@ var MicroModal = function () {
         this.removeEventListeners();
         this.scrollBehaviour('enable');
         this.activeElement.focus();
-        this.callbacks.onClose(this.modal);
+        this.config.onClose(this.modal);
       }
     }, {
       key: 'scrollBehaviour',
       value: function scrollBehaviour(toggle) {
-        if (this.disableScroll === false) return;
+        if (this.config.disableScroll === false) return;
 
         var body = document.querySelector('body');
         switch (toggle) {
@@ -194,7 +200,7 @@ var MicroModal = function () {
     }, {
       key: 'onClick',
       value: function onClick(event) {
-        if (event.target.hasAttribute(this.closeTrigger)) {
+        if (event.target.hasAttribute(this.config.closeTrigger)) {
           this.closeModal();
           event.preventDefault();
         }
@@ -240,10 +246,12 @@ var MicroModal = function () {
   }();
 
   var generateTriggerMap = function generateTriggerMap(triggers, triggerAttr) {
+    console.log(triggers, triggerAttr);
     var triggerMap = [];
 
     triggers.forEach(function (trigger) {
       var targetModal = triggerAttr && trigger.attributes[triggerAttr].value || trigger.dataset.micromodalTrigger;
+      console.log(targetModal);
       if (triggerMap[targetModal] === undefined) triggerMap[targetModal] = [];
       triggerMap[targetModal].push(trigger);
     });
