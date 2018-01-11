@@ -54,10 +54,8 @@ const MicroModal = (() => {
     showModal () {
       this.activeElement = document.activeElement
       this.modal.setAttribute('aria-hidden', 'false')
-      window.requestAnimationFrame(() => {
-        this.modal.classList.add('is-open')
-        this.setFocusToFirstNode()
-      })
+      this.modal.classList.add('is-open')
+      this.setFocusToFirstNode()
       this.scrollBehaviour('disable')
       this.addEventListeners()
       this.config.onShow(this.modal)
@@ -65,10 +63,20 @@ const MicroModal = (() => {
 
     closeModal () {
       const modal = this.modal
+      let isAnimating = false // archaic way of detecting animation
+
+      // if animating remove class after animationEnd
       this.modal.addEventListener('animationend', function handler () {
-        window.requestAnimationFrame(() => modal.classList.remove('is-open'))
+        modal.classList.remove('is-open')
+        isAnimating = true
         modal.removeEventListener('animationend', handler, false)
       }, false)
+
+      // else remove immediately
+      setTimeout(() => {
+        if (!isAnimating) modal.classList.remove('is-open')
+      }, 0)
+
       this.modal.setAttribute('aria-hidden', 'true')
       this.removeEventListeners()
       this.scrollBehaviour('enable')

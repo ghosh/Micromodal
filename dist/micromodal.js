@@ -139,14 +139,10 @@ var MicroModal = function () {
     }, {
       key: 'showModal',
       value: function showModal() {
-        var _this2 = this;
-
         this.activeElement = document.activeElement;
         this.modal.setAttribute('aria-hidden', 'false');
-        window.requestAnimationFrame(function () {
-          _this2.modal.classList.add('is-open');
-          _this2.setFocusToFirstNode();
-        });
+        this.modal.classList.add('is-open');
+        this.setFocusToFirstNode();
         this.scrollBehaviour('disable');
         this.addEventListeners();
         this.config.onShow(this.modal);
@@ -155,12 +151,20 @@ var MicroModal = function () {
       key: 'closeModal',
       value: function closeModal() {
         var modal = this.modal;
+        var isAnimating = false; // archaic way of detecting animation
+
+        // if animating remove class after animationEnd
         this.modal.addEventListener('animationend', function handler() {
-          window.requestAnimationFrame(function () {
-            return modal.classList.remove('is-open');
-          });
+          modal.classList.remove('is-open');
+          isAnimating = true;
           modal.removeEventListener('animationend', handler, false);
         }, false);
+
+        // else remove immediately
+        setTimeout(function () {
+          if (!isAnimating) modal.classList.remove('is-open');
+        }, 0);
+
         this.modal.setAttribute('aria-hidden', 'true');
         this.removeEventListeners();
         this.scrollBehaviour('enable');
