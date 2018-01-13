@@ -33,10 +33,10 @@ const MicroModal = (() => {
       // Save a reference of the modal
       this.modal = document.getElementById(targetModal)
 
-      // Save a reference to the config settings
+      // Save a reference to the passed config
       this.config = { debugMode, disableScroll, openTrigger, closeTrigger, onShow, onClose, hasAnimation, disableFocus }
 
-      // Register click events only if its for init()
+      // Register click events only if prebinding eventListeners
       if (triggers.length > 0) this.registerTriggers(...triggers)
 
       // prebind functions for event listeners
@@ -46,7 +46,7 @@ const MicroModal = (() => {
 
     /**
      * Loops through all openTriggers and binds click event
-     * @param  {[array]} triggers [Array of node elements]
+     * @param  {array} triggers [Array of node elements]
      * @return {void}
      */
     registerTriggers (...triggers) {
@@ -154,6 +154,22 @@ const MicroModal = (() => {
     }
   }
 
+  /**
+   * Modal prototype ends.
+   * Here on code is reposible for detecting and
+   * autobinding event handlers on modal triggers
+   */
+
+  // Keep a reference to the opened modal
+  let activeModal = null
+
+  /**
+   * Generates an associative array of modals and it's
+   * respective triggers
+   * @param  {array} triggers     An array of all triggers
+   * @param  {string} triggerAttr The data-attribute which triggers the module
+   * @return {array}
+   */
   const generateTriggerMap = (triggers, triggerAttr) => {
     const triggerMap = []
 
@@ -166,6 +182,12 @@ const MicroModal = (() => {
     return triggerMap
   }
 
+  /**
+   * Validates whether a modal of the given id exists
+   * in the DOM
+   * @param  {number} id  The id of the modal
+   * @return {boolean}
+   */
   const validateModalPresence = id => {
     if (!document.getElementById(id)) {
       console.warn(`MicroModal v${version}: \u2757Seems like you have missed %c'${id}'`, 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'ID somewhere in your code. Refer example below to resolve it.')
@@ -174,6 +196,12 @@ const MicroModal = (() => {
     }
   }
 
+  /**
+   * Validates if there are modal triggers present
+   * in the DOM
+   * @param  {array} triggers An array of data-triggers
+   * @return {boolean}
+   */
   const validateTriggerPresence = triggers => {
     if (triggers.length <= 0) {
       console.warn(`MicroModal v${version}: \u2757Please specify at least one %c'micromodal-trigger'`, 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'data attribute.')
@@ -182,6 +210,13 @@ const MicroModal = (() => {
     }
   }
 
+  /**
+   * Checks if triggers and their corresponding modals
+   * are present in the DOM
+   * @param  {array} triggers   Array of DOM nodes which have data-triggers
+   * @param  {array} triggerMap Associative array of modals and thier triggers
+   * @return {boolean}
+   */
   const validateArgs = (triggers, triggerMap) => {
     validateTriggerPresence(triggers)
     if (!triggerMap) return true
@@ -189,16 +224,25 @@ const MicroModal = (() => {
     return true
   }
 
+  /**
+   * Binds click handlers to all modal triggers
+   * @param  {object} config [description]
+   * @return void
+   */
   const init = config => {
+    // Create an config object with default openTrigger
     const options = Object.assign({}, { openTrigger: 'data-micromodal-trigger' }, config)
+
+    // Collects all the nodes with the trigger
     const triggers = [...document.querySelectorAll(`[${options.openTrigger}]`)]
+
+    // Makes a mappings of modals with their trigger nodes
     const triggerMap = generateTriggerMap(triggers, options.openTrigger)
 
-    if (
-      options.debugMode === true &&
-      validateArgs(triggers, triggerMap) === false
-    ) return
+    // Checks if modals and triggers exist in dom
+    if (options.debugMode === true && validateArgs(triggers, triggerMap) === false) return
 
+    // For every target modal creates a new instance
     for (var key in triggerMap) {
       let value = triggerMap[key]
       options.targetModal = key
@@ -207,27 +251,28 @@ const MicroModal = (() => {
     }
   }
 
-  let activeModal = null
-
   /**
    * Shows a particular modal
    * @param  {string} targetModal [The id of the modal to display]
-   * @param  {{object}} config [The configuration object to pass]
+   * @param  {object} config [The configuration object to pass]
    * @return {void}
    */
   const show = (targetModal, config) => {
     const options = config || {}
     options.targetModal = targetModal
 
-    if (
-      options.debugMode === true &&
-      validateModalPresence(targetModal) === false
-    ) return
+    // Checks if modals and triggers exist in dom
+    if (options.debugMode === true && validateModalPresence(targetModal) === false) return
 
+    // stores reference to active modal
     activeModal = new Modal(options) // eslint-disable-line no-new
     activeModal.showModal()
   }
 
+  /**
+   * Closes the active modal
+   * @return {void}
+   */
   const close = () => {
     activeModal.closeModal()
   }
