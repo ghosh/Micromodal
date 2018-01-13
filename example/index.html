@@ -86,6 +86,9 @@
             <a href="#usage" class="link black-70 navlink">Usage</a>
           </li>
           <li class="lh-copy pv2 ba bl-0 bt-0 br-0 b--dotted b--black-10">
+            <a href="#configuration" class="link black-70 navlink">Configuration</a>
+          </li>
+          <li class="lh-copy pv2 ba bl-0 bt-0 br-0 b--dotted b--black-10">
             <a href="#styling" class="link black-70 navlink">Styling</a>
           </li>
         </ul>
@@ -108,7 +111,7 @@
         <div class="bg-washed-green tc">
           <div class="mv5 dib">
 
-            <button class="f6 grow no-underline br2 ph4 pv3 dib white bg-dark-green bn"  data-micromodal-trigger="modal-1" role="button">
+            <button class="f6 grow no-underline br2 ph4 pv3 dib white bg-dark-green bn"  data-custom-open="modal-1" role="button">
               Demo Modal
             </button>
 
@@ -267,41 +270,32 @@ MicroModal.init();
           </div>
         </div>
 
+        <h4 class="f5 fw6 mv4">
+          3.1. Custom data attributes
+        </h4>
 
         <p class="lh-copy mv4 black-80">
-          The <code>init</code> method also accepts and optional configuration object. This can be used to pass hooks to be executed on the modal open and modal close events. Example:-
+          You can also specify custom attributes to open and close modals. Set <code>data-custom-open="modal-1"</code> to any element on the page and pass it in <code>init</code> method as parameter of <code>openTrigger</code>.
         </p>
 
-        <pre><code class="language-js">
-MicroModal.init({
-  onClose: modal => console.info(`${modal.id} is hidden`), // [1]
-  onShow: modal => console.info(`${modal.id} is shown`), // [2]
-  debugMode: true, // [3]
-  disableScroll: true // [4]
-});
-        </code></pre>
+        <p class="lh-copy mv4 black-80">
+          The working and usage is same as <code>data-micromodal-trigger</code>, but with your own defined data attribute, in this case it's <code>data-custom-open</code>
+        </p>
 
-        <ul class="ordered lh-copy pl0 mv4">
-          <li class="pl4 pv3">
-            <code>onShow (function)</code> This is fired when the modal is opening. The function receives the modal object as the first parameter.
-          </li>
-          <li class="pl4 pv3">
-            <code>onClose (function)</code> This is fired when the modal is closing. The function receives the modal object as the first parameter.
-          </li>
-          <li class="pl4 pv3">
-            <code>debugMode (boolean)</code> This option will suppress console warnings if passed true. The default value is <code>false</code>.
-          </li>
-          <li class="pl4 pv3">
-            <code>disableScroll (boolean)</code> This option will disbable scrolling on the page while the modal is open. The default value is <code>false</code>.
-          </li>
-        </ul>
+        <p class="lh-copy mv4 black-80">
+          Similarly, you can also define custom close attribute. Example:-
+        </p>
+
+        <pre><code class="language-html">
+&lt;button data-custom-close="modal-1"&gt;close&lt;/button&gt;
+        </code></pre>
 
         <h3 class="f4 fw6 mv4">
           4. Use with javascript
         </h3>
 
         <p class="lh-copy mv4 black-80">
-          You can also triggera and close modals programmatically using the <code>show</code> and <code>close</code> methods on the <code>MicroModal</code> object. Example:-
+          You can also trigger and close modals programmatically using the <code>show</code> and <code>close</code> methods on the <code>MicroModal</code> object. Example:-
         </p>
 
         <pre><code class="language-js">
@@ -318,6 +312,52 @@ MicroModal.close('modal-id'); // [2]
           </li>
         </ul>
 
+        <h2 class="f3 fw6 lh-title mt5 mb4 black heading" id="configuration">
+          Configuration
+        </h2>
+        <p class="lh-copy mv4 black-80">
+          The <code>init</code> and <code>show</code> method accepts an optional configuration object. This allows you to set custom callbacks and control behaviour of the modal. Example:-
+        </p>
+
+        <pre><code class="language-js">
+MicroModal.init({
+  onShow: modal => console.info(`${modal.id} is shown`), // [1]
+  onClose: modal => console.info(`${modal.id} is hidden`), // [2]
+  openTrigger: 'data-custom-open', // [3]
+  closeTrigger: 'data-custom-close', // [4]
+  disableScroll: true, // [5]
+  disableFocus: false, // [6]
+  hasAnimation: false, // [7]
+  debugMode: true // [8]
+});
+        </code></pre>
+
+        <ul class="ordered lh-copy pl0 mv4">
+          <li class="pl4 pv3">
+            <code>onShow (function)</code> This is fired when the modal is opening. The function receives the modal object as the first parameter.
+          </li>
+          <li class="pl4 pv3">
+            <code>onClose (function)</code> This is fired when the modal is closing. The function receives the modal object as the first parameter.
+          </li>
+          <li class="pl4 pv3">
+            <code>openTrigger (string)</code> Custom data attribute to open modal. Default is <code>data-micromodal-trigger</code>.
+          </li>
+          <li class="pl4 pv3">
+            <code>closeTrigger (string)</code> Custom data attribute to close modal. Default is <code>data-micromodal-close</code>
+          </li>
+          <li class="pl4 pv3">
+            <code>disableScroll (boolean)</code> This disables scrolling on the page while the modal is open. The default value is <code>false</code>.
+          </li>
+          <li class="pl4 pv3">
+            <code>disableFocus (boolean)</code> Disable auto focus on first focusable element. Default is <code>false</code>
+          </li>
+          <li class="pl4 pv3">
+            <code>hasAnimation (boolean)</code> Set this to true if using animations to show and hide the modal. This allows it to wait for the animation to finish before removing it from the DOM. Default is <code>false</code>
+          </li>
+          <li class="pl4 pv3">
+            <code>debugMode (boolean)</code> This option suppresses the console warnings if passed as true. The default value is <code>false</code>.
+          </li>
+        </ul>
 
         <h2 class="f3 fw6 lh-title mt5 mb4 black heading" id="styling">
           Styling
@@ -389,16 +429,16 @@ MicroModal.close('modal-id'); // [2]
   </div>
 
   <div class="modal micromodal-slide" id="modal-2" aria-hidden="true">
-    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-      <div class="modal__container w-90 w-40-ns" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+    <div class="modal__overlay" tabindex="-1" data-custom-close>
+      <div class="modal__container w-90 w-40-ns" role="dialog" aria-modal="true" aria-labelledby="modal-2-title">
           <header class="modal__header">
-            <h3 class="modal__title" id="modal-1-title">
+            <h3 class="modal__title" id="modal-2-title">
               🔒 Login
             </h3>
-            <button class="modal__close" aria-label="Close modal" aria-controls="modal__container1" data-micromodal-close></button>
+            <button class="modal__close" aria-label="Close modal" data-custom-close></button>
           </header>
           <form class="black-80" action="/">
-            <div class="modal__content" id="modal-1-content">
+            <div class="modal__content" id="modal-2-content">
                 <div class="measure">
                   <label for="name" class="f6 b db mb2 js-name">Name</label>
                   <input id="name" class="input-reset ba b--black-20 pa2 mb2 db w-100 js-nameInput" type="text">
@@ -422,7 +462,11 @@ MicroModal.close('modal-id'); // [2]
   <script>
 
   // Initial config for setting up modals
-  MicroModal.init();
+  MicroModal.init({
+    openTrigger: 'data-custom-open',
+    disableScroll: false,
+    hasAnimation: true
+  });
 
   // Programmatically show modal
   document.querySelector('.js-modal-trigger').addEventListener('click', function () {
@@ -430,7 +474,9 @@ MicroModal.close('modal-id'); // [2]
       debugMode: true,
       disableScroll: true,
       onShow: function (modal) { document.querySelector('.js-body').classList.add(modal.id) },
-      onClose: function (modal) { document.querySelector('.js-body').classList.remove(modal.id) }
+      onClose: function (modal) { document.querySelector('.js-body').classList.remove(modal.id) },
+      closeTrigger: 'data-custom-close',
+      hasAnimation: true
     })
   });
 

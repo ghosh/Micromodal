@@ -81,34 +81,51 @@ var toConsumableArray = function (arr) {
 };
 
 var MicroModal = function () {
-  var FOCUSABLE_ELEMENTS = ['a[href]', 'area[href]', 'input:not([disabled]):not([type="hidden"])', 'select:not([disabled])', 'textarea:not([disabled])', 'button:not([disabled])', 'iframe', 'object', 'embed', '[contenteditable]', '[tabindex]:not([tabindex^="-"])'];
+  var FOCUSABLE_ELEMENTS = ['a[href]', 'area[href]', 'input:not([disabled]):not([type="hidden"]):not([aria-hidden])', 'select:not([disabled]):not([aria-hidden])', 'textarea:not([disabled]):not([aria-hidden])', 'button:not([disabled]):not([aria-hidden])', 'iframe', 'object', 'embed', '[contenteditable]', '[tabindex]:not([tabindex^="-"])'];
 
   var Modal = function () {
-    function Modal() {
-      var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-          targetModal = _ref.targetModal,
+    function Modal(_ref) {
+      var targetModal = _ref.targetModal,
           _ref$triggers = _ref.triggers,
           triggers = _ref$triggers === undefined ? [] : _ref$triggers,
-          _ref$disableScroll = _ref.disableScroll,
-          disableScroll = _ref$disableScroll === undefined ? false : _ref$disableScroll,
-          _ref$debugMode = _ref.debugMode,
-          debugMode = _ref$debugMode === undefined ? false : _ref$debugMode,
           _ref$onShow = _ref.onShow,
           onShow = _ref$onShow === undefined ? function () {} : _ref$onShow,
           _ref$onClose = _ref.onClose,
-          onClose = _ref$onClose === undefined ? function () {} : _ref$onClose;
-
+          onClose = _ref$onClose === undefined ? function () {} : _ref$onClose,
+          _ref$openTrigger = _ref.openTrigger,
+          openTrigger = _ref$openTrigger === undefined ? 'data-micromodal-trigger' : _ref$openTrigger,
+          _ref$closeTrigger = _ref.closeTrigger,
+          closeTrigger = _ref$closeTrigger === undefined ? 'data-micromodal-close' : _ref$closeTrigger,
+          _ref$disableScroll = _ref.disableScroll,
+          disableScroll = _ref$disableScroll === undefined ? false : _ref$disableScroll,
+          _ref$disableFocus = _ref.disableFocus,
+          disableFocus = _ref$disableFocus === undefined ? false : _ref$disableFocus,
+          _ref$hasAnimation = _ref.hasAnimation,
+          hasAnimation = _ref$hasAnimation === undefined ? false : _ref$hasAnimation,
+          _ref$debugMode = _ref.debugMode,
+          debugMode = _ref$debugMode === undefined ? false : _ref$debugMode;
       classCallCheck(this, Modal);
 
+      // Save a reference of the modal
       this.modal = document.getElementById(targetModal);
-      if (triggers.length > 0) this.registerTriggers.apply(this, toConsumableArray(triggers));
 
-      this.disableScroll = disableScroll;
-      this.callbacks = { onShow: onShow, onClose: onClose };
+      // Save a reference to the passed config
+      this.config = { debugMode: debugMode, disableScroll: disableScroll, openTrigger: openTrigger, closeTrigger: closeTrigger, onShow: onShow, onClose: onClose, hasAnimation: hasAnimation, disableFocus: disableFocus
 
+        // Register click events only if prebinding eventListeners
+      };if (triggers.length > 0) this.registerTriggers.apply(this, toConsumableArray(triggers));
+
+      // prebind functions for event listeners
       this.onClick = this.onClick.bind(this);
       this.onKeydown = this.onKeydown.bind(this);
     }
+
+    /**
+     * Loops through all openTriggers and binds click event
+     * @param  {array} triggers [Array of node elements]
+     * @return {void}
+     */
+
 
     createClass(Modal, [{
       key: 'registerTriggers',
@@ -128,39 +145,37 @@ var MicroModal = function () {
     }, {
       key: 'showModal',
       value: function showModal() {
-        var _this2 = this;
-
         this.activeElement = document.activeElement;
         this.modal.setAttribute('aria-hidden', 'false');
-        window.requestAnimationFrame(function () {
-          _this2.modal.classList.add('is-open');
-          _this2.setFocusToFirstNode();
-        });
+        this.modal.classList.add('is-open');
+        this.setFocusToFirstNode();
         this.scrollBehaviour('disable');
         this.addEventListeners();
-        this.callbacks.onShow(this.modal);
+        this.config.onShow(this.modal);
       }
     }, {
       key: 'closeModal',
       value: function closeModal() {
         var modal = this.modal;
-        this.modal.addEventListener('animationend', function handler() {
-          window.requestAnimationFrame(function () {
-            return modal.classList.remove('is-open');
-          });
-          modal.removeEventListener('animationend', handler, false);
-        }, false);
         this.modal.setAttribute('aria-hidden', 'true');
         this.removeEventListeners();
         this.scrollBehaviour('enable');
         this.activeElement.focus();
-        this.callbacks.onClose(this.modal);
+        this.config.onClose(this.modal);
+
+        if (this.config.hasAnimation) {
+          this.modal.addEventListener('animationend', function handler() {
+            modal.classList.remove('is-open');
+            modal.removeEventListener('animationend', handler, false);
+          }, false);
+        } else {
+          modal.classList.remove('is-open');
+        }
       }
     }, {
       key: 'scrollBehaviour',
       value: function scrollBehaviour(toggle) {
-        if (this.disableScroll === false) return;
-
+        if (!this.config.disableScroll) return;
         var body = document.querySelector('body');
         switch (toggle) {
           case 'enable':
@@ -189,7 +204,7 @@ var MicroModal = function () {
     }, {
       key: 'onClick',
       value: function onClick(event) {
-        if (event.target.hasAttribute('data-micromodal-close')) {
+        if (event.target.hasAttribute(this.config.closeTrigger)) {
           this.closeModal();
           event.preventDefault();
         }
@@ -211,6 +226,7 @@ var MicroModal = function () {
     }, {
       key: 'setFocusToFirstNode',
       value: function setFocusToFirstNode() {
+        if (this.config.disableFocus) return;
         var focusableNodes = this.getFocusableNodes();
         if (focusableNodes.length) focusableNodes[0].focus();
       }
@@ -218,27 +234,51 @@ var MicroModal = function () {
       key: 'maintainFocus',
       value: function maintainFocus(event) {
         var focusableNodes = this.getFocusableNodes();
-        var focusedItemIndex = focusableNodes.indexOf(document.activeElement);
 
-        if (event.shiftKey && focusedItemIndex === 0) {
-          focusableNodes[focusableNodes.length - 1].focus();
-          event.preventDefault();
-        }
-
-        if (!event.shiftKey && focusedItemIndex === focusableNodes.length - 1) {
+        // if disableFocus is true
+        if (!this.modal.contains(document.activeElement)) {
           focusableNodes[0].focus();
-          event.preventDefault();
+        } else {
+          var focusedItemIndex = focusableNodes.indexOf(document.activeElement);
+
+          if (event.shiftKey && focusedItemIndex === 0) {
+            focusableNodes[focusableNodes.length - 1].focus();
+            event.preventDefault();
+          }
+
+          if (!event.shiftKey && focusedItemIndex === focusableNodes.length - 1) {
+            focusableNodes[0].focus();
+            event.preventDefault();
+          }
         }
       }
     }]);
     return Modal;
   }();
 
-  var generateTriggerMap = function generateTriggerMap(triggers) {
+  /**
+   * Modal prototype ends.
+   * Here on code is reposible for detecting and
+   * autobinding event handlers on modal triggers
+   */
+
+  // Keep a reference to the opened modal
+
+
+  var activeModal = null;
+
+  /**
+   * Generates an associative array of modals and it's
+   * respective triggers
+   * @param  {array} triggers     An array of all triggers
+   * @param  {string} triggerAttr The data-attribute which triggers the module
+   * @return {array}
+   */
+  var generateTriggerMap = function generateTriggerMap(triggers, triggerAttr) {
     var triggerMap = [];
 
     triggers.forEach(function (trigger) {
-      var targetModal = trigger.dataset.micromodalTrigger;
+      var targetModal = trigger.attributes[triggerAttr].value;
       if (triggerMap[targetModal] === undefined) triggerMap[targetModal] = [];
       triggerMap[targetModal].push(trigger);
     });
@@ -246,6 +286,12 @@ var MicroModal = function () {
     return triggerMap;
   };
 
+  /**
+   * Validates whether a modal of the given id exists
+   * in the DOM
+   * @param  {number} id  The id of the modal
+   * @return {boolean}
+   */
   var validateModalPresence = function validateModalPresence(id) {
     if (!document.getElementById(id)) {
       console.warn('MicroModal v' + version + ': \u2757Seems like you have missed %c\'' + id + '\'', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'ID somewhere in your code. Refer example below to resolve it.');
@@ -254,6 +300,12 @@ var MicroModal = function () {
     }
   };
 
+  /**
+   * Validates if there are modal triggers present
+   * in the DOM
+   * @param  {array} triggers An array of data-triggers
+   * @return {boolean}
+   */
   var validateTriggerPresence = function validateTriggerPresence(triggers) {
     if (triggers.length <= 0) {
       console.warn('MicroModal v' + version + ': \u2757Please specify at least one %c\'micromodal-trigger\'', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'data attribute.');
@@ -262,6 +314,13 @@ var MicroModal = function () {
     }
   };
 
+  /**
+   * Checks if triggers and their corresponding modals
+   * are present in the DOM
+   * @param  {array} triggers   Array of DOM nodes which have data-triggers
+   * @param  {array} triggerMap Associative array of modals and thier triggers
+   * @return {boolean}
+   */
   var validateArgs = function validateArgs(triggers, triggerMap) {
     validateTriggerPresence(triggers);
     if (!triggerMap) return true;
@@ -270,14 +329,25 @@ var MicroModal = function () {
     }return true;
   };
 
+  /**
+   * Binds click handlers to all modal triggers
+   * @param  {object} config [description]
+   * @return void
+   */
   var init = function init(config) {
-    var options = config || {};
+    // Create an config object with default openTrigger
+    var options = Object.assign({}, { openTrigger: 'data-micromodal-trigger' }, config);
 
-    var triggers = [].concat(toConsumableArray(document.querySelectorAll('[data-micromodal-trigger]')));
-    var triggerMap = generateTriggerMap(triggers);
+    // Collects all the nodes with the trigger
+    var triggers = [].concat(toConsumableArray(document.querySelectorAll('[' + options.openTrigger + ']')));
 
+    // Makes a mappings of modals with their trigger nodes
+    var triggerMap = generateTriggerMap(triggers, options.openTrigger);
+
+    // Checks if modals and triggers exist in dom
     if (options.debugMode === true && validateArgs(triggers, triggerMap) === false) return;
 
+    // For every target modal creates a new instance
     for (var key in triggerMap) {
       var value = triggerMap[key];
       options.targetModal = key;
@@ -286,24 +356,28 @@ var MicroModal = function () {
     }
   };
 
-  var activeModal = null;
-
   /**
    * Shows a particular modal
    * @param  {string} targetModal [The id of the modal to display]
-   * @param  {{object}} config [The configuration object to pass]
+   * @param  {object} config [The configuration object to pass]
    * @return {void}
    */
   var show = function show(targetModal, config) {
     var options = config || {};
     options.targetModal = targetModal;
 
+    // Checks if modals and triggers exist in dom
     if (options.debugMode === true && validateModalPresence(targetModal) === false) return;
 
+    // stores reference to active modal
     activeModal = new Modal(options); // eslint-disable-line no-new
     activeModal.showModal();
   };
 
+  /**
+   * Closes the active modal
+   * @return {void}
+   */
   var close = function close() {
     activeModal.closeModal();
   };
