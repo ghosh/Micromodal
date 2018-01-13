@@ -101,17 +101,21 @@ var MicroModal = function () {
           _ref$closeTrigger = _ref.closeTrigger,
           closeTrigger = _ref$closeTrigger === undefined ? 'data-micromodal-close' : _ref$closeTrigger,
           _ref$hasAnimation = _ref.hasAnimation,
-          hasAnimation = _ref$hasAnimation === undefined ? false : _ref$hasAnimation;
+          hasAnimation = _ref$hasAnimation === undefined ? false : _ref$hasAnimation,
+          _ref$disableFocus = _ref.disableFocus,
+          disableFocus = _ref$disableFocus === undefined ? false : _ref$disableFocus;
       classCallCheck(this, Modal);
 
-      // setup the modal
+      // Save a reference of the modal
       this.modal = document.getElementById(targetModal);
+
+      // Register click events only if its for init()
       if (triggers.length > 0) this.registerTriggers.apply(this, toConsumableArray(triggers));
 
       // Save a reference to the config settings
-      this.config = { debugMode: debugMode, disableScroll: disableScroll, openTrigger: openTrigger, closeTrigger: closeTrigger, onShow: onShow, onClose: onClose, hasAnimation: hasAnimation
+      this.config = { debugMode: debugMode, disableScroll: disableScroll, openTrigger: openTrigger, closeTrigger: closeTrigger, onShow: onShow, onClose: onClose, hasAnimation: hasAnimation, disableFocus: disableFocus
 
-        // bind the methods
+        // prebind functions for event listeners
       };this.onClick = this.onClick.bind(this);
       this.onKeydown = this.onKeydown.bind(this);
     }
@@ -229,16 +233,22 @@ var MicroModal = function () {
       key: 'maintainFocus',
       value: function maintainFocus(event) {
         var focusableNodes = this.getFocusableNodes();
-        var focusedItemIndex = focusableNodes.indexOf(document.activeElement);
 
-        if (event.shiftKey && focusedItemIndex === 0) {
-          focusableNodes[focusableNodes.length - 1].focus();
-          event.preventDefault();
-        }
-
-        if (!event.shiftKey && focusedItemIndex === focusableNodes.length - 1) {
+        // if disableFocus is true
+        if (!this.modal.contains(document.activeElement)) {
           focusableNodes[0].focus();
-          event.preventDefault();
+        } else {
+          var focusedItemIndex = focusableNodes.indexOf(document.activeElement);
+
+          if (event.shiftKey && focusedItemIndex === 0) {
+            focusableNodes[focusableNodes.length - 1].focus();
+            event.preventDefault();
+          }
+
+          if (!event.shiftKey && focusedItemIndex === focusableNodes.length - 1) {
+            focusableNodes[0].focus();
+            event.preventDefault();
+          }
         }
       }
     }]);

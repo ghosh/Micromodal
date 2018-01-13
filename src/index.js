@@ -27,16 +27,19 @@ const MicroModal = (() => {
       onClose = () => {},
       openTrigger = 'data-micromodal-trigger',
       closeTrigger = 'data-micromodal-close',
-      hasAnimation = false
+      hasAnimation = false,
+      disableFocus = false
     }) {
-      // setup the modal
+      // Save a reference of the modal
       this.modal = document.getElementById(targetModal)
+
+      // Register click events only if its for init()
       if (triggers.length > 0) this.registerTriggers(...triggers)
 
       // Save a reference to the config settings
-      this.config = { debugMode, disableScroll, openTrigger, closeTrigger, onShow, onClose, hasAnimation }
+      this.config = { debugMode, disableScroll, openTrigger, closeTrigger, onShow, onClose, hasAnimation, disableFocus }
 
-      // bind the methods
+      // prebind functions for event listeners
       this.onClick = this.onClick.bind(this)
       this.onKeydown = this.onKeydown.bind(this)
     }
@@ -129,17 +132,23 @@ const MicroModal = (() => {
     }
 
     maintainFocus (event) {
-      var focusableNodes = this.getFocusableNodes()
-      var focusedItemIndex = focusableNodes.indexOf(document.activeElement)
+      const focusableNodes = this.getFocusableNodes()
 
-      if (event.shiftKey && focusedItemIndex === 0) {
-        focusableNodes[focusableNodes.length - 1].focus()
-        event.preventDefault()
-      }
-
-      if (!event.shiftKey && focusedItemIndex === focusableNodes.length - 1) {
+      // if disableFocus is true
+      if (!this.modal.contains(document.activeElement)) {
         focusableNodes[0].focus()
-        event.preventDefault()
+      } else {
+        const focusedItemIndex = focusableNodes.indexOf(document.activeElement)
+
+        if (event.shiftKey && focusedItemIndex === 0) {
+          focusableNodes[focusableNodes.length - 1].focus()
+          event.preventDefault()
+        }
+
+        if (!event.shiftKey && focusedItemIndex === focusableNodes.length - 1) {
+          focusableNodes[0].focus()
+          event.preventDefault()
+        }
       }
     }
   }
