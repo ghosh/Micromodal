@@ -81,7 +81,7 @@ var toConsumableArray = function (arr) {
 };
 
 var MicroModal = function () {
-  var FOCUSABLE_ELEMENTS = ['a[href]', 'area[href]', 'input:not([disabled]):not([aria-hidden])', 'select:not([disabled]):not([aria-hidden])', 'textarea:not([disabled]):not([aria-hidden])', 'button:not([disabled]):not([aria-hidden])', 'iframe', 'object', 'embed', '[contenteditable]', '[tabindex]:not([tabindex^="-"])'];
+  var FOCUSABLE_ELEMENTS = ['a[href]', 'area[href]', 'input:not([disabled]):not([type="hidden"]):not([aria-hidden])', 'select:not([disabled]):not([aria-hidden])', 'textarea:not([disabled]):not([aria-hidden])', 'button:not([disabled]):not([aria-hidden])', 'iframe', 'object', 'embed', '[contenteditable]', '[tabindex]:not([tabindex^="-"])'];
 
   var Modal = function () {
     function Modal(_ref) {
@@ -99,7 +99,9 @@ var MicroModal = function () {
           _ref$openTrigger = _ref.openTrigger,
           openTrigger = _ref$openTrigger === undefined ? 'data-micromodal-trigger' : _ref$openTrigger,
           _ref$closeTrigger = _ref.closeTrigger,
-          closeTrigger = _ref$closeTrigger === undefined ? 'data-micromodal-close' : _ref$closeTrigger;
+          closeTrigger = _ref$closeTrigger === undefined ? 'data-micromodal-close' : _ref$closeTrigger,
+          _ref$hasAnimation = _ref.hasAnimation,
+          hasAnimation = _ref$hasAnimation === undefined ? false : _ref$hasAnimation;
       classCallCheck(this, Modal);
 
       // setup the modal
@@ -107,7 +109,7 @@ var MicroModal = function () {
       if (triggers.length > 0) this.registerTriggers.apply(this, toConsumableArray(triggers));
 
       // Save a reference to the config settings
-      this.config = { debugMode: debugMode, disableScroll: disableScroll, openTrigger: openTrigger, closeTrigger: closeTrigger, onShow: onShow, onClose: onClose
+      this.config = { debugMode: debugMode, disableScroll: disableScroll, openTrigger: openTrigger, closeTrigger: closeTrigger, onShow: onShow, onClose: onClose, hasAnimation: hasAnimation
 
         // bind the methods
       };this.onClick = this.onClick.bind(this);
@@ -151,31 +153,24 @@ var MicroModal = function () {
       key: 'closeModal',
       value: function closeModal() {
         var modal = this.modal;
-        var isAnimating = false; // archaic way of detecting animation
-
-        // if animating remove class after animationEnd
-        this.modal.addEventListener('animationend', function handler() {
-          modal.classList.remove('is-open');
-          isAnimating = true;
-          modal.removeEventListener('animationend', handler, false);
-        }, false);
-
-        // else remove immediately
-        setTimeout(function () {
-          if (!isAnimating) modal.classList.remove('is-open');
-        }, 0);
-
         this.modal.setAttribute('aria-hidden', 'true');
         this.removeEventListeners();
         this.scrollBehaviour('enable');
         this.activeElement.focus();
         this.config.onClose(this.modal);
+
+        if (this.config.hasAnimation) {
+          this.modal.addEventListener('animationend', function handler() {
+            modal.classList.remove('is-open');
+            modal.removeEventListener('animationend', handler, false);
+          }, false);
+        } else {
+          modal.classList.remove('is-open');
+        }
       }
     }, {
       key: 'scrollBehaviour',
       value: function scrollBehaviour(toggle) {
-        if (this.config.disableScroll === false) return;
-
         var body = document.querySelector('body');
         switch (toggle) {
           case 'enable':
@@ -226,6 +221,7 @@ var MicroModal = function () {
     }, {
       key: 'setFocusToFirstNode',
       value: function setFocusToFirstNode() {
+        if (this.config.disableFocus) return;
         var focusableNodes = this.getFocusableNodes();
         if (focusableNodes.length) focusableNodes[0].focus();
       }

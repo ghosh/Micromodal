@@ -86,6 +86,9 @@
             <a href="#usage" class="link black-70 navlink">Usage</a>
           </li>
           <li class="lh-copy pv2 ba bl-0 bt-0 br-0 b--dotted b--black-10">
+            <a href="#configuration" class="link black-70 navlink">Configuration</a>
+          </li>
+          <li class="lh-copy pv2 ba bl-0 bt-0 br-0 b--dotted b--black-10">
             <a href="#styling" class="link black-70 navlink">Styling</a>
           </li>
         </ul>
@@ -284,11 +287,36 @@ MicroModal.init();
         </p>
 
         <pre><code class="language-html">
-&lt;button class="Button Button--Large" data-custom-close="modal-1"&gt;Accept&lt;/button&gt;
+&lt;button data-custom-close="modal-1"&gt;close&lt;/button&gt;
         </code></pre>
 
+        <h3 class="f4 fw6 mv4">
+          4. Use with javascript
+        </h3>
+
         <p class="lh-copy mv4 black-80">
-          The <code>init</code> method also accepts and optional configuration object. This can be used to pass hooks to be executed on the modal open and modal close events. Example:-
+          You can also trigger and close modals programmatically using the <code>show</code> and <code>close</code> methods on the <code>MicroModal</code> object. Example:-
+        </p>
+
+        <pre><code class="language-js">
+MicroModal.show('modal-id'); // [1]
+MicroModal.close('modal-id'); // [2]
+        </code></pre>
+
+        <ul class="ordered lh-copy pl0 mv4">
+          <li class="pl4 pv3">
+            The string passed to the <code>show</code> method must correspond to the <code>id</code> of the modal to be open. You can also pass in a config object in the <code>show</code> method and it will apply only to this modal.
+          </li>
+          <li class="pl4 pv3">
+            The string passed to the <code>close</code> method must correspond to the <code>id</code> of the modal to be closed
+          </li>
+        </ul>
+
+        <h2 class="f3 fw6 lh-title mt5 mb4 black heading" id="configuration">
+          Configuration
+        </h2>
+        <p class="lh-copy mv4 black-80">
+          The <code>init</code> and <code>show</code> method accepts an optional configuration object. This allows you to set custom callbacks and control behaviour of the modal. Example:-
         </p>
 
         <pre><code class="language-js">
@@ -299,6 +327,7 @@ MicroModal.init({
   disableScroll: true // [4]
   openTrigger: 'data-custom-open', // [5]
   closeTrigger: 'data-custom-close', // [6]
+  animtion: false // [7]
 });
         </code></pre>
 
@@ -316,35 +345,15 @@ MicroModal.init({
             <code>disableScroll (boolean)</code> This option will disbable scrolling on the page while the modal is open. The default value is <code>false</code>.
           </li>
           <li class="pl4 pv3">
-            <code>openTrigger (string)</code> This option will take custom data attribute to open modal.
+            <code>openTrigger (string)</code> This option will take custom data attribute to open modal. By default this is set to <code>data-micromodal-trigger</code>.
           </li>
           <li class="pl4 pv3">
-            <code>closeTrigger (string)</code> This option will take custom data attribute to close modal.
+            <code>closeTrigger (string)</code> This option will take custom data attribute to close modal. By default this is set to <code>data-micromodal-close</code>
+          </li>
+          <li class="pl4 pv3">
+            <code>hasAnimation (boolean)</code> Set this to true if using animations to show and hide the modal. This allows it to wait for the animation to finish before removing it from the DOM. Default is <code>false</code>
           </li>
         </ul>
-
-        <h3 class="f4 fw6 mv4">
-          4. Use with javascript
-        </h3>
-
-        <p class="lh-copy mv4 black-80">
-          You can also triggera and close modals programmatically using the <code>show</code> and <code>close</code> methods on the <code>MicroModal</code> object. Example:-
-        </p>
-
-        <pre><code class="language-js">
-MicroModal.show('modal-id'); // [1]
-MicroModal.close('modal-id'); // [2]
-        </code></pre>
-
-        <ul class="ordered lh-copy pl0 mv4">
-          <li class="pl4 pv3">
-            The string passed to the <code>show</code> method must correspond to the <code>id</code> of the modal to be open. You can also pass in a config object in the <code>show</code> method and it will apply only to this modal.
-          </li>
-          <li class="pl4 pv3">
-            The string passed to the <code>close</code> method must correspond to the <code>id</code> of the modal to be closed
-          </li>
-        </ul>
-
 
         <h2 class="f3 fw6 lh-title mt5 mb4 black heading" id="styling">
           Styling
@@ -450,7 +459,8 @@ MicroModal.close('modal-id'); // [2]
 
   // Initial config for setting up modals
   MicroModal.init({
-    openTrigger: 'data-custom-open'
+    openTrigger: 'data-custom-open',
+    hasAnimation: true
   });
 
   // Programmatically show modal
@@ -460,7 +470,8 @@ MicroModal.close('modal-id'); // [2]
       disableScroll: true,
       onShow: function (modal) { document.querySelector('.js-body').classList.add(modal.id) },
       onClose: function (modal) { document.querySelector('.js-body').classList.remove(modal.id) },
-      closeTrigger: 'data-custom-close'
+      closeTrigger: 'data-custom-close',
+      hasAnimation: true
     })
   });
 

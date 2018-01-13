@@ -26,14 +26,15 @@ const MicroModal = (() => {
       onShow = () => {},
       onClose = () => {},
       openTrigger = 'data-micromodal-trigger',
-      closeTrigger = 'data-micromodal-close'
+      closeTrigger = 'data-micromodal-close',
+      hasAnimation = false
     }) {
       // setup the modal
       this.modal = document.getElementById(targetModal)
       if (triggers.length > 0) this.registerTriggers(...triggers)
 
       // Save a reference to the config settings
-      this.config = { debugMode, disableScroll, openTrigger, closeTrigger, onShow, onClose }
+      this.config = { debugMode, disableScroll, openTrigger, closeTrigger, onShow, onClose, hasAnimation }
 
       // bind the methods
       this.onClick = this.onClick.bind(this)
@@ -63,30 +64,23 @@ const MicroModal = (() => {
 
     closeModal () {
       const modal = this.modal
-      let isAnimating = false // archaic way of detecting animation
-
-      // if animating remove class after animationEnd
-      this.modal.addEventListener('animationend', function handler () {
-        modal.classList.remove('is-open')
-        isAnimating = true
-        modal.removeEventListener('animationend', handler, false)
-      }, false)
-
-      // else remove immediately
-      setTimeout(() => {
-        if (!isAnimating) modal.classList.remove('is-open')
-      }, 0)
-
       this.modal.setAttribute('aria-hidden', 'true')
       this.removeEventListeners()
       this.scrollBehaviour('enable')
       this.activeElement.focus()
       this.config.onClose(this.modal)
+
+      if (this.config.hasAnimation) {
+        this.modal.addEventListener('animationend', function handler () {
+          modal.classList.remove('is-open')
+          modal.removeEventListener('animationend', handler, false)
+        }, false)
+      } else {
+        modal.classList.remove('is-open')
+      }
     }
 
     scrollBehaviour (toggle) {
-      if (this.config.disableScroll === false) return
-
       const body = document.querySelector('body')
       switch (toggle) {
         case 'enable':
@@ -129,6 +123,7 @@ const MicroModal = (() => {
     }
 
     setFocusToFirstNode () {
+      if (this.config.disableFocus) return
       const focusableNodes = this.getFocusableNodes()
       if (focusableNodes.length) focusableNodes[0].focus()
     }
