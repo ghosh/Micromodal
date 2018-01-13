@@ -21,23 +21,23 @@ const MicroModal = (() => {
     constructor ({
       targetModal,
       triggers = [],
-      disableScroll = false,
-      debugMode = false,
       onShow = () => {},
       onClose = () => {},
       openTrigger = 'data-micromodal-trigger',
       closeTrigger = 'data-micromodal-close',
+      disableScroll = false,
+      disableFocus = false,
       hasAnimation = false,
-      disableFocus = false
+      debugMode = false
     }) {
       // Save a reference of the modal
       this.modal = document.getElementById(targetModal)
 
-      // Register click events only if its for init()
-      if (triggers.length > 0) this.registerTriggers(...triggers)
-
       // Save a reference to the config settings
       this.config = { debugMode, disableScroll, openTrigger, closeTrigger, onShow, onClose, hasAnimation, disableFocus }
+
+      // Register click events only if its for init()
+      if (triggers.length > 0) this.registerTriggers(...triggers)
 
       // prebind functions for event listeners
       this.onClick = this.onClick.bind(this)
@@ -84,6 +84,7 @@ const MicroModal = (() => {
     }
 
     scrollBehaviour (toggle) {
+      if (!this.config.disableScroll) return
       const body = document.querySelector('body')
       switch (toggle) {
         case 'enable':

@@ -88,10 +88,6 @@ var MicroModal = function () {
       var targetModal = _ref.targetModal,
           _ref$triggers = _ref.triggers,
           triggers = _ref$triggers === undefined ? [] : _ref$triggers,
-          _ref$disableScroll = _ref.disableScroll,
-          disableScroll = _ref$disableScroll === undefined ? false : _ref$disableScroll,
-          _ref$debugMode = _ref.debugMode,
-          debugMode = _ref$debugMode === undefined ? false : _ref$debugMode,
           _ref$onShow = _ref.onShow,
           onShow = _ref$onShow === undefined ? function () {} : _ref$onShow,
           _ref$onClose = _ref.onClose,
@@ -100,23 +96,27 @@ var MicroModal = function () {
           openTrigger = _ref$openTrigger === undefined ? 'data-micromodal-trigger' : _ref$openTrigger,
           _ref$closeTrigger = _ref.closeTrigger,
           closeTrigger = _ref$closeTrigger === undefined ? 'data-micromodal-close' : _ref$closeTrigger,
+          _ref$disableScroll = _ref.disableScroll,
+          disableScroll = _ref$disableScroll === undefined ? false : _ref$disableScroll,
+          _ref$disableFocus = _ref.disableFocus,
+          disableFocus = _ref$disableFocus === undefined ? false : _ref$disableFocus,
           _ref$hasAnimation = _ref.hasAnimation,
           hasAnimation = _ref$hasAnimation === undefined ? false : _ref$hasAnimation,
-          _ref$disableFocus = _ref.disableFocus,
-          disableFocus = _ref$disableFocus === undefined ? false : _ref$disableFocus;
+          _ref$debugMode = _ref.debugMode,
+          debugMode = _ref$debugMode === undefined ? false : _ref$debugMode;
       classCallCheck(this, Modal);
 
       // Save a reference of the modal
       this.modal = document.getElementById(targetModal);
 
-      // Register click events only if its for init()
-      if (triggers.length > 0) this.registerTriggers.apply(this, toConsumableArray(triggers));
-
       // Save a reference to the config settings
       this.config = { debugMode: debugMode, disableScroll: disableScroll, openTrigger: openTrigger, closeTrigger: closeTrigger, onShow: onShow, onClose: onClose, hasAnimation: hasAnimation, disableFocus: disableFocus
 
-        // prebind functions for event listeners
-      };this.onClick = this.onClick.bind(this);
+        // Register click events only if its for init()
+      };if (triggers.length > 0) this.registerTriggers.apply(this, toConsumableArray(triggers));
+
+      // prebind functions for event listeners
+      this.onClick = this.onClick.bind(this);
       this.onKeydown = this.onKeydown.bind(this);
     }
 
@@ -175,6 +175,7 @@ var MicroModal = function () {
     }, {
       key: 'scrollBehaviour',
       value: function scrollBehaviour(toggle) {
+        if (!this.config.disableScroll) return;
         var body = document.querySelector('body');
         switch (toggle) {
           case 'enable':
