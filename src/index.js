@@ -88,7 +88,8 @@ const MicroModal = (() => {
       const body = document.querySelector('body')
       switch (toggle) {
         case 'enable':
-          Object.assign(body.style, {overflow: 'initial', height: 'initial'})
+          // we are using empty string instead of "initial" for IE support
+          Object.assign(body.style, {overflow: '', height: ''})
           break
         case 'disable':
           Object.assign(body.style, {overflow: 'hidden', height: '100vh'})
