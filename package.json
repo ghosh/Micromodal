@@ -59,7 +59,7 @@
     "rollup-plugin-json": "^2.3.0",
     "rollup-plugin-uglify-es": "^0.0.1",
     "rollup-watch": "^4.3.1",
-    "tachyons": "^4.9.0",
+    "tachyons": "^4.9.1",
     "uncss": "^0.16.1",
     "watch": "^1.0.2"
   },
