@@ -4,7 +4,7 @@
 	(global.MicroModal = factory());
 }(this, (function () { 'use strict';
 
-var version = "0.2.1";
+var version = "0.3.1";
 
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -100,8 +100,8 @@ var MicroModal = function () {
           disableScroll = _ref$disableScroll === undefined ? false : _ref$disableScroll,
           _ref$disableFocus = _ref.disableFocus,
           disableFocus = _ref$disableFocus === undefined ? false : _ref$disableFocus,
-          _ref$hasAnimation = _ref.hasAnimation,
-          hasAnimation = _ref$hasAnimation === undefined ? false : _ref$hasAnimation,
+          _ref$awaitCloseAnimat = _ref.awaitCloseAnimation,
+          awaitCloseAnimation = _ref$awaitCloseAnimat === undefined ? false : _ref$awaitCloseAnimat,
           _ref$debugMode = _ref.debugMode,
           debugMode = _ref$debugMode === undefined ? false : _ref$debugMode;
       classCallCheck(this, Modal);
@@ -110,7 +110,7 @@ var MicroModal = function () {
       this.modal = document.getElementById(targetModal);
 
       // Save a reference to the passed config
-      this.config = { debugMode: debugMode, disableScroll: disableScroll, openTrigger: openTrigger, closeTrigger: closeTrigger, onShow: onShow, onClose: onClose, hasAnimation: hasAnimation, disableFocus: disableFocus
+      this.config = { debugMode: debugMode, disableScroll: disableScroll, openTrigger: openTrigger, closeTrigger: closeTrigger, onShow: onShow, onClose: onClose, awaitCloseAnimation: awaitCloseAnimation, disableFocus: disableFocus
 
         // Register click events only if prebinding eventListeners
       };if (triggers.length > 0) this.registerTriggers.apply(this, toConsumableArray(triggers));
@@ -163,7 +163,7 @@ var MicroModal = function () {
         this.activeElement.focus();
         this.config.onClose(this.modal);
 
-        if (this.config.hasAnimation) {
+        if (this.config.awaitCloseAnimation) {
           this.modal.addEventListener('animationend', function handler() {
             modal.classList.remove('is-open');
             modal.removeEventListener('animationend', handler, false);

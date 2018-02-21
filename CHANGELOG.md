@@ -1,4 +1,7 @@
 ## Release History
+* **0.3.1**
+    * `FEATURE` **Breaking** Renamed `hasAnimation` to `awaitCloseAnimation`
+    * `BUGFIX` Updated correct version of modal in dist
 * **0.3.0**
     * `FEATURE` **Breaking** Added flag to enable wait for close animation to finish before destroying modal
     * `FEATURE` Added flag to disable focus on first element
