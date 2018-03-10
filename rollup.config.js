@@ -19,7 +19,7 @@ export default {
     format: type
   },
   plugins: [
-    // eslint({ exclude: ['package.json', 'example/**'] }),
+    eslint({ exclude: ['package.json', 'example/**'] }),
     json(),
     babel({ exclude: 'node_modules/**' }),
     conditional(
