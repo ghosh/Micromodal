@@ -4,7 +4,7 @@
 	(global.MicroModal = factory());
 }(this, (function () { 'use strict';
 
-var version = "0.3.1";
+var version = "0.3.2";
 
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -97,7 +97,7 @@ var MicroModal = function () {
           triggers[_key] = arguments[_key];
         }
 
-        triggers.forEach(function (trigger) {
+        triggers.filter(Boolean).forEach(function (trigger) {
           trigger.addEventListener('click', function () {
             return _this.showModal();
           });
