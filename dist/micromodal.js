@@ -343,10 +343,11 @@ var MicroModal = function () {
    */
   var close = function close(targetModal) {
     var options = {};
-    options.targetModal = targetModal;
-
-    // stores reference to active modal
-    activeModal = new Modal(options); // eslint-disable-line no-new
+    if (typeof activeModal === 'undefined') {
+      options.targetModal = targetModal;
+      // stores reference to active modal
+      activeModal = new Modal(options); // eslint-disable-line no-new
+    }
 
     activeModal.closeModal();
   };
