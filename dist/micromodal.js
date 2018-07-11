@@ -4,7 +4,7 @@
 	(global.MicroModal = factory());
 }(this, (function () { 'use strict';
 
-var version = "0.3.1";
+var version = "0.3.2";
 
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -118,6 +118,7 @@ var MicroModal = function () {
       key: 'closeModal',
       value: function closeModal() {
         var modal = this.modal;
+        this.activeElement = document.activeElement;
         this.modal.setAttribute('aria-hidden', 'true');
         this.removeEventListeners();
         this.scrollBehaviour('enable');
@@ -337,9 +338,16 @@ var MicroModal = function () {
 
   /**
    * Closes the active modal
+   * @param  {string} targetModal [The id of the modal to display]
    * @return {void}
    */
-  var close = function close() {
+  var close = function close(targetModal) {
+    var options = {};
+    options.targetModal = targetModal;
+
+    // stores reference to active modal
+    activeModal = new Modal(options); // eslint-disable-line no-new
+
     activeModal.closeModal();
   };
 

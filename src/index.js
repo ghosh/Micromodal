@@ -67,6 +67,7 @@ const MicroModal = (() => {
 
     closeModal () {
       const modal = this.modal
+      this.activeElement = document.activeElement
       this.modal.setAttribute('aria-hidden', 'true')
       this.removeEventListeners()
       this.scrollBehaviour('enable')
@@ -271,9 +272,16 @@ const MicroModal = (() => {
 
   /**
    * Closes the active modal
+   * @param  {string} targetModal [The id of the modal to display]
    * @return {void}
    */
-  const close = () => {
+  var close = function close (targetModal) {
+    var options = {}
+    options.targetModal = targetModal
+
+    // stores reference to active modal
+    activeModal = new Modal(options) // eslint-disable-line no-new
+
     activeModal.closeModal()
   }
 
