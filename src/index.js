@@ -277,7 +277,7 @@ const MicroModal = (() => {
    */
   var close = function close (targetModal) {
     var options = {}
-    if (typeof activeModal === 'undefined') {
+    if (activeModal === null) {
       options.targetModal = targetModal
       // stores reference to active modal
       activeModal = new Modal(options) // eslint-disable-line no-new
