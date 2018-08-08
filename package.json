@@ -54,7 +54,7 @@
     "postcss-scss": "^1.0.3",
     "postcss-uncss": "^0.16.1",
     "reload": "^2.2.1",
-    "rollup": "^0.56.3",
+    "rollup": "^0.58.2",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-conditional": "^1.1.1",
     "rollup-plugin-eslint": "^4.0.0",
