@@ -83,6 +83,11 @@ const MicroModal = (() => {
       }
     }
 
+    closeModalById (targetModal) {
+      this.modal = document.getElementById(targetModal)
+      if (this.modal) this.closeModal()
+    }
+
     scrollBehaviour (toggle) {
       if (!this.config.disableScroll) return
       const body = document.querySelector('body')
@@ -271,10 +276,11 @@ const MicroModal = (() => {
 
   /**
    * Closes the active modal
+   * @param  {string} targetModal [The id of the modal to close]
    * @return {void}
    */
-  const close = () => {
-    activeModal.closeModal()
+  const close = targetModal => {
+    targetModal ? activeModal.closeModalById(targetModal) : activeModal.closeModal()
   }
 
   return { init, show, close }

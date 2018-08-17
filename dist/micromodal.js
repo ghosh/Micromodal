@@ -4,7 +4,7 @@
 	(global.MicroModal = factory());
 }(this, (function () { 'use strict';
 
-var version = "0.3.1";
+var version = "0.3.2";
 
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -132,6 +132,12 @@ var MicroModal = function () {
         } else {
           modal.classList.remove('is-open');
         }
+      }
+    }, {
+      key: 'closeModalById',
+      value: function closeModalById(targetModal) {
+        this.modal = document.getElementById(targetModal);
+        if (this.modal) this.closeModal();
       }
     }, {
       key: 'scrollBehaviour',
@@ -337,10 +343,12 @@ var MicroModal = function () {
 
   /**
    * Closes the active modal
+   * @param  {string} targetModal [The id of the modal to close]
    * @return {void}
    */
-  var close = function close() {
-    activeModal.closeModal();
+  var close = function close(targetModal) {
+    console.log('close: ', targetModal);
+    targetModal ? activeModal.closeModalById(targetModal) : activeModal.closeModal();
   };
 
   return { init: init, show: show, close: close };
