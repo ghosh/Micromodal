@@ -347,7 +347,6 @@ var MicroModal = function () {
    * @return {void}
    */
   var close = function close(targetModal) {
-    console.log('close: ', targetModal);
     targetModal ? activeModal.closeModalById(targetModal) : activeModal.closeModal();
   };
 
