@@ -4678,9 +4678,9 @@ rollup-plugin-babel@^3.0.3:
   dependencies:
     rollup-pluginutils "^1.5.0"
 
-rollup-plugin-conditional@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-conditional/-/rollup-plugin-conditional-1.1.1.tgz#73309268801cb5cc83d2d8fe680208a65d97a517"
+rollup-plugin-conditional@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-conditional/-/rollup-plugin-conditional-2.1.1.tgz#699d4331f0cfe7e7595b80080e73b7a78df5c1e0"
 
 rollup-plugin-eslint@^4.0.0:
   version "4.0.0"
