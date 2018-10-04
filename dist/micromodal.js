@@ -4,7 +4,7 @@
 	(global.MicroModal = factory());
 }(this, (function () { 'use strict';
 
-var version = "0.3.1";
+var version = "0.3.2";
 
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -63,6 +63,8 @@ var MicroModal = function () {
           disableFocus = _ref$disableFocus === undefined ? false : _ref$disableFocus,
           _ref$awaitCloseAnimat = _ref.awaitCloseAnimation,
           awaitCloseAnimation = _ref$awaitCloseAnimat === undefined ? false : _ref$awaitCloseAnimat,
+          _ref$closeOnEsc = _ref.closeOnEsc,
+          closeOnEsc = _ref$closeOnEsc === undefined ? true : _ref$closeOnEsc,
           _ref$debugMode = _ref.debugMode,
           debugMode = _ref$debugMode === undefined ? false : _ref$debugMode;
       classCallCheck(this, Modal);
@@ -71,7 +73,7 @@ var MicroModal = function () {
       this.modal = document.getElementById(targetModal);
 
       // Save a reference to the passed config
-      this.config = { debugMode: debugMode, disableScroll: disableScroll, openTrigger: openTrigger, closeTrigger: closeTrigger, onShow: onShow, onClose: onClose, awaitCloseAnimation: awaitCloseAnimation, disableFocus: disableFocus
+      this.config = { debugMode: debugMode, disableScroll: disableScroll, openTrigger: openTrigger, closeTrigger: closeTrigger, onShow: onShow, onClose: onClose, awaitCloseAnimation: awaitCloseAnimation, disableFocus: disableFocus, closeOnEsc: closeOnEsc
 
         // Register click events only if prebinding eventListeners
       };if (triggers.length > 0) this.registerTriggers.apply(this, toConsumableArray(triggers));
@@ -173,7 +175,7 @@ var MicroModal = function () {
     }, {
       key: 'onKeydown',
       value: function onKeydown(event) {
-        if (event.keyCode === 27) this.closeModal(event);
+        if (this.config.closeOnEsc && event.keyCode === 27) this.closeModal(event);
         if (event.keyCode === 9) this.maintainFocus(event);
       }
     }, {

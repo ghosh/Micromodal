@@ -28,13 +28,14 @@ const MicroModal = (() => {
       disableScroll = false,
       disableFocus = false,
       awaitCloseAnimation = false,
+      closeOnEsc = true,
       debugMode = false
     }) {
       // Save a reference of the modal
       this.modal = document.getElementById(targetModal)
 
       // Save a reference to the passed config
-      this.config = { debugMode, disableScroll, openTrigger, closeTrigger, onShow, onClose, awaitCloseAnimation, disableFocus }
+      this.config = { debugMode, disableScroll, openTrigger, closeTrigger, onShow, onClose, awaitCloseAnimation, disableFocus, closeOnEsc }
 
       // Register click events only if prebinding eventListeners
       if (triggers.length > 0) this.registerTriggers(...triggers)
@@ -117,7 +118,7 @@ const MicroModal = (() => {
     }
 
     onKeydown (event) {
-      if (event.keyCode === 27) this.closeModal(event)
+      if (this.config.closeOnEsc && event.keyCode === 27) this.closeModal(event)
       if (event.keyCode === 9) this.maintainFocus(event)
     }
 
