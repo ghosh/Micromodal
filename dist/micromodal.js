@@ -4,7 +4,7 @@
 	(global.MicroModal = factory());
 }(this, (function () { 'use strict';
 
-var version = "0.3.1";
+var version = "0.3.3";
 
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -113,6 +113,8 @@ var MicroModal = function () {
         this.scrollBehaviour('disable');
         this.addEventListeners();
         this.config.onShow(this.modal);
+
+        activeModal = this;
       }
     }, {
       key: 'closeModal',
@@ -132,6 +134,8 @@ var MicroModal = function () {
         } else {
           modal.classList.remove('is-open');
         }
+
+        activeModal = null;
       }
     }, {
       key: 'scrollBehaviour',
@@ -331,8 +335,8 @@ var MicroModal = function () {
     if (options.debugMode === true && validateModalPresence(targetModal) === false) return;
 
     // stores reference to active modal
-    activeModal = new Modal(options); // eslint-disable-line no-new
-    activeModal.showModal();
+    var newModal = new Modal(options); // eslint-disable-line no-new
+    newModal.showModal();
   };
 
   /**
