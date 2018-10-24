@@ -63,6 +63,8 @@ const MicroModal = (() => {
       this.scrollBehaviour('disable')
       this.addEventListeners()
       this.config.onShow(this.modal)
+
+      activeModal = this
     }
 
     closeModal () {
@@ -81,6 +83,8 @@ const MicroModal = (() => {
       } else {
         modal.classList.remove('is-open')
       }
+
+      activeModal = null
     }
 
     scrollBehaviour (toggle) {
@@ -265,8 +269,8 @@ const MicroModal = (() => {
     if (options.debugMode === true && validateModalPresence(targetModal) === false) return
 
     // stores reference to active modal
-    activeModal = new Modal(options) // eslint-disable-line no-new
-    activeModal.showModal()
+    const newModal = new Modal(options) // eslint-disable-line no-new
+    newModal.showModal()
   }
 
   /**
