@@ -59,8 +59,10 @@
     "rollup": "^0.66.2",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-conditional": "^1.1.1",
-    "rollup-plugin-eslint": "^5.0.0",
-    "rollup-plugin-filesize": "^1.5.0",
+
+    "rollup-plugin-eslint": "^4.0.0",
+    "rollup-plugin-filesize": "^5.0.1",
+
     "rollup-plugin-json": "^2.3.0",
     "rollup-plugin-uglify-es": "^0.0.1",
     "rollup-watch": "^4.3.1",
