@@ -88,7 +88,7 @@ const MicroModal = (() => {
       const body = document.querySelector('body')
       switch (toggle) {
         case 'enable':
-          Object.assign(body.style, {overflow: 'initial', height: 'initial'})
+          Object.assign(body.style, {overflow: '', height: ''})
           break
         case 'disable':
           Object.assign(body.style, {overflow: 'hidden', height: '100vh'})
@@ -100,13 +100,11 @@ const MicroModal = (() => {
     addEventListeners () {
       this.modal.addEventListener('touchstart', this.onClick)
       this.modal.addEventListener('click', this.onClick)
-      document.addEventListener('keydown', this.onKeydown)
     }
 
     removeEventListeners () {
       this.modal.removeEventListener('touchstart', this.onClick)
       this.modal.removeEventListener('click', this.onClick)
-      document.removeEventListener('keydown', this.onKeydown)
     }
 
     onClick (event) {
@@ -117,7 +115,6 @@ const MicroModal = (() => {
     }
 
     onKeydown (event) {
-      if (event.keyCode === 27) this.closeModal(event)
       if (event.keyCode === 9) this.maintainFocus(event)
     }
 
@@ -162,6 +159,9 @@ const MicroModal = (() => {
 
   // Keep a reference to the opened modal
   let activeModal = null
+
+  // Keep an array of open modals so that esc key only closes top-most modal
+  let openModals = []
 
   /**
    * Generates an associative array of modals and it's
@@ -249,6 +249,16 @@ const MicroModal = (() => {
       options.triggers = [...value]
       new Modal(options) // eslint-disable-line no-new
     }
+
+    // Watch document for esc key to close modals top to bottom
+    document.addEventListener('keydown', onKeyDown)
+  }
+
+  const onKeyDown = event => {
+    if (event.keyCode === 27) {
+      let currentModal = openModals.pop()
+      if (currentModal) currentModal.closeModal()
+    }
   }
 
   /**
@@ -266,6 +276,7 @@ const MicroModal = (() => {
 
     // stores reference to active modal
     activeModal = new Modal(options) // eslint-disable-line no-new
+    openModals.push(activeModal)
     activeModal.showModal()
   }
 
