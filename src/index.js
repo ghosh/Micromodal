@@ -98,7 +98,7 @@ const MicroModal = (() => {
       const body = document.querySelector('body')
       switch (toggle) {
         case 'enable':
-          Object.assign(body.style, {overflow: '', height: ''})
+          Object.assign(body.style, {overflow: 'initial', height: 'initial'})
           break
         case 'disable':
           Object.assign(body.style, {overflow: 'hidden', height: '100vh'})
