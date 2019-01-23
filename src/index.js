@@ -288,7 +288,6 @@ const MicroModal = (() => {
 
     // stores reference to active modal
     activeModal = new Modal(options) // eslint-disable-line no-new
-
     activeModal.showModal()
   }
 
