@@ -56,6 +56,15 @@ const MicroModal = (() => {
     }
 
     showModal () {
+      const isOpenClassName = 'is-open'
+      if (this.modal.classList.contains(isOpenClassName)) {
+        if (this.config.debugMode) console.warn('Modal already open')
+        return
+      }
+      openModals.push(this)
+      let parentDOMNode = this.modal.parentNode
+      parentDOMNode.removeChild(this.modal)
+      parentDOMNode.appendChild(this.modal)
       this.activeElement = document.activeElement
       this.modal.setAttribute('aria-hidden', 'false')
       this.modal.classList.add('is-open')
@@ -66,6 +75,7 @@ const MicroModal = (() => {
     }
 
     closeModal () {
+      openModals.pop()
       const modal = this.modal
       this.modal.setAttribute('aria-hidden', 'true')
       this.removeEventListeners()
@@ -256,8 +266,10 @@ const MicroModal = (() => {
 
   const onKeyDown = event => {
     if (event.keyCode === 27) {
-      let currentModal = openModals.pop()
-      if (currentModal) currentModal.closeModal()
+      if (openModals.length > 0) {
+        let currentModal = openModals[openModals.length - 1]
+        if (currentModal) currentModal.closeModal()
+      }
     }
   }
 
@@ -276,7 +288,7 @@ const MicroModal = (() => {
 
     // stores reference to active modal
     activeModal = new Modal(options) // eslint-disable-line no-new
-    openModals.push(activeModal)
+
     activeModal.showModal()
   }
 
