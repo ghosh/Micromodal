@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="site.min.css">
+	<title>Micromodal Test</title>
+	<style>
+		#buttons {
+			margin: 10px;
+			text-align: center;
+		}
+		#content {
+			padding: 10px 40px;
+			line-height: 200%;
+			position: absolute;
+			z-index: 10;
+		}
+		.modal__overlay {
+			z-index: 11;
+		}
+		.modal__container {
+			max-width: 800px;
+		}
+	</style>
+</head>
+<body>
+	<div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+		<div class="modal__overlay" tabindex="-1" data-micromodal-close>
+			<div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title" style='width:500px'>
+			<header class="modal__header">
+				<h2 class="modal__title" id="modal-1-title">
+				Micromodal 1
+				</h2>
+				<button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+			</header>
+			<main class="modal__content" id="modal-1-content">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris erat est, interdum pellentesque tortor eu, finibus semper ipsum. Vestibulum vel fermentum leo, non imperdiet ex. Fusce orci lacus, commodo non dui a, fringilla elementum tellus. Integer sollicitudin, mi eget faucibus ultrices, sem justo porttitor lorem, id sagittis magna nibh aliquet lectus. In pharetra felis eu urna sollicitudin placerat. Suspendisse ullamcorper elit quis metus tempor, elementum ornare dui varius. Praesent dapibus, libero ut molestie vehicula, ipsum augue tristique turpis, vitae porttitor tellus libero egestas dui. Donec placerat, elit ut congue laoreet, ex ligula suscipit enim, elementum mattis libero massa sit amet ante. Aliquam non odio arcu. Pellentesque at eros vitae ex dictum sodales. Aenean ornare in nunc quis ullamcorper. Pellentesque tristique arcu a dolor feugiat finibus. Nam sit amet nisi dolor. Nulla facilisi. Phasellus nec turpis congue, semper elit eget, auctor justo. Donec id feugiat purus, et eleifend nulla.
+				</p>
+			</main>
+			<footer class="modal__footer">
+				<button class="modal__btn modal__btn-primary">Continue</button>
+				<button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
+			</footer>
+			</div>
+		</div>
+	</div>
+	<div class="modal micromodal-slide" id="modal-2" aria-hidden="true">
+		<div class="modal__overlay" tabindex="-2" data-micromodal-close>
+			<div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-2-title" style='width:800px'>
+			<header class="modal__header">
+				<h2 class="modal__title" id="modal-2-title">
+				Micromodal 2
+				</h2>
+				<button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+			</header>
+			<main class="modal__content" id="modal-2-content">
+				<p>
+					Fusce mattis, nunc vitae efficitur commodo, leo tellus condimentum erat, nec vehicula nunc eros vel velit. Vestibulum tempus augue quis lorem varius, sit amet ornare tortor convallis. Integer vel nisi nisl. Donec tincidunt fringilla neque a semper. Aenean pretium sagittis ultricies. Nullam facilisis eget tortor id ornare. Aliquam nulla lorem, molestie at aliquam eget, efficitur in diam. Cras placerat quam nisl, id pellentesque orci luctus et. Ut id dui non leo porta placerat convallis eget lectus. Integer vitae arcu cursus, posuere sapien eget, eleifend ligula. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed sollicitudin enim id ante efficitur, eget varius lacus blandit. Ut lacinia felis metus, id pulvinar augue ultrices quis. Integer dictum ligula non est tempor, et viverra elit efficitur. Sed placerat porttitor ante sed aliquam. Vivamus eget blandit augue, quis viverra libero.
+				</p>
+			</main>
+			<footer class="modal__footer">
+				<button class="modal__btn modal__btn-primary">Continue</button>
+				<button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
+			</footer>
+			</div>
+		</div>
+	</div>
+	<div class="modal micromodal-slide" id="modal-3" aria-hidden="true">
+		<div class="modal__overlay" tabindex="-3" data-micromodal-close>
+			<div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-3-title" style='width:600px'>
+			<header class="modal__header">
+				<h3 class="modal__title" id="modal-3-title">
+				Micromodal 3
+				</h3>
+				<button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+			</header>
+			<main class="modal__content" id="modal-3-content">
+				<p>
+					Vestibulum varius tellus aliquet eros pulvinar commodo. Nam a lectus nulla. Nam eget tortor ultricies, elementum purus sollicitudin, vestibulum nibh. Suspendisse mattis tellus eget elit dapibus, sit amet lobortis nunc interdum. Curabitur et malesuada nunc. Donec malesuada est et dapibus auctor. Proin placerat finibus finibus. Fusce ut vehicula purus, quis pharetra nunc. Maecenas consectetur enim et est dapibus ornare. Mauris faucibus, diam a tempor aliquam, massa mi sagittis sem, in ultrices ligula sem quis velit. Integer eget tempus eros, ut mattis odio. Quisque porta felis vel ipsum luctus dictum. Suspendisse hendrerit aliquet justo, et bibendum justo suscipit eget.
+				</p>
+				<p>
+					Sed at efficitur nibh, id malesuada sem. Vivamus turpis nisi, tincidunt mollis commodo mollis, vestibulum et orci. Cras a diam feugiat, convallis libero quis, porttitor augue. Etiam ac blandit arcu, a efficitur lorem. Donec sollicitudin nunc mi, in rhoncus risus aliquet eu. Aenean venenatis, elit hendrerit efficitur laoreet, purus enim porttitor lectus, id blandit dolor metus sed lectus. Maecenas dictum magna leo. Morbi non enim rutrum risus malesuada fringilla at eu nisl. Proin congue mi odio, sed lobortis odio vestibulum a.
+				</p>
+			</main>
+			<footer class="modal__footer">
+				<button class="modal__btn modal__btn-primary">Continue</button>
+				<button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
+			</footer>
+			</div>
+		</div>
+	</div>
+	<div id="buttons">
+			<button data-micromodal-trigger="modal-1" onclick="console.log('This should open modal 1')">Show Modal 1</button>
+			<button onclick="console.log('This should open modal 2'); showModal('modal-2')">Show Modal 2</button>
+			<button onclick="console.log('This should open modal 3'); showModal('modal-3')">Show Modal 3</button>
+			<button onclick="console.log('This should open modals 1, 3, 2.  Modal 2 should be on top and close first.  Modal 1 should be on bottom and close last'); showModal('modal-1'); showModal('modal-3'); showModal('modal-2')">Open 1, 3, 2</button>
+		</div>
+		<div id="content">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget efficitur lacus. Vestibulum commodo nunc nec lectus porta, vitae vulputate mi vulputate. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac fringilla ante. Nam non metus in nulla lacinia congue id eu sem. Vestibulum imperdiet aliquam nisi vitae congue. Duis pellentesque sem id augue vestibulum, vitae fermentum purus varius. Morbi tincidunt nisi vitae lectus ullamcorper consequat. Mauris lorem dui, pellentesque eu massa eu, blandit placerat magna. Sed sit amet ipsum nec orci faucibus cursus. Proin tortor elit, interdum non bibendum sit amet, aliquet a neque. Curabitur sagittis auctor hendrerit. Mauris quis odio quis diam congue mollis.
+			</p>
+			<p>
+				Fusce mattis, nunc vitae efficitur commodo, leo tellus condimentum erat, nec vehicula nunc eros vel velit. Vestibulum tempus augue quis lorem varius, sit amet ornare tortor convallis. Integer vel nisi nisl. Donec tincidunt fringilla neque a semper. Aenean pretium sagittis ultricies. Nullam facilisis eget tortor id ornare. Aliquam nulla lorem, molestie at aliquam eget, efficitur in diam. Cras placerat quam nisl, id pellentesque orci luctus et. Ut id dui non leo porta placerat convallis eget lectus. Integer vitae arcu cursus, posuere sapien eget, eleifend ligula. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed sollicitudin enim id ante efficitur, eget varius lacus blandit. Ut lacinia felis metus, id pulvinar augue ultrices quis. Integer dictum ligula non est tempor, et viverra elit efficitur. Sed placerat porttitor ante sed aliquam. Vivamus eget blandit augue, quis viverra libero.
+			</p>
+			<p>
+				Integer posuere pharetra dolor. Suspendisse convallis efficitur ligula. Vestibulum vel venenatis lacus, ut dapibus leo. Pellentesque rhoncus porttitor neque, sit amet pulvinar nunc euismod vel. In hac habitasse platea dictumst. Morbi tempor velit ac sagittis varius. In at vestibulum nisi. Suspendisse porta luctus tortor ac sodales.
+			</p>
+			<p>
+				Maecenas id tortor leo. Aliquam pharetra lectus turpis, sit amet auctor nisl ullamcorper mollis. Mauris in nisi metus. Integer fringilla est ut mauris pulvinar mattis. Vestibulum sagittis luctus nisi nec volutpat. Nam eu mauris ut dui consectetur maximus. Morbi eget magna velit. Donec ut diam vitae nisl placerat placerat eget eget massa. Quisque quis augue arcu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut volutpat convallis sem a molestie. Pellentesque efficitur convallis facilisis. Quisque volutpat varius neque. Ut in risus elementum, bibendum diam vel, rhoncus ipsum. Nulla bibendum, est ac pellentesque varius, nisl nibh scelerisque ante, vitae commodo magna lectus commodo diam.
+			</p>
+			<p>
+				Donec imperdiet ex ut neque fringilla scelerisque. In cursus purus sem, in fringilla sem dictum at. Vivamus pretium diam at ligula lobortis, quis imperdiet metus iaculis. Donec dapibus, tortor et scelerisque consequat, urna lacus dapibus risus, id bibendum est dui id elit. Nullam dui enim, euismod in euismod a, tempus vel odio. Mauris condimentum tortor malesuada arcu malesuada, id venenatis turpis faucibus. Fusce quis pretium orci. Praesent non tortor a justo lacinia tempus. Duis rhoncus lectus quis turpis tincidunt, et mattis dolor venenatis. Etiam vel venenatis ex, quis fringilla mauris. In vel tellus tortor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin tincidunt laoreet arcu, ut tempus enim mollis in. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+			</p>
+		</div>
+	<script src="site.min.js"></script>
+	<script>
+		MicroModal.init({
+			debugMode: true
+		});
+		function showModal(id) {
+			MicroModal.show(id)
+		}
+		function showAll() {
+			var elements = document.querySelectorAll('.modal');
+			Array.prototype.forEach.call(elements, function(el, i){
+				var id = el.getAttribute('id');
+				console.log(id);
+				showModal(id);
+			});
+		}
+	</script>
+</body>
+</html>
