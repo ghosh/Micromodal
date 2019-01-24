@@ -28,7 +28,8 @@ const MicroModal = (() => {
       disableScroll = false,
       disableFocus = false,
       awaitCloseAnimation = false,
-      debugMode = false
+      debugMode = false,
+      id = ''
     }) {
       // Save a reference of the modal
       this.modal = document.getElementById(targetModal)
@@ -42,6 +43,9 @@ const MicroModal = (() => {
       // prebind functions for event listeners
       this.onClick = this.onClick.bind(this)
       this.onKeydown = this.onKeydown.bind(this)
+
+      // save modal id
+      this.id = targetModal
     }
 
     /**
@@ -75,7 +79,7 @@ const MicroModal = (() => {
     }
 
     closeModal () {
-      openModals.pop()
+      openModals = openModals.filter(obj => { return obj.id !== this.id })
       const modal = this.modal
       this.modal.setAttribute('aria-hidden', 'true')
       this.removeEventListeners()
@@ -281,7 +285,7 @@ const MicroModal = (() => {
    */
   const show = (targetModal, config) => {
     const options = config || {}
-    options.targetModal = targetModal
+    options.targetModal = targetModal.replace(/^#/, '')
 
     // Checks if modals and triggers exist in dom
     if (options.debugMode === true && validateModalPresence(targetModal) === false) return
@@ -293,10 +297,19 @@ const MicroModal = (() => {
 
   /**
    * Closes the active modal
+   * @param {string} [targetModal] - The id of the modal to close.
    * @return {void}
    */
-  const close = () => {
-    activeModal.closeModal()
+  const close = (targetModal) => {
+    let modalToClose = {}
+    if (targetModal) {
+      targetModal = targetModal.replace(/^#/, '')
+      let result = openModals.filter(obj => { return obj.id === targetModal })
+      modalToClose = result[0]
+    } else {
+      modalToClose = openModals[openModals.length - 1]
+    }
+    modalToClose.closeModal()
   }
 
   return { init, show, close }
