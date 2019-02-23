@@ -28,13 +28,14 @@ const MicroModal = (() => {
       disableScroll = false,
       disableFocus = false,
       awaitCloseAnimation = false,
+      awaitOpenAnimation = false,
       debugMode = false
     }) {
       // Save a reference of the modal
       this.modal = document.getElementById(targetModal)
 
       // Save a reference to the passed config
-      this.config = { debugMode, disableScroll, openTrigger, closeTrigger, onShow, onClose, awaitCloseAnimation, disableFocus }
+      this.config = { debugMode, disableScroll, openTrigger, closeTrigger, onShow, onClose, awaitCloseAnimation, awaitOpenAnimation, disableFocus }
 
       // Register click events only if prebinding eventListeners
       if (triggers.length > 0) this.registerTriggers(...triggers)
@@ -59,10 +60,19 @@ const MicroModal = (() => {
       this.activeElement = document.activeElement
       this.modal.setAttribute('aria-hidden', 'false')
       this.modal.classList.add('is-open')
-      this.setFocusToFirstNode()
       this.scrollBehaviour('disable')
       this.addEventListeners()
       this.config.onShow(this.modal)
+
+      if (this.config.awaitOpenAnimation) {
+        const handler = () => {
+          this.modal.removeEventListener('animationend', handler, false)
+          this.setFocusToFirstNode()
+        }
+        this.modal.addEventListener('animationend', handler, false)
+      } else {
+        this.setFocusToFirstNode()
+      }
     }
 
     closeModal () {
