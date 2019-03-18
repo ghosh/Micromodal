@@ -37,7 +37,7 @@ const MicroModal = (() => {
       this.config = { debugMode, disableScroll, openTrigger, closeTrigger, onShow, onClose, hasAnimation, disableFocus }
 
       // Register click events only if prebinding eventListeners
-      if (triggers.length > 0) this.registerTriggers(...triggers)
+      if (triggers.length > 0) this.registerTriggers(triggers)
 
       // prebind functions for event listeners
       this.onClick = this.onClick.bind(this)
@@ -49,7 +49,7 @@ const MicroModal = (() => {
      * @param  {array} triggers [Array of node elements]
      * @return {void}
      */
-    registerTriggers (...triggers) {
+    registerTriggers (triggers) {
       triggers.forEach(trigger => {
         trigger.addEventListener('click', () => this.showModal())
       })
