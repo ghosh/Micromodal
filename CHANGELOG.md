@@ -1,9 +1,14 @@
 ## Release History
+* **0.3.2**
+    * `BUGFIX` Fixed bundling for es and umd builds
+* **0.3.1**
+    * `FEATURE` **Breaking** Renamed `hasAnimation` to `awaitCloseAnimation`
+    * `BUGFIX` Updated correct version of modal in dist
 * **0.3.0**
-    * `FEATURE` **Breaking** Added flag to enable wait for close animation to finish before destroying modal
+    * `FEATURE` **Breaking** Added flag to await close animation end before destroying modal
     * `FEATURE` Added flag to disable focus on first element
     * `FEATURE` Added ability to pass custom data-attributes for open and close
-    * `BUGFIX` Fix modal not working without animations
+    * `BUGFIX` Fixed modal not working without animations
     * `BUGFIX` Not focusing on last element in modal in case of file inputs
 * **0.2.0**
     * `FEATURE` Added api to programmatically close modal

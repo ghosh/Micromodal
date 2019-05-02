@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://www.dropbox.com/s/dhi0o4hfn3n8vtc/logo.svg?raw=1" width="100px">
+  <img src="https://www.dropbox.com/s/dhi0o4hfn3n8vtc/logo.svg?raw=1" width="100px"/>
 </p>
 <h3 align="center">
   Micromodal.js
@@ -35,12 +35,12 @@ The aim of this library is to make modal dialogs accessible and easy to include 
 &nbsp;
 
 ## Features
-✅ Toggles relevant aria attributes on open and close   
-✅ Closes modal on overlay click   
-✅ Closes modal on pressing the `esc` key   
-✅ Traps tab focus within the modal   
-✅ Focuses on the first focusable element within the modal   
-✅ Retains the focused element state after closing the modal   
+✔ Toggles relevant aria attributes on open and close   
+✔ Closes modal on overlay click   
+✔ Closes modal on pressing the `esc` key   
+✔ Traps tab focus within the modal   
+✔ Focuses on the first focusable element within the modal   
+✔ Retains the focused element state after closing the modal   
 
 &nbsp;
 
@@ -80,7 +80,7 @@ Find the latest changelog [here](https://github.com/ghosh/micromodal/blob/master
 
 We are always open and invite developers to contribute to Micromodal. We have kept the guidelines and process dead simple, so you invest more time in making modals accessible to all.
 
-Micromodal follows the [standardjs](https://standardjs.com/) coding standard and is part of our `package.json` file. It will help us to maintain consistency in the codebase.
+Micromodal follows the [standardjs](https://standardjs.com/) coding standard and is part of our `package.json` file. It will help us to maintain consistency in the code base.
 
 #### Development setup
 1. Clone Github repo `$ git clone https://github.com/ghosh/micromodal.git`

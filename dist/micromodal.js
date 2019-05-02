@@ -30,46 +30,6 @@ var createClass = function () {
   };
 }();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 var toConsumableArray = function (arr) {
   if (Array.isArray(arr)) {
     for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
@@ -81,6 +41,7 @@ var toConsumableArray = function (arr) {
 };
 
 var MicroModal = function () {
+
   var FOCUSABLE_ELEMENTS = ['a[href]', 'area[href]', 'input:not([disabled]):not([type="hidden"]):not([aria-hidden])', 'select:not([disabled]):not([aria-hidden])', 'textarea:not([disabled]):not([aria-hidden])', 'button:not([disabled]):not([aria-hidden])', 'iframe', 'object', 'embed', '[contenteditable]', '[tabindex]:not([tabindex^="-"])'];
 
   var Modal = function () {
@@ -100,8 +61,8 @@ var MicroModal = function () {
           disableScroll = _ref$disableScroll === undefined ? false : _ref$disableScroll,
           _ref$disableFocus = _ref.disableFocus,
           disableFocus = _ref$disableFocus === undefined ? false : _ref$disableFocus,
-          _ref$hasAnimation = _ref.hasAnimation,
-          hasAnimation = _ref$hasAnimation === undefined ? false : _ref$hasAnimation,
+          _ref$awaitCloseAnimat = _ref.awaitCloseAnimation,
+          awaitCloseAnimation = _ref$awaitCloseAnimat === undefined ? false : _ref$awaitCloseAnimat,
           _ref$debugMode = _ref.debugMode,
           debugMode = _ref$debugMode === undefined ? false : _ref$debugMode;
       classCallCheck(this, Modal);
@@ -110,7 +71,7 @@ var MicroModal = function () {
       this.modal = document.getElementById(targetModal);
 
       // Save a reference to the passed config
-      this.config = { debugMode: debugMode, disableScroll: disableScroll, openTrigger: openTrigger, closeTrigger: closeTrigger, onShow: onShow, onClose: onClose, hasAnimation: hasAnimation, disableFocus: disableFocus
+      this.config = { debugMode: debugMode, disableScroll: disableScroll, openTrigger: openTrigger, closeTrigger: closeTrigger, onShow: onShow, onClose: onClose, awaitCloseAnimation: awaitCloseAnimation, disableFocus: disableFocus
 
         // Register click events only if prebinding eventListeners
       };if (triggers.length > 0) this.registerTriggers.apply(this, toConsumableArray(triggers));
@@ -163,7 +124,7 @@ var MicroModal = function () {
         this.activeElement.focus();
         this.config.onClose(this.modal);
 
-        if (this.config.hasAnimation) {
+        if (this.config.awaitCloseAnimation) {
           this.modal.addEventListener('animationend', function handler() {
             modal.classList.remove('is-open');
             modal.removeEventListener('animationend', handler, false);

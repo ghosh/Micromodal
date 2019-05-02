@@ -37,14 +37,14 @@
     gtag('config', 'UA-49604576-5');
   </script>
 <script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:628380,hjsv:5};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+(function(h,o,t,j,a,r){
+    h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+    h._hjSettings={hjid:628380,hjsv:5};
+    a=o.getElementsByTagName('head')[0];
+    r=o.createElement('script');r.async=1;
+    r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+    a.appendChild(r);
+})(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
 </script>
 
 
@@ -327,7 +327,7 @@ MicroModal.init({
   closeTrigger: 'data-custom-close', // [4]
   disableScroll: true, // [5]
   disableFocus: false, // [6]
-  hasAnimation: false, // [7]
+  awaitCloseAnimation: false, // [7]
   debugMode: true // [8]
 });
         </code></pre>
@@ -352,7 +352,7 @@ MicroModal.init({
             <code>disableFocus (boolean)</code> Disable auto focus on first focusable element. Default is <code>false</code>
           </li>
           <li class="pl4 pv3">
-            <code>hasAnimation (boolean)</code> Set this to true if using animations to show and hide the modal. This allows it to wait for the animation to finish before removing it from the DOM. Default is <code>false</code>
+            <code>awaitCloseAnimation (boolean)</code> Set this to true if using css animations to hide the modal. This allows it to wait for the animation to finish before removing it from the DOM. Default is <code>false</code>
           </li>
           <li class="pl4 pv3">
             <code>debugMode (boolean)</code> This option suppresses the console warnings if passed as true. The default value is <code>false</code>.
@@ -465,7 +465,7 @@ MicroModal.init({
   MicroModal.init({
     openTrigger: 'data-custom-open',
     disableScroll: false,
-    hasAnimation: true
+    awaitCloseAnimation: true
   });
 
   // Programmatically show modal
@@ -476,7 +476,7 @@ MicroModal.init({
       onShow: function (modal) { document.querySelector('.js-body').classList.add(modal.id) },
       onClose: function (modal) { document.querySelector('.js-body').classList.remove(modal.id) },
       closeTrigger: 'data-custom-close',
-      hasAnimation: true
+      awaitCloseAnimation: true
     })
   });
 
