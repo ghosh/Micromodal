@@ -1,10 +1,10 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-	typeof define === 'function' && define.amd ? define(factory) :
-	(global.MicroModal = factory());
-}(this, (function () { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory()
+	: typeof define === 'function' && define.amd ? define(factory)
+	: (global.MicroModal = factory())
+}(this, function () { 'use strict';
 
-var version = "0.3.0";
+var version = "0.3.2";
 
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -140,7 +140,6 @@ var MicroModal = function () {
         var body = document.querySelector('body');
         switch (toggle) {
           case 'enable':
-            // we are using empty string instead of "initial" for IE support
             Object.assign(body.style, { overflow: '', height: '' });
             break;
           case 'disable':
@@ -349,4 +348,4 @@ var MicroModal = function () {
 
 return MicroModal;
 
-})));
+}))
