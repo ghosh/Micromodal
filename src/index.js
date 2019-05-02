@@ -27,14 +27,14 @@ const MicroModal = (() => {
       closeTrigger = 'data-micromodal-close',
       disableScroll = false,
       disableFocus = false,
-      hasAnimation = false,
+      awaitCloseAnimation = false,
       debugMode = false
     }) {
       // Save a reference of the modal
       this.modal = document.getElementById(targetModal)
 
       // Save a reference to the passed config
-      this.config = { debugMode, disableScroll, openTrigger, closeTrigger, onShow, onClose, hasAnimation, disableFocus }
+      this.config = { debugMode, disableScroll, openTrigger, closeTrigger, onShow, onClose, awaitCloseAnimation, disableFocus }
 
       // Register click events only if prebinding eventListeners
       if (triggers.length > 0) this.registerTriggers(...triggers)
@@ -73,7 +73,7 @@ const MicroModal = (() => {
       this.activeElement.focus()
       this.config.onClose(this.modal)
 
-      if (this.config.hasAnimation) {
+      if (this.config.awaitCloseAnimation) {
         this.modal.addEventListener('animationend', function handler () {
           modal.classList.remove('is-open')
           modal.removeEventListener('animationend', handler, false)
@@ -88,7 +88,8 @@ const MicroModal = (() => {
       const body = document.querySelector('body')
       switch (toggle) {
         case 'enable':
-          Object.assign(body.style, {overflow: 'initial', height: 'initial'})
+          // we are using empty string instead of "initial" for IE support
+          Object.assign(body.style, {overflow: '', height: ''})
           break
         case 'disable':
           Object.assign(body.style, {overflow: 'hidden', height: '100vh'})

@@ -867,6 +867,12 @@ pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;background-color:#
 .modal {
   font-family: -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
 }
+#modal-3 {
+  display: none;
+}
+#modal-3.is-open {
+  display: block;
+}
 .modal__overlay {
   position: fixed;
   top: 0;
