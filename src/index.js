@@ -130,7 +130,7 @@ const MicroModal = (() => {
 
     getFocusableNodes () {
       const nodes = this.modal.querySelectorAll(FOCUSABLE_ELEMENTS)
-      return Object.keys(nodes).map((key) => nodes[key])
+      return Array(...nodes)
     }
 
     setFocusToFirstNode () {
