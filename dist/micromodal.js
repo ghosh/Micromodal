@@ -4,7 +4,7 @@
 	(global.MicroModal = factory());
 }(this, (function () { 'use strict';
 
-var version = "0.3.1";
+var version = "0.3.2";
 
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -97,7 +97,7 @@ var MicroModal = function () {
           triggers[_key] = arguments[_key];
         }
 
-        triggers.forEach(function (trigger) {
+        triggers.filter(Boolean).forEach(function (trigger) {
           trigger.addEventListener('click', function () {
             return _this.showModal();
           });
@@ -134,13 +134,19 @@ var MicroModal = function () {
         }
       }
     }, {
+      key: 'closeModalById',
+      value: function closeModalById(targetModal) {
+        this.modal = document.getElementById(targetModal);
+        if (this.modal) this.closeModal();
+      }
+    }, {
       key: 'scrollBehaviour',
       value: function scrollBehaviour(toggle) {
         if (!this.config.disableScroll) return;
         var body = document.querySelector('body');
         switch (toggle) {
           case 'enable':
-            Object.assign(body.style, { overflow: 'initial', height: 'initial' });
+            Object.assign(body.style, { overflow: '', height: '' });
             break;
           case 'disable':
             Object.assign(body.style, { overflow: 'hidden', height: '100vh' });
@@ -337,10 +343,11 @@ var MicroModal = function () {
 
   /**
    * Closes the active modal
+   * @param  {string} targetModal [The id of the modal to close]
    * @return {void}
    */
-  var close = function close() {
-    activeModal.closeModal();
+  var close = function close(targetModal) {
+    targetModal ? activeModal.closeModalById(targetModal) : activeModal.closeModal();
   };
 
   return { init: init, show: show, close: close };

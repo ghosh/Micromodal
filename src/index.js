@@ -50,7 +50,7 @@ const MicroModal = (() => {
      * @return {void}
      */
     registerTriggers (...triggers) {
-      triggers.forEach(trigger => {
+      triggers.filter(Boolean).forEach(trigger => {
         trigger.addEventListener('click', () => this.showModal())
       })
     }
@@ -85,12 +85,17 @@ const MicroModal = (() => {
       }
     }
 
+    closeModalById (targetModal) {
+      this.modal = document.getElementById(targetModal)
+      if (this.modal) this.closeModal()
+    }
+
     scrollBehaviour (toggle) {
       if (!this.config.disableScroll) return
       const body = document.querySelector('body')
       switch (toggle) {
         case 'enable':
-          Object.assign(body.style, {overflow: 'initial', height: 'initial'})
+          Object.assign(body.style, {overflow: '', height: ''})
           break
         case 'disable':
           Object.assign(body.style, {overflow: 'hidden', height: '100vh'})
@@ -273,10 +278,11 @@ const MicroModal = (() => {
 
   /**
    * Closes the active modal
+   * @param  {string} targetModal [The id of the modal to close]
    * @return {void}
    */
-  const close = () => {
-    activeModal.closeModal()
+  const close = targetModal => {
+    targetModal ? activeModal.closeModalById(targetModal) : activeModal.closeModal()
   }
 
   return { init, show, close }
