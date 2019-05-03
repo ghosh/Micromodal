@@ -53,7 +53,7 @@
     "npm-run-all": "^4.1.2",
     "postcss-cli": "^6.1.2",
     "postcss-import": "^11.0.0",
-    "postcss-scss": "^1.0.3",
+    "postcss-scss": "^2.0.0",
     "postcss-uncss": "^0.16.1",
     "reload": "^3.0.1",
     "rollup": "^0.56.3",
