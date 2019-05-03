@@ -46,7 +46,7 @@
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
-    "husky": "^0.14.3",
+    "husky": "^2.2.0",
     "minifier": "^0.8.1",
     "npm-run-all": "^4.1.2",
     "postcss-cli": "^6.1.2",
