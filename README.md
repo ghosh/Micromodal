@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://www.dropbox.com/s/dhi0o4hfn3n8vtc/logo.svg?raw=1" width="100px">
+  <img src="https://www.dropbox.com/s/tbaooyi4yh8pbi7/logo.png?raw=1" width="100px"/>
 </p>
 <h3 align="center">
   Micromodal.js
