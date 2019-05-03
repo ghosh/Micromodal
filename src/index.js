@@ -70,7 +70,9 @@ const MicroModal = (() => {
       this.modal.setAttribute('aria-hidden', 'true')
       this.removeEventListeners()
       this.scrollBehaviour('enable')
-      this.activeElement.focus()
+      if(this.activeElement) {
+        this.activeElement.focus()
+      }
       this.config.onClose(this.modal)
 
       if (this.config.awaitCloseAnimation) {
@@ -128,7 +130,7 @@ const MicroModal = (() => {
 
     getFocusableNodes () {
       const nodes = this.modal.querySelectorAll(FOCUSABLE_ELEMENTS)
-      return Object.keys(nodes).map((key) => nodes[key])
+      return Array(...nodes)
     }
 
     setFocusToFirstNode () {

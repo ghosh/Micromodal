@@ -68,6 +68,9 @@
     "uncss": "^0.16.1",
     "watch": "^1.0.2"
   },
+  "resolutions": {
+    "upath": "^1.1.0"
+  },
   "bundlesize": [
     {
       "path": "./dist/micromodal.min.js",

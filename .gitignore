@@ -2,3 +2,4 @@
 /node_modules
 /cypress
 package-lock.json
+yarn-error.log
