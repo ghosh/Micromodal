@@ -50,7 +50,7 @@ const MicroModal = (() => {
      * @return {void}
      */
     registerTriggers (...triggers) {
-      triggers.forEach(trigger => {
+      triggers.filter(Boolean).forEach(trigger => {
         trigger.addEventListener('click', () => this.showModal())
       })
     }

@@ -97,7 +97,7 @@ var MicroModal = function () {
           triggers[_key] = arguments[_key];
         }
 
-        triggers.forEach(function (trigger) {
+        triggers.filter(Boolean).forEach(function (trigger) {
           trigger.addEventListener('click', function () {
             return _this.showModal();
           });
