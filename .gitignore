@@ -1,5 +1,6 @@
 .DS_Store
 /node_modules
 /cypress
+/dist
 package-lock.json
 yarn-error.log
