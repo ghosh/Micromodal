@@ -1,4 +1,11 @@
 {
+  "version": 2,
   "name": "micromodal",
-  "alias": "micromodal.now.sh"
+  "alias": "micromodal.now.sh",
+  "builds": [
+    {
+      "src": "./example/**",
+      "use": "@now/static"
+    }
+  ]
 }

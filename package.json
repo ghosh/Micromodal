@@ -19,7 +19,7 @@
     "livereload": "reload -b -s --dir example --port 5000",
     "build": "concurrently \"run-p scripts:build:*\" \"yarn styles:build\"",
     "dev": "concurrently \"yarn scripts:dev\" \"yarn styles:dev\"  \"yarn demo:watch\" \"yarn livereload\"",
-    "deploy": "now && now alias"
+    "deploy": "now ./example && now alias"
   },
   "keywords": [
     "a11y",
