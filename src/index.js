@@ -70,7 +70,7 @@ const MicroModal = (() => {
       this.modal.setAttribute('aria-hidden', 'true')
       this.removeEventListeners()
       this.scrollBehaviour('enable')
-      if(this.activeElement) {
+      if (this.activeElement) {
         this.activeElement.focus()
       }
       this.config.onClose(this.modal)

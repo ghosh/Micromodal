@@ -91,6 +91,12 @@
           <li class="lh-copy pv2 ba bl-0 bt-0 br-0 b--dotted b--black-10">
             <a href="#styling" class="link black-70 navlink">Styling</a>
           </li>
+          <li class="mt5">
+            <!-- BEGIN COPY CODEFUND EMBED -->
+            <div id="codefund"></div>
+            <script src="https://codefund.app/properties/288/funder.js" async="async"></script>
+            <!-- END COPY CODEFUND EMBED -->
+          </li>
         </ul>
       </aside>
 
@@ -334,28 +340,53 @@ MicroModal.init({
 
         <ul class="ordered lh-copy pl0 mv4">
           <li class="pl4 pv3">
-            <code>onShow (function)</code> This is fired when the modal is opening. The function receives the modal object as the first parameter.
+            <strong class="fw5">onShow</strong> <code>function</code>
+            <p>
+              This is fired when the modal is opening. The function receives the modal object as the first parameter
+            </p>
           </li>
           <li class="pl4 pv3">
-            <code>onClose (function)</code> This is fired when the modal is closing. The function receives the modal object as the first parameter.
+            <strong class="fw5">onClose</strong> <code>function</code>
+            <p>
+              This is fired when the modal is closing. The function receives the modal object as the first parameter
+            </p>
           </li>
           <li class="pl4 pv3">
-            <code>openTrigger (string)</code> Custom data attribute to open modal. Default is <code>data-micromodal-trigger</code>.
+            <strong class="fw5">openTrigger</strong> <code>string</code>
+            <p>
+              Custom data attribute to open modal. Default is <code>data-micromodal-trigger</code>
+            </p>
           </li>
           <li class="pl4 pv3">
-            <code>closeTrigger (string)</code> Custom data attribute to close modal. Default is <code>data-micromodal-close</code>
+            <strong class="fw5">closeTrigger</strong> <code>string</code>
+            <p>
+              Custom data attribute to close modal. Default is <code>data-micromodal-close</code>
+            </p>
           </li>
           <li class="pl4 pv3">
-            <code>disableScroll (boolean)</code> This disables scrolling on the page while the modal is open. The default value is <code>false</code>.
+            <strong class="fw5">disableScroll</strong> <code>boolean</code>
+            <p>
+              This disables scrolling on the page while the modal is open. The default value is <code>false</code>
+            </p>
           </li>
           <li class="pl4 pv3">
-            <code>disableFocus (boolean)</code> Disable auto focus on first focusable element. Default is <code>false</code>
+            <strong class="fw5">disableFocus</strong> <code>boolean</code>
+            <p>
+              Disable auto focus on first focusable element. Default is <code>false</code>
+            </p>
           </li>
           <li class="pl4 pv3">
-            <code>awaitCloseAnimation (boolean)</code> Set this to true if using css animations to hide the modal. This allows it to wait for the animation to finish before removing it from the DOM. Default is <code>false</code>
+            <strong class="fw5">awaitCloseAnimation</strong> <code>boolean</code>
+            <p>
+              Set this to <code>true</code> if using css animations to hide the modal. This allows it to wait for the animation to finish before
+              removing it from the DOM. Default is <code>false</code>
+            </p>
           </li>
           <li class="pl4 pv3">
-            <code>debugMode (boolean)</code> This option suppresses the console warnings if passed as true. The default value is <code>false</code>.
+            <strong class="fw5">debugMode</strong> <code>boolean</code>
+            <p>
+              This option suppresses the console warnings if passed as <code>true</code>. The default value is <code>false</code>
+            </p>
           </li>
         </ul>
 
