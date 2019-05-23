@@ -62,7 +62,7 @@ const MicroModal = (() => {
       this.setFocusToFirstNode()
       this.scrollBehaviour('disable')
       this.addEventListeners()
-      this.config.onShow(this.modal)
+      this.config.onShow(this.modal, this.activeElement)
     }
 
     closeModal () {
