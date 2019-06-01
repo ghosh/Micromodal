@@ -5840,10 +5840,10 @@ rollup-plugin-babel@^3.0.3:
   dependencies:
     rollup-pluginutils "^1.5.0"
 
-rollup-plugin-conditional@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-conditional/-/rollup-plugin-conditional-1.1.1.tgz#73309268801cb5cc83d2d8fe680208a65d97a517"
-  integrity sha1-czCSaIActcyD0tj+aAIIpl2XpRc=
+rollup-plugin-conditional@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-conditional/-/rollup-plugin-conditional-3.1.2.tgz#396f81b77d0db31dc3eeb88774ff9411f4de9f37"
+  integrity sha512-1QKQ8gz3MZea4mieMocJC2pua2BhAt7RF19/wURxEvjDwD5l2y/Bkipix45CvtzDC400biBqJLNFhtB+I6qnoA==
 
 rollup-plugin-eslint@^4.0.0:
   version "4.0.0"
