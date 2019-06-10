@@ -52,6 +52,12 @@ const MicroModal = (() => {
     registerTriggers (...triggers) {
       triggers.filter(Boolean).forEach(trigger => {
         trigger.addEventListener('click', (event) => this.showModal(event))
+        trigger.addEventListener('keydown', (event) => {
+          if(event.keyCode === 32) {
+            event.preventDefault()
+            this.showModal(event)
+          }
+        })
       })
     }
 
