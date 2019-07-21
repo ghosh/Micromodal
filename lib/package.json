@@ -1,15 +1,24 @@
 {
   "name": "micromodal",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.4.0",
+  "description": "Tiny javascript library for creating accessible modal dialogs",
   "main": "dist/micromodal.js",
   "module": "dist/micromodal.es.js",
   "jsdelivr": "dist/micromodal.min.js",
+  "author": "Indrashish Ghosh",
+  "license": "ISC",
+  "repository": "https://github.com/ghosh/micromodal",
+  "bugs": {
+    "url": "https://github.com/ghosh/micromodal/issues"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "a11y",
+    "modal",
+    "accesible"
+  ],
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "eslint": "^6.1.0",
