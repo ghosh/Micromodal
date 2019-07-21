@@ -52,10 +52,16 @@ const MicroModal = (() => {
     registerTriggers (...triggers) {
       triggers.filter(Boolean).forEach(trigger => {
         trigger.addEventListener('click', (event) => this.showModal(event))
+        trigger.addEventListener('keydown', (event) => {
+          if(event.keyCode === 32) {
+            event.preventDefault()
+            this.showModal(event)
+          }
+        })
       })
     }
 
-    showModal (event) {
+    showModal(event) {
       event.preventDefault()
       this.activeElement = document.activeElement
       this.modal.setAttribute('aria-hidden', 'false')
@@ -63,7 +69,7 @@ const MicroModal = (() => {
       this.setFocusToFirstNode()
       this.scrollBehaviour('disable')
       this.addEventListeners()
-      this.config.onShow(this.modal)
+      this.config.onShow(this.modal, this.activeElement)
     }
 
     closeModal () {
@@ -255,7 +261,7 @@ const MicroModal = (() => {
       let value = triggerMap[key]
       options.targetModal = key
       options.triggers = [...value]
-      new Modal(options) // eslint-disable-line no-new
+      activeModal = new Modal(options) // eslint-disable-line no-new
     }
   }
 
