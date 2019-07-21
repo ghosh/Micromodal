@@ -261,7 +261,7 @@ const MicroModal = (() => {
       let value = triggerMap[key]
       options.targetModal = key
       options.triggers = [...value]
-      new Modal(options) // eslint-disable-line no-new
+      activeModal = new Modal(options) // eslint-disable-line no-new
     }
   }
 
