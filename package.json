@@ -20,5 +20,6 @@
   "bugs": {
     "url": "https://github.com/ghosh/micromodal/issues"
   },
-  "homepage": "https://github.com/ghosh/micromodal#readme"
+  "homepage": "https://github.com/ghosh/micromodal#readme",
+  "dependencies": {}
 }
