@@ -36,10 +36,10 @@ const MicroModal = (() => {
       // Save a reference to the passed config
       this.config = { debugMode, disableScroll, openTrigger, closeTrigger, onShow, onClose, awaitCloseAnimation, disableFocus }
 
-      // Register click events only if prebinding eventListeners
+      // Register click events only if pre binding eventListeners
       if (triggers.length > 0) this.registerTriggers(...triggers)
 
-      // prebind functions for event listeners
+      // pre bind functions for event listeners
       this.onClick = this.onClick.bind(this)
       this.onKeydown = this.onKeydown.bind(this)
     }
@@ -51,17 +51,12 @@ const MicroModal = (() => {
      */
     registerTriggers (...triggers) {
       triggers.filter(Boolean).forEach(trigger => {
-        trigger.addEventListener('click', (event) => this.showModal(event))
-        trigger.addEventListener('keydown', (event) => {
-          if(event.keyCode === 32) {
-            event.preventDefault()
-            this.showModal(event)
-          }
-        })
+        trigger.addEventListener('click', event => this.showModal(event))
+        trigger.addEventListener('keydown', event => (event.keyCode === 32) ? this.showModal(event) : null)
       })
     }
 
-    showModal(event) {
+    showModal (event) {
       event.preventDefault()
       this.activeElement = document.activeElement
       this.modal.setAttribute('aria-hidden', 'false')
@@ -170,8 +165,8 @@ const MicroModal = (() => {
 
   /**
    * Modal prototype ends.
-   * Here on code is reposible for detecting and
-   * autobinding event handlers on modal triggers
+   * Here on code is responsible for detecting and
+   * auto binding event handlers on modal triggers
    */
 
   // Keep a reference to the opened modal
@@ -228,7 +223,7 @@ const MicroModal = (() => {
    * Checks if triggers and their corresponding modals
    * are present in the DOM
    * @param  {array} triggers   Array of DOM nodes which have data-triggers
-   * @param  {array} triggerMap Associative array of modals and thier triggers
+   * @param  {array} triggerMap Associative array of modals and their triggers
    * @return {boolean}
    */
   const validateArgs = (triggers, triggerMap) => {
