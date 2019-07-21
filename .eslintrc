@@ -1,13 +1,5 @@
 {
-  "extends": "standard",
-  "rules": {
-    "no-multiple-empty-lines": [2, { "max": 2, "maxEOF": 1 }]
-  },
-  "globals": {
-      "describe": true,
-      "it": true,
-      "expect": true,
-      "cy": true,
-      "context": true
-  }
+  "extends": [
+    "ghosh/standard"
+  ]
 }
