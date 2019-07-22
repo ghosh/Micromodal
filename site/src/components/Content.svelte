@@ -10,7 +10,7 @@
 
   aside {
     flex: 1;
-    max-width: 280px;
+    max-width: 320px;
   }
 
   main {
@@ -23,7 +23,7 @@
 <div class="container">
   <div class="content">
     <aside>
-      <slot name="aside" class="aside" />
+      <slot name="aside" />
     </aside>
     <main>
       <slot name="main" />

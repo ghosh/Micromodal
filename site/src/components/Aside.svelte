@@ -24,10 +24,26 @@
 </script>
 
 <style>
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  ul {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 8px;
+    padding-left: 0;
+    list-style-type: none;
+    margin: 40px 20px 0 20px;
+  }
+
+  ul li {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    line-height: 1.5;
+    border-style: dotted;
+    border-width: 1px;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-color: rgba(0,0,0,.1);
+    list-style-type: none;
   }
 </style>
 

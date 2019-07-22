@@ -7,7 +7,7 @@
 		background-color: #202227;
     height: 248px;
     color: #fff;
-    padding: 40px 0;
+    padding: 40px 40px;
 	}
 
   nav {
