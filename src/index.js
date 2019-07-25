@@ -57,7 +57,9 @@ const MicroModal = (() => {
     }
 
     showModal (event) {
-      event.preventDefault()
+      if (event !== undefined) {
+        event.preventDefault()
+      }
       this.activeElement = document.activeElement
       this.modal.setAttribute('aria-hidden', 'false')
       this.modal.classList.add('is-open')
