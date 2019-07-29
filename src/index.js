@@ -136,7 +136,7 @@ const MicroModal = (() => {
     }
 
     getFocusableNodes () {
-      const nodes = this.modal.querySelectorAll(FOCUSABLE_ELEMENTS)
+      let nodes = this.modal.querySelectorAll(FOCUSABLE_ELEMENTS.map(selector => selector + ':not([tabindex^="-"])'))
       return Array(...nodes)
     }
 
