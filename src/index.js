@@ -75,7 +75,10 @@ const MicroModal = (() => {
       this.removeEventListeners()
       this.scrollBehaviour('enable')
       if (this.activeElement) {
-        this.activeElement.focus()
+        try {
+          this.activeElement.focus()
+        } catch (e) {
+        }
       }
       this.config.onClose(this.modal)
 
