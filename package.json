@@ -54,7 +54,7 @@
     "postcss-cli": "^6.1.2",
     "postcss-import": "^11.0.0",
     "postcss-scss": "^2.0.0",
-    "postcss-uncss": "^0.16.1",
+    "postcss-uncss": "^0.17.0",
     "reload": "^3.0.1",
     "rollup": "^0.58.2",
     "rollup-plugin-babel": "^3.0.3",
@@ -65,7 +65,7 @@
     "rollup-plugin-uglify-es": "^0.0.1",
     "rollup-watch": "^4.3.1",
     "tachyons": "^4.9.1",
-    "uncss": "^0.16.1",
+    "uncss": "^0.17.0",
     "watch": "^1.0.2"
   },
   "resolutions": {
