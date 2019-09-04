@@ -1,0 +1,33 @@
+{
+  "name": "@micromodal/site",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "workspaces": [
+    "lib",
+    "site"
+  ],
+  "main": "src/index.html",
+  "scripts": {
+    "dev": "parcel ./src/index.html",
+    "build": "parcel build ./src/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ghosh/micromodal.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ghosh/micromodal/issues"
+  },
+  "homepage": "https://github.com/ghosh/micromodal#readme",
+  "dependencies": {
+    "micromodal": "0.4.0"
+  },
+  "devDependencies": {
+    "node-sass": "^4.12.0",
+    "cssnano": "^4.1.10"
+  }
+}
