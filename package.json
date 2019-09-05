@@ -9,6 +9,11 @@
   ],
   "main": "index.js",
   "scripts": {
+    "lib:dev": "yarn workspace micromodal dev",
+    "lib:build": "yarn workspace micromodal build",
+    "site:dev": "yarn workspace @micromodal/site dev",
+    "site:build": "yarn workspace @micromodal/site build",
+    "build": "yarn lib:build && yarn site:build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

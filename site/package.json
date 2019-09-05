@@ -10,7 +10,7 @@
   "main": "src/index.html",
   "scripts": {
     "dev": "parcel ./src/index.html",
-    "build": "parcel build ./src/index.html",
+    "build": "parcel build ./src/index.html --detailed-report",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
