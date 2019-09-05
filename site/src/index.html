@@ -371,8 +371,9 @@ MicroModal.init({
   closeTrigger: 'data-custom-close', // [4]
   disableScroll: true, // [5]
   disableFocus: false, // [6]
-  awaitCloseAnimation: false, // [7]
-  debugMode: true // [8]
+  awaitOpenAnimation: false, // [7]
+  awaitCloseAnimation: false, // [8]
+  debugMode: true // [9]
 });
         </code></pre>
 
@@ -411,6 +412,12 @@ MicroModal.init({
             <strong class="fw5">disableFocus</strong> <code>boolean</code>
             <p>
               Disable auto focus on first focusable element. Default is <code>false</code>
+            </p>
+          </li>
+          <li class="pl4 pv3">
+            <strong class="fw5">awaitOpenAnimation</strong> <code>boolean</code>
+            <p>
+              Set this to <code>true</code> if using css animations to open the modal. This allows it to wait for the animation to finish before focusing on an element inside the modal. Default is <code>false</code>
             </p>
           </li>
           <li class="pl4 pv3">
