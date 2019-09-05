@@ -1,6 +1,6 @@
 {
   "name": "micromodal",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Tiny javascript library for creating accessible modal dialogs",
   "main": "dist/micromodal.js",
   "module": "dist/micromodal.es.js",
@@ -18,8 +18,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "rollup -c -w",
     "build": "rollup -c",
-    "publish": "yarn publish",
-    "prepublishOnly": "yarn build"
+    "publish": "yarn build && yarn publish"
   },
   "keywords": [
     "a11y",
