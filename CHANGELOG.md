@@ -1,4 +1,9 @@
 ## Release History
+* **0.4.1**
+    * `FEATURE`  A flag to `awaitOpenAnimation` before focusing on element in modal. #172 @alesvojta
+    * `FEATURE`  Passing actual node as second argument to `onShow`. #194 @muhroots
+    * `BUGFIX`  Fixed issue where active element was `undefined`. #198 @caiotarifa
+    * `BUGFIX`  Fixed issue where an opened modal could not be closed by `id` . #113 @roebuk
 * **0.4.0**
     * `FEATURE` Added abilty to close modals by ID - #113 @roebuk
     * `BUGFIX` Fixed bug where micromodal would error on initialization - #106 @stoicsquirrel
