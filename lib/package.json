@@ -18,7 +18,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "rollup -c -w",
     "build": "rollup -c",
-    "prepublishOnly": "minify dist/micromodal.js --output dist/micromodal.min.js",
     "publish": "yarn build && yarn publish"
   },
   "keywords": [
