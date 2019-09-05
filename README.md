@@ -36,10 +36,15 @@ The aim of this library is to make modal dialogs accessible and easy to include 
 
 ## Features
 ✔ Toggles relevant aria attributes on open and close
+
 ✔ Closes modal on overlay click
+
 ✔ Closes modal on pressing the `esc` key
+
 ✔ Traps tab focus within the modal
+
 ✔ Focuses on the first focusable element within the modal
+
 ✔ Retains the focused element state after closing the modal
 
 &nbsp;
@@ -109,10 +114,12 @@ You can mention us on Twitter for any questions, suggestions or just send us fun
 
 &nbsp;
 
-## Created by
+## Created and maintained by
 
 Indrashish Ghosh – [@_ighosh](https://twitter.com/_ighosh) 🇮🇳
 
 Kalpesh Singh - [@knowkalpesh](https://twitter.com/knowkalpesh) 🇮🇳
+
+Darpan Kakadia - [@kakadiadarpan](https://twitter.com/kakadiadarpan) 🇩🇪
 
 Contributors - [list](https://github.com/ghosh/micromodal/graphs/contributors) 🌐
