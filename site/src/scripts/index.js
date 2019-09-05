@@ -9,7 +9,7 @@ MicroModal.init({
 })
 
 // Programmatically show modal
-document.querySelector('.js-modal-trigger').addEventListener('click', function () {
+document.querySelector('.js-modal-trigger').addEventListener('click', function (event) {
   MicroModal.show('modal-2', {
     debugMode: true,
     disableScroll: true,
@@ -36,10 +36,10 @@ Array.prototype.forEach.call(section, function (e) {
 window.onscroll = function () {
   var scrollPosition = document.documentElement.scrollTop || document.body.scrollTop
 
-  for (i in sections) {
-    if (sections[i] <= scrollPosition) {
+  for (section in sections) {
+    if (sections[section] <= scrollPosition) {
       document.querySelector('.active').classList.remove('blue', 'fw6', 'active')
-      document.querySelector('a[href*=' + i + ']').classList.add('blue', 'fw6', 'active')
+      document.querySelector('a[href*=' + section + ']').classList.add('blue', 'fw6', 'active')
     }
   }
 }
