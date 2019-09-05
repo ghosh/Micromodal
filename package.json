@@ -9,12 +9,13 @@
   ],
   "main": "index.js",
   "scripts": {
+    "dev": "concurrently \"yarn lib:dev\" \"yarn site:dev\"",
+    "build": "yarn lib:build && yarn site:build",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "lib:dev": "yarn workspace micromodal dev",
     "lib:build": "yarn workspace micromodal build",
     "site:dev": "yarn workspace @micromodal/site dev",
-    "site:build": "yarn workspace @micromodal/site build",
-    "build": "yarn lib:build && yarn site:build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "site:build": "yarn workspace @micromodal/site build"
   },
   "repository": {
     "type": "git",
@@ -26,5 +27,7 @@
     "url": "https://github.com/ghosh/micromodal/issues"
   },
   "homepage": "https://github.com/ghosh/micromodal#readme",
-  "dependencies": {}
+  "dependencies": {
+    "concurrently": "^4.1.2"
+  }
 }
