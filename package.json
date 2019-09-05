@@ -11,6 +11,7 @@
   "scripts": {
     "dev": "concurrently \"yarn lib:dev\" \"yarn site:dev\"",
     "build": "yarn lib:build && yarn site:build",
+    "publish": "yarn workspace micromodal publish",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lib:dev": "yarn workspace micromodal dev",
     "lib:build": "yarn workspace micromodal build",

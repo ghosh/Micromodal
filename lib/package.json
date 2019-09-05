@@ -4,6 +4,9 @@
   "description": "Tiny javascript library for creating accessible modal dialogs",
   "main": "dist/micromodal.js",
   "module": "dist/micromodal.es.js",
+  "files": [
+    "/dist"
+  ],
   "jsdelivr": "dist/micromodal.min.js",
   "author": "Indrashish Ghosh",
   "license": "ISC",
@@ -14,7 +17,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "rollup -c -w",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "publish": "yarn publish",
+    "prepublishOnly": "yarn build"
   },
   "keywords": [
     "a11y",
