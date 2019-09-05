@@ -371,9 +371,10 @@ MicroModal.init({
   closeTrigger: 'data-custom-close', // [4]
   disableScroll: true, // [5]
   disableFocus: false, // [6]
-  awaitOpenAnimation: false, // [7]
-  awaitCloseAnimation: false, // [8]
-  debugMode: true // [9]
+  disableEsc: false, // [7]
+  awaitOpenAnimation: false, // [8]
+  awaitCloseAnimation: false, // [9]
+  debugMode: true // [10]
 });
         </code></pre>
 
@@ -406,6 +407,12 @@ MicroModal.init({
             <strong class="fw5">disableScroll</strong> <code>boolean</code>
             <p>
               This disables scrolling on the page while the modal is open. The default value is <code>false</code>
+            </p>
+          </li>
+          <li class="pl4 pv3">
+            <strong class="fw5">disableEsc</strong> <code>boolean</code>
+            <p>
+              This disables the listener for the <code>ESC</code> key so the modal is not closed when this key is pressed. The default value is <code>false</code>
             </p>
           </li>
           <li class="pl4 pv3">
