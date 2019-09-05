@@ -55,3 +55,20 @@ describe('Modal', () => {
     cy.get('#modal-1').should('have.attr', 'aria-hidden', 'true')
   })
 })
+
+describe('Modal with data attributes', () => {
+  it('should not see the modal by default', () => {
+    cy.get('#modal-2').and('not.be.visible')
+    cy.get('#modal-2 .modal__overlay').and('not.be.visible')
+  })
+
+  it('should fire modal on clicking link', () => {
+    cy.get('.js-modal-trigger').click()
+    cy.get('#modal-2 .modal__overlay').and('be.visible')
+  })
+
+  it('should close modal when the id is passed to `closeModalById`', () => {
+    cy.get('.js-modal-close-trigger').click()
+    cy.get('#modal-2 .modal__overlay').and('not.be.visible')
+  })
+})

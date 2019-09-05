@@ -37,10 +37,10 @@ const MicroModal = (() => {
       // Save a reference to the passed config
       this.config = { debugMode, disableScroll, openTrigger, closeTrigger, onShow, onClose, awaitCloseAnimation, awaitOpenAnimation, disableFocus }
 
-      // Register click events only if prebinding eventListeners
+      // Register click events only if pre binding eventListeners
       if (triggers.length > 0) this.registerTriggers(...triggers)
 
-      // prebind functions for event listeners
+      // pre bind functions for event listeners
       this.onClick = this.onClick.bind(this)
       this.onKeydown = this.onKeydown.bind(this)
     }
@@ -51,18 +51,20 @@ const MicroModal = (() => {
      * @return {void}
      */
     registerTriggers (...triggers) {
-      triggers.forEach(trigger => {
-        trigger.addEventListener('click', () => this.showModal())
+      triggers.filter(Boolean).forEach(trigger => {
+        trigger.addEventListener('click', event => this.showModal(event))
+        trigger.addEventListener('keydown', event => (event.keyCode === 32) ? this.showModal(event) : null)
       })
     }
 
-    showModal () {
+    showModal (event) {
+      event.preventDefault()
       this.activeElement = document.activeElement
       this.modal.setAttribute('aria-hidden', 'false')
       this.modal.classList.add('is-open')
       this.scrollBehaviour('disable')
       this.addEventListeners()
-      this.config.onShow(this.modal)
+
 
       if (this.config.awaitOpenAnimation) {
         const handler = () => {
@@ -73,6 +75,9 @@ const MicroModal = (() => {
       } else {
         this.setFocusToFirstNode()
       }
+
+      this.config.onShow(this.modal, this.activeElement)
+
     }
 
     closeModal () {
@@ -80,7 +85,9 @@ const MicroModal = (() => {
       this.modal.setAttribute('aria-hidden', 'true')
       this.removeEventListeners()
       this.scrollBehaviour('enable')
-      this.activeElement.focus()
+      if (this.activeElement) {
+        this.activeElement.focus()
+      }
       this.config.onClose(this.modal)
 
       if (this.config.awaitCloseAnimation) {
@@ -93,12 +100,17 @@ const MicroModal = (() => {
       }
     }
 
+    closeModalById (targetModal) {
+      this.modal = document.getElementById(targetModal)
+      if (this.modal) this.closeModal()
+    }
+
     scrollBehaviour (toggle) {
       if (!this.config.disableScroll) return
       const body = document.querySelector('body')
       switch (toggle) {
         case 'enable':
-          Object.assign(body.style, {overflow: 'initial', height: 'initial'})
+          Object.assign(body.style, {overflow: '', height: ''})
           break
         case 'disable':
           Object.assign(body.style, {overflow: 'hidden', height: '100vh'})
@@ -133,7 +145,7 @@ const MicroModal = (() => {
 
     getFocusableNodes () {
       const nodes = this.modal.querySelectorAll(FOCUSABLE_ELEMENTS)
-      return Object.keys(nodes).map((key) => nodes[key])
+      return Array(...nodes)
     }
 
     setFocusToFirstNode () {
@@ -166,8 +178,8 @@ const MicroModal = (() => {
 
   /**
    * Modal prototype ends.
-   * Here on code is reposible for detecting and
-   * autobinding event handlers on modal triggers
+   * Here on code is responsible for detecting and
+   * auto binding event handlers on modal triggers
    */
 
   // Keep a reference to the opened modal
@@ -224,7 +236,7 @@ const MicroModal = (() => {
    * Checks if triggers and their corresponding modals
    * are present in the DOM
    * @param  {array} triggers   Array of DOM nodes which have data-triggers
-   * @param  {array} triggerMap Associative array of modals and thier triggers
+   * @param  {array} triggerMap Associative array of modals and their triggers
    * @return {boolean}
    */
   const validateArgs = (triggers, triggerMap) => {
@@ -257,7 +269,7 @@ const MicroModal = (() => {
       let value = triggerMap[key]
       options.targetModal = key
       options.triggers = [...value]
-      new Modal(options) // eslint-disable-line no-new
+      activeModal = new Modal(options) // eslint-disable-line no-new
     }
   }
 
@@ -281,10 +293,11 @@ const MicroModal = (() => {
 
   /**
    * Closes the active modal
+   * @param  {string} targetModal [The id of the modal to close]
    * @return {void}
    */
-  const close = () => {
-    activeModal.closeModal()
+  const close = targetModal => {
+    targetModal ? activeModal.closeModalById(targetModal) : activeModal.closeModal()
   }
 
   return { init, show, close }

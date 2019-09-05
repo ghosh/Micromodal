@@ -1,4 +1,9 @@
 ## Release History
+* **0.4.0**
+    * `FEATURE` Added abilty to close modals by ID - #113 @roebuk
+    * `BUGFIX` Fixed bug where micromodal would error on initialization - #106 @stoicsquirrel
+    * `BUGFIX` Fixed bug where IE crashed due to null reference - #171 @wcarson
+    * `BUGFIX` Fixed bug which didn't lock modal overlay in IE
 * **0.3.2**
     * `BUGFIX` Fixed bundling for es and umd builds
 * **0.3.1**
