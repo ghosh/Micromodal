@@ -11,7 +11,7 @@
   "scripts": {
     "dev": "parcel ./src/index.html",
     "build": "parcel build ./src/index.html --detailed-report",
-    "deploy": "now --prod",
+    "deploy": "now --target production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
