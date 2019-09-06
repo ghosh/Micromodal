@@ -75,9 +75,15 @@ curl -o https://unpkg.com/micromodal/dist/micromodal.min.js
 
 &nbsp;
 
+## IE 11 and below
+
+Please use this pollyfill suggested [here](https://github.com/ghosh/Micromodal/issues/49#issuecomment-424213347).
+
+&nbsp;
+
 ## Changelog
 
-Find the latest changelog [here](https://github.com/ghosh/micromodal/blob/master/CHANGELOG.md)
+Find the latest changelog [here](https://github.com/ghosh/micromodal/blob/master/CHANGELOG.md).
 
 &nbsp;
 
