@@ -7,6 +7,9 @@
     "lib",
     "site"
   ],
+  "browserslist": [
+    "last 2 version"
+  ],
   "main": "index.js",
   "scripts": {
     "dev": "concurrently \"yarn lib:dev\" \"yarn site:dev\"",
