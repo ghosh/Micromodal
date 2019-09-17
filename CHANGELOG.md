@@ -1,4 +1,6 @@
 ## Release History
+* **0.4.2**
+    * `BUGFIX`  Fixed broken CDN link
 * **0.4.1**
     * `FEATURE`  A flag to `awaitOpenAnimation` before focusing on element in modal. #172 @alesvojta
     * `FEATURE`  Passing actual node as second argument to `onShow`. #194 @muhroots
