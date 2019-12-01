@@ -33,6 +33,6 @@
   },
   "homepage": "https://github.com/ghosh/micromodal#readme",
   "dependencies": {
-    "concurrently": "^4.1.2"
+    "concurrently": "^5.0.0"
   }
 }
