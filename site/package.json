@@ -5,7 +5,8 @@
   "private": true,
   "workspaces": [
     "lib",
-    "site"
+    "site",
+    "tests"
   ],
   "main": "src/index.html",
   "scripts": {
@@ -17,8 +18,8 @@
     "type": "git",
     "url": "git+https://github.com/ghosh/micromodal.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Indrashish Ghosh",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ghosh/micromodal/issues"
   },

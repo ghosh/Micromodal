@@ -1,0 +1,21 @@
+{
+  "name": "@micromodal/tests",
+  "version": "0.1.0",
+  "description": "Tests for micromodal",
+  "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "lib",
+    "site",
+    "tests"
+  ],
+  "scripts": {
+    "cypress": "cypress open",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Indrashish Ghosh",
+  "license": "MIT",
+  "dependencies": {
+    "cypress": "4.0.2"
+  }
+}
