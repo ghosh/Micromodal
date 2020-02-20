@@ -28,7 +28,7 @@
     "micromodal": "0.4.0"
   },
   "devDependencies": {
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "cssnano": "^4.1.10"
   }
 }
