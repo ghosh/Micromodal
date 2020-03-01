@@ -30,6 +30,6 @@
     "rollup-plugin-eslint": "^7.0.0",
     "rollup-plugin-filesize": "^6.1.1",
     "rollup-plugin-json": "^4.0.0",
-    "rollup-plugin-terser": "^5.1.1"
+    "rollup-plugin-terser": "^5.2.0"
   }
 }
