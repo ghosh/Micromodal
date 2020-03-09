@@ -25,9 +25,6 @@
     "url": "https://github.com/ghosh/micromodal/issues"
   },
   "homepage": "https://github.com/ghosh/micromodal#readme",
-  "dependencies": {
-    "micromodal": "0.4.0"
-  },
   "devDependencies": {
     "node-sass": "^4.13.1",
     "cssnano": "^4.1.10"
