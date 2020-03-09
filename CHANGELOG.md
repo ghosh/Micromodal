@@ -1,4 +1,7 @@
 ## Release History
+* **0.4.3**
+    * `FEATURE` The original trigger event is now passed to the onShow and onClose methods
+    * `BUGFIX`  Fixed issue where active element was not being passed to the onClose method
 * **0.4.2**
     * `BUGFIX`  Fixed broken CDN link
 * **0.4.1**
