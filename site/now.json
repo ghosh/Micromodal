@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "name": "micromodal",
+  "alias": "micromodal.now.sh",
+  "builds": [
+    {
+      "src": "./dist/**",
+      "use": "@now/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "dist/$1"
+    }
+  ]
+}

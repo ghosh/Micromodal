@@ -68,7 +68,18 @@
         </svg>
       </div>
 
-      <div class="github">
+    <div class=lh-copy">
+      <a
+        href="https://github.com/ghosh/micromodal"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="f5 fw5 dib pa2 br2 no-underline bg-white hover-blue hover-bg-washed-blue black"
+      >
+        Github
+      </a>
+    </div>
+
+      <!-- <div class="github">
         <a href="https://github.com/Ghosh/micromodal" target="_blank" rel="noopener" class="db">
           <svg xmlns="http://www.w3.org/2000/svg" width="438.549" height="438.549" viewBox="0 0 438.549 438.549"
             class="github__logo">
@@ -77,7 +88,7 @@
             </path>
           </svg>
         </a>
-      </div>
+      </div> -->
     </header>
 
     <main class="cf mt4 mb5 flex">
@@ -371,8 +382,9 @@ MicroModal.init({
   closeTrigger: 'data-custom-close', // [4]
   disableScroll: true, // [5]
   disableFocus: false, // [6]
-  awaitCloseAnimation: false, // [7]
-  debugMode: true // [8]
+  awaitOpenAnimation: false, // [7]
+  awaitCloseAnimation: false, // [8]
+  debugMode: true // [9]
 });
         </code></pre>
 
@@ -380,13 +392,13 @@ MicroModal.init({
           <li class="pl4 pv3">
             <strong class="fw5">onShow</strong> <code>function</code>
             <p>
-              This is fired when the modal is opening. The function receives the modal object as the first parameter
+              This is fired when the modal is opening. The function receives the modal object as the first parameter and the trigger element as second parameter
             </p>
           </li>
           <li class="pl4 pv3">
             <strong class="fw5">onClose</strong> <code>function</code>
             <p>
-              This is fired when the modal is closing. The function receives the modal object as the first parameter
+              This is fired when the modal is closing. The function receives the modal object as the first parameter and the trigger element as second parameter
             </p>
           </li>
           <li class="pl4 pv3">
@@ -411,6 +423,12 @@ MicroModal.init({
             <strong class="fw5">disableFocus</strong> <code>boolean</code>
             <p>
               Disable auto focus on first focusable element. Default is <code>false</code>
+            </p>
+          </li>
+          <li class="pl4 pv3">
+            <strong class="fw5">awaitOpenAnimation</strong> <code>boolean</code>
+            <p>
+              Set this to <code>true</code> if using css animations to open the modal. This allows it to wait for the animation to finish before focusing on an element inside the modal. Default is <code>false</code>
             </p>
           </li>
           <li class="pl4 pv3">
