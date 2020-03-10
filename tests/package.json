@@ -11,8 +11,8 @@
     "tests"
   ],
   "scripts": {
-    "cypress": "cypress open",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cypress:open": "cypress open",
+    "cypress:cli": "cypress run"
   },
   "author": "Indrashish Ghosh",
   "license": "MIT",

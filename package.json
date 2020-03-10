@@ -22,8 +22,8 @@
     "lib:build": "yarn workspace micromodal build",
     "site:dev": "yarn workspace @micromodal/site dev",
     "site:build": "yarn workspace @micromodal/site build",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "test:gui": "yarn workspace @micromodal/tests cypress"
+    "test": "yarn workspace @micromodal/tests cypress:cli",
+    "test:gui": "yarn workspace @micromodal/tests cypress:open"
   },
   "repository": {
     "type": "git",
