@@ -1,0 +1,14 @@
+{
+  "name": "@micromodal/examples",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "examples",
+    "lib",
+    "site",
+    "tests"
+  ],
+  "scripts": {
+    "go": "eleventy --serve"
+  }
+}

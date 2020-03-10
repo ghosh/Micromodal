@@ -5,6 +5,7 @@
   "main": "index.js",
   "private": true,
   "workspaces": [
+    "examples",
     "lib",
     "site",
     "tests"
