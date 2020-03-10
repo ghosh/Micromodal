@@ -4,7 +4,6 @@
   "description": "",
   "private": true,
   "workspaces": [
-    "examples",
     "lib",
     "site",
     "tests"

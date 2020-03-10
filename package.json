@@ -6,8 +6,7 @@
   "workspaces": [
     "lib",
     "site",
-    "tests",
-    "examples"
+    "tests"
   ],
   "browserslist": [
     "last 2 version"
