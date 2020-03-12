@@ -18,6 +18,9 @@
   <a href="https://travis-ci.org/ghosh/micromodal" target="_blank" rel="noopener">
     <img src="https://api.travis-ci.org/ghosh/micromodal.svg" alt="Build Status">
   </a>
+  <a href="https://gitpod.io/#https://github.com/ghosh/Micromodal">
+    <img src="https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod" alt="Gitpod Ready-to-Code">
+  </a>
 </p>
 
 <p align="center">
@@ -92,6 +95,18 @@ Find the latest changelog [here](https://github.com/ghosh/micromodal/blob/master
 We are always open and invite developers to contribute to Micromodal. We have kept the guidelines and process dead simple, so you invest more time in making modals accessible to all.
 
 Micromodal follows the [standardjs](https://standardjs.com/) coding standard and is part of our `package.json` file. It will help us to maintain consistency in the code base.
+
+#### One-click online setup
+
+You can use Gitpod (A free online VS Code-like IDE) for contributing online. With a single click it'll launch a workspace and automatically:
+
+- clone the Micromodal repo.
+- install the dependencies.
+- start `yarn run dev`.
+
+so that you can start straight away.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
 
 #### Development setup
 1. Clone Github repo `$ git clone https://github.com/ghosh/micromodal.git`

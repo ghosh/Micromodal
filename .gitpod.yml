@@ -1,0 +1,6 @@
+tasks:
+  - before: yarn install && yarn global add parcel
+    command: yarn run dev
+ports:
+  - port: 1234
+    onOpen: open-preview
