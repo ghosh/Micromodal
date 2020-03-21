@@ -7,6 +7,7 @@ html {
 body {
   font: caption;
   box-sizing: border-box;
+  font-size: 16px;
   margin: 0;
   padding: 0;
   height: 100vh;
@@ -14,21 +15,22 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
 }
 
 .wrapper {
-  background-color: rgb(5, 60, 39);
+  background-color: #e8fdf5;
   height: 12rem;
   width: 20rem;
   border-radius: 4px;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
-button {
+#trigger {
   border: 0;
+  color: white;
   padding: 1rem 2rem;
   background-color: rgb(19, 119, 82);
   font-size: .875rem;
