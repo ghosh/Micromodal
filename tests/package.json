@@ -10,6 +10,7 @@
     "tests"
   ],
   "scripts": {
+    "serve": "parcel ./examples/*.html",
     "cypress:open": "cypress open",
     "cypress:cli": "cypress run"
   },
