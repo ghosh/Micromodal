@@ -10,13 +10,15 @@
     "tests"
   ],
   "scripts": {
-    "serve": "parcel ./examples/*.html",
+    "serve": "node server.js",
     "cypress:open": "cypress open",
     "cypress:cli": "cypress run"
   },
   "author": "Indrashish Ghosh",
   "license": "MIT",
-  "dependencies": {
-    "cypress": "4.0.2"
+  "devDependencies": {
+    "cypress": "4.0.2",
+    "express": "latest",
+    "parcel-bundler": "latest"
   }
 }
