@@ -59,7 +59,10 @@
   </div>
 
   <script>
-    MicroModal.init()
+    MicroModal.init({
+      onShow: () => document.body.classList.add('open'),
+      onClose: () => document.body.classList.remove('open')
+    })
   </script>
 
 </body>
