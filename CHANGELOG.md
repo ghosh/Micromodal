@@ -1,4 +1,6 @@
 ## Release History
+* **0.4.4**
+    * `ENHANCEMENT` Added ability to customize open class name
 * **0.4.3**
     * `ENHANCEMENT` Finds a focusable element which is not the close button on modal open
     * `ENHANCEMENT` Handle events cleanup if modals are not closed properly
