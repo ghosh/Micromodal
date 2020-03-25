@@ -6,7 +6,7 @@
   display: none;
 }
 
-#modal-1.is-open {
+#modal-1.open {
   display: block;
 }
 
@@ -133,7 +133,7 @@
   display: none;
 }
 
-.micromodal-slide.is-open {
+.micromodal-slide.open {
   display: block;
 }
 

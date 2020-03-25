@@ -59,7 +59,8 @@
 
     open.addEventListener('click', () => MicroModal.show('modal-1', {
       onShow: () => document.body.classList.add('open'),
-      onClose: () => document.body.classList.remove('open')
+      onClose: () => document.body.classList.remove('open'),
+      openClass: 'open'
     }), false);
     close.addEventListener('click', () => MicroModal.close('modal-1'), false);
   </script>
