@@ -370,7 +370,7 @@ MicroModal.close('modal-id'); // [2]
           Configuration
         </h2>
         <p class="lh-copy mv4 black-80">
-          The <code>init</code> and <code>show</code> method accepts an optional configuration object. This allows you
+          The <code>init</code> and <code>show</code> methods accept an optional configuration object. This allows you
           to set custom callbacks and control behaviour of the modal. Example:-
         </p>
 
@@ -380,11 +380,12 @@ MicroModal.init({
   onClose: modal => console.info(`${modal.id} is hidden`), // [2]
   openTrigger: 'data-custom-open', // [3]
   closeTrigger: 'data-custom-close', // [4]
-  disableScroll: true, // [5]
-  disableFocus: false, // [6]
-  awaitOpenAnimation: false, // [7]
-  awaitCloseAnimation: false, // [8]
-  debugMode: true // [9]
+  openClass: 'is-open', // [5]
+  disableScroll: true, // [6]
+  disableFocus: false, // [7]
+  awaitOpenAnimation: false, // [8]
+  awaitCloseAnimation: false, // [9]
+  debugMode: true // [10]
 });
         </code></pre>
 
@@ -411,6 +412,12 @@ MicroModal.init({
             <strong class="fw5">closeTrigger</strong> <code>string</code>
             <p>
               Custom data attribute to close modal. Default is <code>data-micromodal-close</code>
+            </p>
+          </li>
+          <li class="pl4 pv3">
+            <strong class="fw5">openClass</strong> <code>string</code>
+            <p>
+              Custom class to be applied when modal is open. Default class is <code>is-open</code>
             </p>
           </li>
           <li class="pl4 pv3">
