@@ -22,7 +22,7 @@
     "test:serve": "yarn workspace @micromodal/tests serve",
     "test:gui": "yarn workspace @micromodal/tests cypress:open",
     "test:cli": "yarn workspace @micromodal/tests cypress:cli",
-    "deploy:npm": "yarn workspace micromodal publish",
+    "deploy:npm": "yarn workspace micromodal deploy",
     "deploy:docs": "yarn workspace @micromodal/docs deploy"
   },
   "repository": {
