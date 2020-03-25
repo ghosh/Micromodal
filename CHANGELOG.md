@@ -1,6 +1,6 @@
 ## Release History
 * **0.4.5**
-    * 🐞 `BUGFIX` Modal focus correctly focuses on non close trigger when possible
+    * 🐞 `BUGFIX` On open, correctly focuses on non close triggers when possible
     * 🐞 `BUGFIX` Custom open class is now properly removed on modal close
 * **0.4.4**
     * 💡 `FEATURE` Added ability to customize open class name
