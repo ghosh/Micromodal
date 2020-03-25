@@ -6,7 +6,7 @@
   "private": true,
   "workspaces": [
     "lib",
-    "site",
+    "docs",
     "tests"
   ],
   "scripts": {

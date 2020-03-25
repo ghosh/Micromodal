@@ -5,7 +5,7 @@
   "private": true,
   "workspaces": [
     "lib",
-    "site",
+    "docs",
     "tests"
   ],
   "browserslist": [
@@ -13,14 +13,14 @@
   ],
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"yarn lib:dev\" \"yarn site:dev\"",
-    "build": "yarn lib:build && yarn site:build",
+    "dev": "concurrently \"yarn lib:dev\" \"yarn docs:dev\"",
+    "build": "yarn lib:build && yarn docs:build",
     "shipit": "yarn workspace micromodal publish",
-    "deploy": "yarn workspace @micromodal/site deploy",
+    "deploy": "yarn workspace @micromodal/docs deploy",
     "lib:dev": "yarn workspace micromodal dev",
     "lib:build": "yarn workspace micromodal build",
-    "site:dev": "yarn workspace @micromodal/site dev",
-    "site:build": "yarn workspace @micromodal/site build",
+    "docs:dev": "yarn workspace @micromodal/docs dev",
+    "docs:build": "yarn workspace @micromodal/docs build",
     "test": "yarn workspace @micromodal/tests cypress:cli",
     "test:serve": "yarn workspace @micromodal/tests serve",
     "test:gui": "yarn workspace @micromodal/tests cypress:open"

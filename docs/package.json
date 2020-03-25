@@ -1,11 +1,11 @@
 {
-  "name": "@micromodal/site",
+  "name": "@micromodal/docs",
   "version": "1.0.0",
   "description": "",
   "private": true,
   "workspaces": [
     "lib",
-    "site",
+    "docs",
     "tests"
   ],
   "main": "src/index.html",
