@@ -20,8 +20,8 @@
     "lib:dev": "yarn workspace micromodal dev",
     "lib:build": "yarn workspace micromodal build",
     "test:serve": "yarn workspace @micromodal/tests serve",
-    "test:cli": "yarn workspace @micromodal/tests cypress:cli",
     "test:gui": "yarn workspace @micromodal/tests cypress:open",
+    "test:cli": "yarn workspace @micromodal/tests cypress:cli",
     "deploy:npm": "yarn workspace micromodal publish",
     "deploy:docs": "yarn workspace @micromodal/docs deploy"
   },
