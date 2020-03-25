@@ -58,10 +58,11 @@
     const close = document.getElementById("close-trigger");
 
     open.addEventListener('click', () => MicroModal.show('modal-1', {
-      onShow: () => document.body.classList.add('open'),
-      onClose: () => document.body.classList.remove('open'),
+      onShow: () => document.body.classList.add('howdy'),
+      onClose: () => document.body.classList.remove('howdy'),
       openClass: 'open'
     }), false);
+
     close.addEventListener('click', () => MicroModal.close('modal-1'), false);
   </script>
 

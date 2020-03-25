@@ -69,7 +69,7 @@ describe('Basic Modal', function () {
 
   it('should fire onShow method on modal open', () => {
     openModal()
-    cy.get('body').should('have.class', 'open')
+    cy.get('body').should('have.class', 'howdy')
     closeModal()
   })
 
@@ -77,8 +77,15 @@ describe('Basic Modal', function () {
   it('should fire onClose method on modal close', () => {
     openModal()
     closeModal()
-    cy.get('body').should('not.have.class', 'open')
+    cy.get('body').should('not.have.class', 'howdy')
   })
 
+
+  it('should work with custom open class', () => {
+    openModal()
+    cy.get('#modal-1').should('have.class', 'open')
+    closeModal()
+    cy.get('#modal-1').should('not.have.class', 'open')
+  })
 
 })
