@@ -37,5 +37,8 @@
   "homepage": "https://github.com/ghosh/micromodal#readme",
   "dependencies": {
     "concurrently": "^5.1.0"
+  },
+  "engines": {
+    "node": ">=10"
   }
 }
