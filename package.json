@@ -17,10 +17,10 @@
     "build": "yarn lib:build && yarn docs:build",
     "deploy:npm": "yarn workspace micromodal publish",
     "deploy:docs": "yarn workspace @micromodal/docs deploy",
-    "lib:dev": "yarn workspace micromodal dev",
-    "lib:build": "yarn workspace micromodal build",
     "docs:dev": "yarn workspace @micromodal/docs dev",
     "docs:build": "yarn workspace @micromodal/docs build",
+    "lib:dev": "yarn workspace micromodal dev",
+    "lib:build": "yarn workspace micromodal build",
     "test": "yarn workspace @micromodal/tests cypress:cli",
     "test:serve": "yarn workspace @micromodal/tests serve",
     "test:gui": "yarn workspace @micromodal/tests cypress:open"
