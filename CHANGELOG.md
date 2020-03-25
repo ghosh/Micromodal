@@ -1,14 +1,23 @@
 ## Release History
 * **0.4.3**
-    * `FEATURE` The original trigger event is now passed to the onShow and onClose methods
+    * `ENHANCEMENT` Finds a focusable element which is not the close button on modal open
+    * `ENHANCEMENT` Handle events cleanup if modals are not closed properly
+    * `ENHANCEMENT` The original trigger event is now passed to the onShow and onClose methods
+    * `ENHANCEMENT` Added engines property to package.json
+    * `BUGFIX`
+    * `BUGFIX` Fixed callbacks for programmatically toggling modal
+    * `BUGFIX` No longer intercept click events on open and close to prevent default action
+    * `BUGFIX` No longer throws error if modal has no focusable elements
+    * `BUGFIX` Setting `disableScroll` no longger changes the height of the body
+    * `BUGFIX` Fixed issue focus trap would leak if a hidden element exists within modal
     * `BUGFIX`  Fixed issue where active element was not being passed to the onClose method
 * **0.4.2**
     * `BUGFIX`  Fixed broken CDN link
 * **0.4.1**
-    * `FEATURE`  A flag to `awaitOpenAnimation` before focusing on element in modal. #172 @alesvojta
-    * `FEATURE`  Passing actual node as second argument to `onShow`. #194 @muhroots
-    * `BUGFIX`  Fixed issue where active element was `undefined`. #198 @caiotarifa
-    * `BUGFIX`  Fixed issue where an opened modal could not be closed by `id` . #113 @roebuk
+    * `FEATURE`  A flag to `awaitOpenAnimation` before focusing on element in modal
+    * `FEATURE`  Passing actual node as second argument to `onShow`
+    * `BUGFIX`  Fixed issue where active element was `undefined`
+    * `BUGFIX`  Fixed issue where an opened modal could not be closed by `id`
 * **0.4.0**
     * `FEATURE` Added abilty to close modals by ID - #113 @roebuk
     * `BUGFIX` Fixed bug where micromodal would error on initialization - #106 @stoicsquirrel
