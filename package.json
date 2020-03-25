@@ -15,8 +15,8 @@
   "scripts": {
     "dev": "concurrently \"yarn lib:dev\" \"yarn docs:dev\"",
     "build": "yarn lib:build && yarn docs:build",
-    "shipit": "yarn workspace micromodal publish",
-    "deploy": "yarn workspace @micromodal/docs deploy",
+    "deploy:npm": "yarn workspace micromodal publish",
+    "deploy:docs": "yarn workspace @micromodal/docs deploy",
     "lib:dev": "yarn workspace micromodal dev",
     "lib:build": "yarn workspace micromodal build",
     "docs:dev": "yarn workspace @micromodal/docs dev",
