@@ -2,7 +2,7 @@
   <img src="https://www.dropbox.com/s/tbaooyi4yh8pbi7/logo.png?raw=1" width="100px"/>
 </p>
 <h3 align="center">
-  Micromodal.js ok?
+  Micromodal.js
 </h3>
 
 <p align="center">
