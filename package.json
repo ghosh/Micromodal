@@ -15,15 +15,15 @@
   "scripts": {
     "dev": "concurrently \"yarn lib:dev\" \"yarn docs:dev\"",
     "build": "yarn lib:build && yarn docs:build",
-    "deploy:npm": "yarn workspace micromodal publish",
-    "deploy:docs": "yarn workspace @micromodal/docs deploy",
-    "lib:dev": "yarn workspace micromodal dev",
-    "lib:build": "yarn workspace micromodal build",
     "docs:dev": "yarn workspace @micromodal/docs dev",
     "docs:build": "yarn workspace @micromodal/docs build",
-    "test": "yarn workspace @micromodal/tests cypress:cli",
+    "lib:dev": "yarn workspace micromodal dev",
+    "lib:build": "yarn workspace micromodal build",
     "test:serve": "yarn workspace @micromodal/tests serve",
-    "test:gui": "yarn workspace @micromodal/tests cypress:open"
+    "test:gui": "yarn workspace @micromodal/tests cypress:open",
+    "test:cli": "yarn workspace @micromodal/tests cypress:cli",
+    "deploy:npm": "yarn workspace micromodal deploy",
+    "deploy:docs": "yarn workspace @micromodal/docs deploy"
   },
   "repository": {
     "type": "git",
