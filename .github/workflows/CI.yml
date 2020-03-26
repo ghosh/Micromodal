@@ -13,26 +13,26 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
-    name: Build
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+  # build:
+  #   name: Build
+  #   # The type of runner that the job will run on
+  #   runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-    - uses: borales/actions-yarn@v2.0.0
-      with:
-        cmd: install # will run `yarn install` command
+  #   # Steps represent a sequence of tasks that will be executed as part of the job
+  #   steps:
+  #   # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+  #   - uses: actions/checkout@v2
+  #   - uses: borales/actions-yarn@v2.0.0
+  #     with:
+  #       cmd: install # will run `yarn install` command
 
-    - uses: borales/actions-yarn@v2.0.0
-      with:
-        cmd: build # will run `yarn build` command
+  #   - uses: borales/actions-yarn@v2.0.0
+  #     with:
+  #       cmd: build # will run `yarn build` command
 
-    # Runs a single command using the runners shell
-    - name: Run a one-line script
-      run: echo Project built!
+  #   # Runs a single command using the runners shell
+  #   - name: Run a one-line script
+  #     run: echo Project built!
 
   test:
     name: Test
@@ -40,6 +40,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
       - uses: cypress-io/github-action@v1
         with:
+          config-file: tests/cypress.json
           browser: chrome
