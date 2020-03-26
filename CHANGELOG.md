@@ -1,4 +1,6 @@
 ## Release History
+* **0.4.6**
+    * 🐞 `BUGFIX` Removed focus error when no focusable element exists in the modal
 * **0.4.5**
     * 🐞 `BUGFIX` On open, correctly focuses on non close triggers when possible
     * 🐞 `BUGFIX` Custom open class is now properly removed on modal close
