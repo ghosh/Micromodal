@@ -45,7 +45,7 @@ jobs:
           node-version: '10.x'
       - uses: cypress-io/github-action@v1
         with:
-          start: npm test:serve
+          start: yarn test:serve
           wait-on: http://localhost:1234
           config-file: tests/cypress.json
           browser: chrome
