@@ -29,19 +29,19 @@ jobs:
     - name: Run a one-line script
       run: echo Project built!
 
-  # test:
-  #   name: Test
-  #   runs-on: ubuntu-latest
+  test:
+    name: Test
+    runs-on: ubuntu-latest
 
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: actions/setup-node@v1
-  #       with:
-  #         node-version: '10.x'
-  #     - uses: cypress-io/github-action@v1
-  #       with:
-  #         build: yarn build
-  #         start: yarn test:serve
-  #         wait-on: http://localhost:1234
-  #         config-file: tests/cypress.json
-  #         browser: chrome
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+      - uses: cypress-io/github-action@v1
+        with:
+          install: false
+          start: yarn test:serve
+          wait-on: http://localhost:1234
+          config-file: tests/cypress.json
+          browser: chrome
