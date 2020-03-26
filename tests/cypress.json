@@ -1,9 +1,9 @@
 {
   "baseUrl": "http://localhost:1234",
   "fixturesFolder": false,
-  "integrationFolder" : "specs",
+  "integrationFolder" : "./specs",
   "video": false,
-  "screenshotsFolder": "screenshots",
+  "screenshotsFolder": "./screenshots",
   "viewportWidth": 980,
   "viewportHeight": 800,
   "reporter": "Dot"
