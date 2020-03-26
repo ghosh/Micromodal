@@ -10,6 +10,7 @@
     "tests"
   ],
   "scripts": {
+    "start": "parcel examples/*.html",
     "serve": "node server.js",
     "cypress:open": "cypress open",
     "cypress:cli": "cypress run"
