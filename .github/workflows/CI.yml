@@ -31,6 +31,7 @@ jobs:
       - uses: cypress-io/github-action@v1
         with:
           build: yarn build
+          runTests: false # just build site
       - uses: cypress-io/github-action@v1
         with:
           install: false
