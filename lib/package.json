@@ -18,7 +18,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "rollup -c -w",
-    "build": "yarn sync && rollup -c",
+    "build": "rollup -c",
     "deploy": "yarn build && yarn publish",
     "sync": "cp -rf ../Readme.md ./"
   },
