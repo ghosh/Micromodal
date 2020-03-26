@@ -31,8 +31,7 @@ jobs:
       - uses: cypress-io/github-action@v1
         with:
           build: yarn build
-          working-directory: tests/
-          start: yarn serve
+          start: yarn test:serve
           wait-on: http://localhost:1234
           config-file: tests/cypress.json
           browser: chrome
