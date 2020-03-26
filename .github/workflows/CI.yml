@@ -1,34 +1,24 @@
-# This is a basic workflow to help you get started with Actions
-
 name: Build and Test
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
 on:
   push:
     branches: [ next ]
   pull_request:
     branches: [ next ]
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+
 jobs:
-  # This workflow contains a single job called "build"
+  # Build the library and site
   build:
     name: Build
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+
     - uses: actions/checkout@v2
       with:
         cmd: yarn install && yarn build
 
-    # Runs a single command using the runners shell
-    - name: Run a one-line script
-      run: echo Project built!
-
+  # Run the test suite
   test:
     name: Test
     runs-on: ubuntu-latest
@@ -40,7 +30,6 @@ jobs:
           node-version: '10.x'
       - uses: cypress-io/github-action@v1
         with:
-          install: false
           start: yarn test:serve
           wait-on: http://localhost:1234
           config-file: tests/cypress.json
