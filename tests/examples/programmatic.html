@@ -60,6 +60,7 @@
     open.addEventListener('click', () => MicroModal.show('modal-1', {
       onShow: () => document.body.classList.add('howdy'),
       onClose: () => document.body.classList.remove('howdy'),
+      awaitCloseAnimation: true,
       openClass: 'open'
     }), false);
 
