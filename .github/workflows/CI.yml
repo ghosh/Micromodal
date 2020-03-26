@@ -36,7 +36,7 @@ jobs:
         with:
           install: false
           working-directory: tests
-          start: yarn start
+          start: yarn serve
           wait-on: http://localhost:1234
           # config-file: tests/cypress.json
           # spec: specs/*.spec.js
