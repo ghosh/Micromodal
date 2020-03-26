@@ -30,7 +30,7 @@ jobs:
           node-version: '10.x'
       - uses: cypress-io/github-action@v1
         with:
-          install: false
+          build: yarn build
           working-directory: tests/
           start: yarn serve
           wait-on: http://localhost:1234
