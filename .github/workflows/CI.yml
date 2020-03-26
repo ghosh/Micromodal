@@ -28,8 +28,9 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '10.x'
-      - uses: ./
+      - uses: cypress-io/github-action@v1
         with:
+          install: true
           build: yarn build
           start: yarn test:serve
           wait-on: http://localhost:1234
