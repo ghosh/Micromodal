@@ -34,5 +34,4 @@ jobs:
           start: yarn test:serve
           wait-on: http://localhost:1234
           config-file: tests/cypress.json
-          spec: tests/specs/basic.spec.js
           browser: chrome
