@@ -29,6 +29,7 @@ jobs:
         with:
           node-version: '10.x'
       - uses: cypress-io/github-action@v1
+        with:
           build: yarn build
       - uses: cypress-io/github-action@v1
         with:
