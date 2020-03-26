@@ -29,6 +29,8 @@ jobs:
         with:
           node-version: '10.x'
       - uses: cypress-io/github-action@v1
+          build: yarn build
+      - uses: cypress-io/github-action@v1
         with:
           install: false
           working-directory: tests
