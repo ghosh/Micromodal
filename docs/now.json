@@ -1,7 +1,5 @@
 {
   "version": 2,
-  "name": "micromodal",
-  "alias": "micromodal.now.sh",
   "builds": [
     {
       "src": "./dist/**",
