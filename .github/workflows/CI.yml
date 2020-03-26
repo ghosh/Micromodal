@@ -2,9 +2,9 @@ name: Build and Test
 
 on:
   push:
-    branches: [ next ]
+    branches: [ next, master ]
   pull_request:
-    branches: [ next ]
+    branches: [ next, master ]
 
 
 jobs:
@@ -38,6 +38,3 @@ jobs:
           working-directory: tests
           start: yarn serve
           wait-on: http://localhost:1234
-          # config-file: tests/cypress.json
-          # spec: specs/*.spec.js
-          # browser: chrome
