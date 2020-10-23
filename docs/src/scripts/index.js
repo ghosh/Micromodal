@@ -5,7 +5,8 @@ import './prism'
 MicroModal.init({
   openTrigger: 'data-custom-open',
   disableScroll: false,
-  awaitCloseAnimation: true
+  awaitCloseAnimation: true,
+  showModalFromURL: true
 })
 
 // Programmatically show modal
