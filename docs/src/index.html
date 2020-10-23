@@ -53,6 +53,7 @@
 
 
 </head>
+
 <body class="js-body sans-serif bg-white-20 bt bw3">
 
   <div class="center cf ph3 mw6 mw7-l">
@@ -68,7 +69,7 @@
         </svg>
       </div>
 
-    <!-- <div class=lh-copy">
+      <!-- <div class=lh-copy">
       <a
         href="https://github.com/ghosh/micromodal"
         target="_blank"
@@ -386,6 +387,7 @@ MicroModal.init({
   awaitOpenAnimation: false, // [8]
   awaitCloseAnimation: false, // [9]
   debugMode: true // [10]
+  showModalFromURL: false // [11]
 });
         </code></pre>
 
@@ -393,13 +395,15 @@ MicroModal.init({
           <li class="pl4 pv3">
             <strong class="fw5">onShow</strong> <code>function</code>
             <p>
-              This is fired when the modal is opening. The function receives the modal object as the first parameter and the trigger element as second parameter
+              This is fired when the modal is opening. The function receives the modal object as the first parameter and
+              the trigger element as second parameter
             </p>
           </li>
           <li class="pl4 pv3">
             <strong class="fw5">onClose</strong> <code>function</code>
             <p>
-              This is fired when the modal is closing. The function receives the modal object as the first parameter and the trigger element as second parameter
+              This is fired when the modal is closing. The function receives the modal object as the first parameter and
+              the trigger element as second parameter
             </p>
           </li>
           <li class="pl4 pv3">
@@ -435,7 +439,8 @@ MicroModal.init({
           <li class="pl4 pv3">
             <strong class="fw5">awaitOpenAnimation</strong> <code>boolean</code>
             <p>
-              Set this to <code>true</code> if using css animations to open the modal. This allows it to wait for the animation to finish before focusing on an element inside the modal. Default is <code>false</code>
+              Set this to <code>true</code> if using css animations to open the modal. This allows it to wait for the
+              animation to finish before focusing on an element inside the modal. Default is <code>false</code>
             </p>
           </li>
           <li class="pl4 pv3">
@@ -451,6 +456,16 @@ MicroModal.init({
             <p>
               This option suppresses the console warnings if passed as <code>true</code>. The default value is
               <code>false</code>
+            </p>
+          </li>
+          <li class="pl4 pv3">
+            <strong class="fw5">showModalFromURL</strong> <code>boolean</code>
+            <p>
+              If this option is <code>true</code> and hash specified in the URL is id of some initialized modal, the
+              modal
+              will be shown on page load. The default value is
+              <code>false</code> <br>
+              Add <code>#modal-1</code> hash in URL and reload to test it out!
             </p>
           </li>
         </ul>

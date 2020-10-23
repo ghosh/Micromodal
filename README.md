@@ -47,6 +47,8 @@ The aim of this library is to make modal dialogs accessible and easy to include 
 
 ✔ Retains the focused element state after closing the modal
 
+✔ Shows modal on page load if its id specified in URL
+
 &nbsp;
 
 ## Installation
