@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/ghosh/micromodal#readme",
   "devDependencies": {
-    "node-sass": "^4.13.1",
+    "node-sass": "^5.0.0",
     "cssnano": "^4.1.10",
     "parcel-bundler": "latest"
   }
