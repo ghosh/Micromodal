@@ -1,5 +1,11 @@
 /* eslint-disable */
 
+afterEach(function () {
+  if (this.currentTest.state === 'failed') {
+    Cypress.runner.stop()
+  }
+});
+
 describe('Basic Modal', function () {
 
   const openModal = () => {
@@ -37,14 +43,14 @@ describe('Basic Modal', function () {
   it('should close modal on close button click', () => {
     openModal()
     cy.get('.modal__close').click()
-    cy.get('modal__close').and('not.be.visible')
+    cy.get('.modal__close').and('not.be.visible')
     // modal closed here
   })
 
   it('should close modal on overlay click', () => {
     openModal()
     cy.get('.modal__overlay').click('top')
-    cy.get('modal__overlay').and('not.be.visible')
+    cy.get('.modal__overlay').and('not.be.visible')
     // modal closed here
   })
 

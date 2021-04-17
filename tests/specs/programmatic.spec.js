@@ -43,13 +43,13 @@ describe('Programmatic toggling of Modal', function () {
   it('should close modal on close button click', () => {
     openModal()
     cy.get('.modal__close').click()
-    cy.get('modal__close').and('not.be.visible')
+    cy.get('.modal__close').and('not.be.visible')
   })
 
   it('should close modal on overlay click', () => {
     openModal()
     cy.get('.modal__overlay').click('top')
-    cy.get('modal__overlay').and('not.be.visible')
+    cy.get('.modal__overlay').and('not.be.visible')
     // modal closed here
   })
 
