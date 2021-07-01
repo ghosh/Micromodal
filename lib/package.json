@@ -31,7 +31,7 @@
     "node": ">=10"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.7",
+    "@babel/core": "^7.14.6",
     "@babel/preset-env": "^7.9.0",
     "eslint": "^7.24.0",
     "eslint-config-ghosh": "^0.1.3",
