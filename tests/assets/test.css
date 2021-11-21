@@ -38,9 +38,9 @@ body {
   display: inline-block;
   border-radius: 4px;
   transition: transform .25s ease-out,-webkit-transform .25s ease-out;
+}
 
-  &:hover {
-    cursor: pointer;
-    transform: scale(1.05);
-  }
+.button:hover {
+  cursor: pointer;
+  transform: scale(1.05);
 }

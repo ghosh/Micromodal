@@ -18,8 +18,10 @@
   "author": "Indrashish Ghosh",
   "license": "MIT",
   "devDependencies": {
-    "cypress": "7.1.0",
-    "express": "latest",
-    "parcel-bundler": "latest"
-  }
+    "browserlist": "^1.0.1",
+    "cypress": "^9.0.0",
+    "express": "^4.17.1",
+    "parcel": "^2.0.1"
+  },
+  "dependencies": {}
 }

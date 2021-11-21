@@ -9,7 +9,7 @@
     content="Micromodal enables you to create accessible modal dialogs with minimal configuration. At just 1.9kb minified and gzipped, its a tiny library for big change.">
 
 
-  <link rel="stylesheet" href="./styles/index.scss">
+  <link rel="stylesheet" href="./styles/index.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="icon" type="image/png" href="./images/favicon-32x32.png" sizes="32x32" />
@@ -33,26 +33,16 @@
   <meta name="twitter:image:width" content="1200">
   <meta name="twitter:image:height" content="630">
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-49604576-5"></script>
-  <script>
+  <script type="module"src="https://www.googletagmanager.com/gtag/js?id=UA-49604576-5"></script>
+  <script type="module">
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments) };
     gtag('js', new Date());
     gtag('config', 'UA-49604576-5');
   </script>
-  <script>
-    (function (h, o, t, j, a, r) {
-      h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
-      h._hjSettings = { hjid: 628380, hjsv: 5 };
-      a = o.getElementsByTagName('head')[0];
-      r = o.createElement('script'); r.async = 1;
-      r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-      a.appendChild(r);
-    })(window, document, '//static.hotjar.com/c/hotjar-', '.js?sv=');
-  </script>
-
 
 </head>
+
 <body class="js-body sans-serif bg-white-20 bt bw3">
 
   <div class="center cf ph3 mw6 mw7-l">
@@ -68,7 +58,7 @@
         </svg>
       </div>
 
-    <!-- <div class=lh-copy">
+      <!-- <div class=lh-copy">
       <a
         href="https://github.com/ghosh/micromodal"
         target="_blank"
@@ -393,13 +383,15 @@ MicroModal.init({
           <li class="pl4 pv3">
             <strong class="fw5">onShow</strong> <code>function</code>
             <p>
-              This is fired when the modal is opening. The function receives the modal object as the first parameter and the trigger element as second parameter
+              This is fired when the modal is opening. The function receives the modal object as the first parameter and
+              the trigger element as second parameter
             </p>
           </li>
           <li class="pl4 pv3">
             <strong class="fw5">onClose</strong> <code>function</code>
             <p>
-              This is fired when the modal is closing. The function receives the modal object as the first parameter and the trigger element as second parameter
+              This is fired when the modal is closing. The function receives the modal object as the first parameter and
+              the trigger element as second parameter
             </p>
           </li>
           <li class="pl4 pv3">
@@ -435,7 +427,8 @@ MicroModal.init({
           <li class="pl4 pv3">
             <strong class="fw5">awaitOpenAnimation</strong> <code>boolean</code>
             <p>
-              Set this to <code>true</code> if using css animations to open the modal. This allows it to wait for the animation to finish before focusing on an element inside the modal. Default is <code>false</code>
+              Set this to <code>true</code> if using css animations to open the modal. This allows it to wait for the
+              animation to finish before focusing on an element inside the modal. Default is <code>false</code>
             </p>
           </li>
           <li class="pl4 pv3">
@@ -562,8 +555,8 @@ MicroModal.init({
     </div>
   </div>
 
+  <script type="module" src="./scripts/index.js"></script>
 
-  <script src="./scripts/index.js"></script>
 </body>
 
 </html>

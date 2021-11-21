@@ -1,6 +1,6 @@
-@import '_tachyons';
-@import '_modal';
-@import '_prism';
+@import './tachyons.css';
+@import './modal.css';
+@import './prism.css';
 
 
 /**************************\

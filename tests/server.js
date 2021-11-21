@@ -3,14 +3,15 @@
  * des not serve index.html at root
  * https://github.com/parcel-bundler/parcel/issues/1315
  */
-const Bundler = require('parcel-bundler')
+// import Parcel from "@parcel/core"
+const Parcel = require('@parcel/core')
 const express = require('express')
 
 const options = {
-  'watch': true
+  watch: true
 }
 
-const bundler = new Bundler([
+const bundler = new Parcel([
   'examples/index.html',
   'examples/basic.html',
   'examples/programmatic.html'
