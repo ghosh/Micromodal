@@ -36,5 +36,5 @@ jobs:
         with:
           install: false
           working-directory: tests
-          start: yarn serve
+          start: yarn start
           wait-on: http://localhost:1234
