@@ -28,11 +28,11 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '10.x'
-      - uses: cypress-io/github-action@v1
+      - uses: cypress-io/github-action@v2
         with:
           build: yarn build
           runTests: false # just build site
-      - uses: cypress-io/github-action@v1
+      - uses: cypress-io/github-action@v2
         with:
           install: false
           working-directory: tests
