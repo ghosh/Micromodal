@@ -14,7 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - name: Build project
     - uses: actions/checkout@v2
       with:
         cmd: yarn install && yarn build
@@ -25,14 +24,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Cypress run
-        uses: cypress-io/github-action@v2
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '16.x'
+      - uses: cypress-io/github-action@v1
+        with:
+          build: yarn build
+          runTests: false # just build site
+      - uses: cypress-io/github-action@v1
         with:
           install: false
           working-directory: tests
-          build: yarn build
-          start: yarn test:serve
+          start: yarn serve
           wait-on: http://localhost:1234
