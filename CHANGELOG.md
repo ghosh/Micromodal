@@ -1,4 +1,6 @@
 ## Release History
+* **0.4.9**
+    * 🐞 `BUGFIX` Correctly closes modal when clicking on nested close elements
 * **0.4.8**
     * 🐞 `BUGFIX` Fixed issue where clicking on a input field would close the modal
 * **0.4.7**
