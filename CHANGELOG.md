@@ -1,4 +1,6 @@
 ## Release History
+* **0.4.8**
+    * 🐞 `BUGFIX` Fixed issue where clicking on a input field would close the modal
 * **0.4.7**
     * 🐞 `BUGFIX` Correctly disable scroll on iOS devices
     * 🐞 `BUGFIX` Fixed issue where 'window' would be undefined
