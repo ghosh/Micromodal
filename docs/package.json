@@ -8,7 +8,7 @@
     "docs",
     "tests"
   ],
-  "main": "src/index.html",
+  "source": "src/index.html",
   "scripts": {
     "dev": "parcel ./src/index.html",
     "build": "parcel build ./src/index.html --detailed-report",
@@ -26,8 +26,6 @@
   },
   "homepage": "https://github.com/ghosh/micromodal#readme",
   "devDependencies": {
-    "node-sass": "^4.13.1",
-    "cssnano": "^4.1.10",
-    "parcel-bundler": "latest"
+    "parcel": "^2.0.1"
   }
 }

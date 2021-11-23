@@ -27,14 +27,14 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: '10.x'
-      - uses: cypress-io/github-action@v1
+          node-version: '16.x'
+      - uses: cypress-io/github-action@v2
         with:
           build: yarn build
           runTests: false # just build site
-      - uses: cypress-io/github-action@v1
+      - uses: cypress-io/github-action@v2
         with:
           install: false
           working-directory: tests
-          start: yarn serve
+          start: yarn start
           wait-on: http://localhost:1234

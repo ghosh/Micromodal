@@ -70,7 +70,7 @@ yarn add micromodal
 
 **direct download**
 ```shell
-curl -o https://unpkg.com/micromodal/dist/micromodal.min.js
+curl -O -L https://unpkg.com/micromodal/dist/micromodal.min.js
 ```
 
 &nbsp;

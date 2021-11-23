@@ -26,15 +26,15 @@ document.querySelector('.js-modal-close-trigger').addEventListener('click', func
 })
 
 // Scrollspy
-var section = document.querySelectorAll('.heading')
-var sections = {}
+let section = document.querySelectorAll('.heading')
+const sections = {}
 
 Array.prototype.forEach.call(section, function (e) {
   sections[e.id] = e.offsetTop
 })
 
 window.onscroll = function () {
-  var scrollPosition = document.documentElement.scrollTop || document.body.scrollTop
+  const scrollPosition = document.documentElement.scrollTop || document.body.scrollTop
 
   for (section in sections) {
     if (sections[section] <= scrollPosition) {

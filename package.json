@@ -8,9 +8,6 @@
     "docs",
     "tests"
   ],
-  "browserslist": [
-    "last 2 version"
-  ],
   "main": "index.js",
   "scripts": {
     "dev": "concurrently \"yarn lib:dev\" \"yarn docs:dev\"",
@@ -19,7 +16,7 @@
     "docs:build": "yarn workspace @micromodal/docs build",
     "lib:dev": "yarn workspace micromodal dev",
     "lib:build": "yarn workspace micromodal build",
-    "test:serve": "yarn workspace @micromodal/tests serve",
+    "test:serve": "yarn workspace @micromodal/tests start",
     "test:gui": "yarn workspace @micromodal/tests cypress:open",
     "test:cli": "yarn workspace @micromodal/tests cypress:cli",
     "deploy:npm": "yarn workspace micromodal deploy",
@@ -36,7 +33,9 @@
   },
   "homepage": "https://github.com/ghosh/micromodal#readme",
   "dependencies": {
-    "concurrently": "^5.1.0"
+    "concurrently": "^6.0.2",
+    "cypress": "9.0.0",
+    "eslint": "8.2.0"
   },
   "engines": {
     "node": ">=10"

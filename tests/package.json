@@ -11,15 +11,16 @@
   ],
   "scripts": {
     "start": "parcel examples/*.html",
-    "serve": "node server.js",
     "cypress:open": "cypress open",
     "cypress:cli": "cypress run"
   },
   "author": "Indrashish Ghosh",
   "license": "MIT",
   "devDependencies": {
-    "cypress": "4.0.2",
-    "express": "latest",
-    "parcel-bundler": "latest"
-  }
+    "browserlist": "^1.0.1",
+    "cypress": "^9.0.0",
+    "express": "^4.17.1",
+    "parcel": "^2.0.1"
+  },
+  "dependencies": {}
 }
