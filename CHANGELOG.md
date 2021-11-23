@@ -1,4 +1,10 @@
 ## Release History
+* **0.4.7**
+    * 🐞 `BUGFIX` Correctly disable scroll on iOS devices
+    * 🐞 `BUGFIX` Fixed issue where 'window' would be undefined
+    * 🐞 `BUGFIX` Close button works even if there are nested elements within
+    * 🐞 `BUGFIX` Marks event handler as 'passive' to make the page more responsive
+    * 🐞 `BUGFIX` Prevents click handlers from triggering underlying elements
 * **0.4.6**
     * 🐞 `BUGFIX` Removed focus error when no focusable element exists in the modal
 * **0.4.5**
@@ -15,7 +21,7 @@
     * 🐞 `BUGFIX` No longer intercept click events on open and close to prevent default action
     * 🐞 `BUGFIX` No longer throws error if modal has no focusable elements
     * 🐞 `BUGFIX` Setting `disableScroll` no longger changes the height of the body
-    * 🐞 `BUGFIX` Fixed issue focus trap would leak if a hidden element exists within modal
+    * 🐞 `BUGFIX` Fixed issue where focus trap would leak if a hidden element exists within modal
     * 🐞 `BUGFIX`  Fixed issue where active element was not being passed to the onClose method
 * **0.4.2**
     * 🐞 `BUGFIX`  Fixed broken CDN link
