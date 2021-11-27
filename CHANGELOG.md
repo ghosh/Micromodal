@@ -1,4 +1,6 @@
 ## Release History
+* **0.4.10**
+    * 🐞 `BUGFIX` Reverted passive listener to enable event methods
 * **0.4.9**
     * 🐞 `BUGFIX` Correctly closes modal when clicking on nested close elements
 * **0.4.8**
