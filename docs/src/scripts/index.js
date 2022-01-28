@@ -1,4 +1,4 @@
-import MicroModal from '../../../lib/dist/micromodal'
+import MicroModal from './micromodal'
 import './prism'
 
 // Initial config for setting up modals

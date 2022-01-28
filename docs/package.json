@@ -13,6 +13,7 @@
     "dev": "parcel ./src/index.html",
     "build": "parcel build ./src/index.html --detailed-report",
     "deploy": "now --prod",
+    "sync": "cp ../lib/dist/micromodal.js ./src/scripts/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
